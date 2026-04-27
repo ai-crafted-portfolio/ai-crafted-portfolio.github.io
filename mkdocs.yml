@@ -16,6 +16,7 @@ theme:
     - navigation.sections
     - navigation.top
     - navigation.instant
+    - navigation.indexes
     - toc.integrate
     - search.highlight
     - search.suggest
@@ -57,3 +58,5 @@ markdown_extensions:
 
 nav:
   - ホーム: index.md
+  - リサーチレポート: research/index.md
+search/index.md

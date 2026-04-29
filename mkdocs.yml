@@ -59,3 +59,6 @@ markdown_extensions:
 nav:
   - ホーム: index.md
   - リサーチレポート: research/index.md
+  - 検討資料:
+    - 一覧: discussions/index.md
+    - z/OS 運用資材の軽量ライブラリ管理ツール: discussions/zos_library_management.md

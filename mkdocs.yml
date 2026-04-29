@@ -3,9 +3,6 @@ site_description: Claudeを活用して作る技術ポートフォリオ
 site_url: https://ai-crafted-portfolio.github.io/
 site_author: ai-crafted-portfolio
 
-repo_name: ai-crafted-portfolio/ai-crafted-portfolio.github.io
-repo_url: https://github.com/ai-crafted-portfolio/ai-crafted-portfolio.github.io
-
 copyright: Copyright &copy; 2026 ai-crafted-portfolio
 
 theme:

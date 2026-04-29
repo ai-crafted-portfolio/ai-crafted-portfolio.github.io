@@ -7,4 +7,4 @@
 
 | 公開日 | タイトル | 概要 |
 |---|---|---|
-| 2026-04 | [z/OS 運用資材の軽量ライブラリ管理ツール](zos_library_management.md) | Excel/VBA + 3270 エミュレータによる Change Tracker 軽量代替の検討（IBM 公式マニュアル 21 出典に基づく） |
+| 2026-04 | [z/OS 運用資材の軽量ライブラリ管理ツール](zos-library-management/index.md) | Excel/VBA + 3270 エミュレータによる Change Tracker 軽量代替の検討（IBM 公式マニュアル 21 出典に基づく / 全 23 ページ構成） |

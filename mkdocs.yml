@@ -61,4 +61,29 @@ nav:
   - リサーチレポート: research/index.md
   - 検討資料:
     - 一覧: discussions/index.md
-    - z/OS 運用資材の軽量ライブラリ管理ツール: discussions/zos_library_management.md
+    - z/OS 運用資材の軽量ライブラリ管理ツール:
+      - 概要: discussions/zos-library-management/index.md
+      - 全体観:
+        - 本資料の前提 (SSOT): discussions/zos-library-management/overview/01-ssot.md
+        - 6 領域分類: discussions/zos-library-management/overview/02-domains.md
+        - 既存策と限界: discussions/zos-library-management/overview/03-existing-tools.md
+        - 本ツールの位置づけ: discussions/zos-library-management/overview/04-positioning.md
+        - 機能対応表の俯瞰: discussions/zos-library-management/overview/05-function-mapping.md
+      - 詳細:
+        - §A. 6 領域の判定詳細: discussions/zos-library-management/details/section-a-domains.md
+        - §B. 既存技術の限界: discussions/zos-library-management/details/section-b-existing-tech.md
+        - §C-T9 対象指定 / 保護管理: discussions/zos-library-management/details/section-c-t9.md
+        - §C-T10 バックアップ / 世代管理: discussions/zos-library-management/details/section-c-t10.md
+        - §C-T11 比較 / 差分検出: discussions/zos-library-management/details/section-c-t11.md
+        - §C-T12 ロック / Check-in/out: discussions/zos-library-management/details/section-c-t12.md
+        - §C-T13 リカバリ: discussions/zos-library-management/details/section-c-t13.md
+        - §C-T14 通知 / ドキュメント強制: discussions/zos-library-management/details/section-c-t14.md
+        - §C-T15 レポート / 監査: discussions/zos-library-management/details/section-c-t15.md
+        - §C-T16 運用 / 管理: discussions/zos-library-management/details/section-c-t16.md
+        - §D. 技術実現性: discussions/zos-library-management/details/section-d-tech.md
+        - §E. 結論: discussions/zos-library-management/details/section-e-conclusion.md
+        - §F. 残された判断: discussions/zos-library-management/details/section-f-residual.md
+        - §G. 含めない: discussions/zos-library-management/details/section-g-excluded.md
+        - §H. 反論への先回り: discussions/zos-library-management/details/section-h-rebuttals.md
+        - §I. 用語集: discussions/zos-library-management/details/section-i-glossary.md
+        - 出典: discussions/zos-library-management/details/sources.md

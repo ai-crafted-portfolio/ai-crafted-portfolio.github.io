@@ -1,19 +1,13 @@
-# ようこそ
+# ai-crafted-portfolio
 
-このサイトは、Claudeを活用して作った技術ノウハウを体系的に記録していく場所です。
+Claude を活用して作成した技術検討資料・リサーチレポートを公開するポートフォリオサイトです。
 
-## このサイトで扱うテーマ
+## カテゴリ
 
-- インフラ運用に関する知見
-- VBAツール開発とコーディング規約
-- PowerShellスクリプトの自動化パターン
-- RAGシステム構築 (Claude + MCP + ChromaDB)
-- データ分析と可視化
+[**検討資料**](discussions/index.md) — 技術選定・設計方針・代替案比較などの「考えた過程を残す」資料
 
-## 構築中
-
-現在サイト構築中です。コンテンツは順次追加していきます。
+[**リサーチレポート**](research/index.md) — IBM 公式マニュアルから抽出した技術リサーチレポート
 
 ---
 
-GitHubリポジトリ: [ai-crafted-portfolio](https://github.com/ai-crafted-portfolio)
+GitHub リポジトリ: [ai-crafted-portfolio/ai-crafted-portfolio.github.io](https://github.com/ai-crafted-portfolio/ai-crafted-portfolio.github.io)

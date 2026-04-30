@@ -83,5 +83,17 @@ nav:
         - §G. 含めない: discussions/zos-library-management/details/section-g-excluded.md
         - §H. 反論への先回り: discussions/zos-library-management/details/section-h-rebuttals.md
         - §I. 用語集: discussions/zos-library-management/details/section-i-glossary.md
+        - §K-1 PARMLIB IPL/起動制御: discussions/zos-library-management/details/section-k1-parmlib-ipl.md
+        - §K-2 PARMLIB コンソール/運用: discussions/zos-library-management/details/section-k2-parmlib-console.md
+        - §K-3 PARMLIB サブシステム認可: discussions/zos-library-management/details/section-k3-parmlib-subsystem.md
+        - §K-4 PARMLIB リソース管理 前半: discussions/zos-library-management/details/section-k4-parmlib-resource1.md
+        - §K-5 PARMLIB リソース管理 後半: discussions/zos-library-management/details/section-k5-parmlib-resource2.md
+        - §K-6 PARMLIB 環境設定 前半: discussions/zos-library-management/details/section-k6-parmlib-env1.md
+        - §K-7 PARMLIB 環境設定 後半 + サイト固有: discussions/zos-library-management/details/section-k7-parmlib-env2.md
+        - §K-8 PROCLIB IPL/JES 起動 + 中核: discussions/zos-library-management/details/section-k8-proclib-ipl.md
+        - §K-9 PROCLIB ネットワーク + TSO 系: discussions/zos-library-management/details/section-k9-proclib-network.md
+        - §K-10 PROCLIB サブシステム起動: discussions/zos-library-management/details/section-k10-proclib-subsystem.md
+        - §K-11 PROCLIB 運用 + 監視・通知: discussions/zos-library-management/details/section-k11-proclib-ops.md
+        - §K-12 運用資材 標準類別 + 命名テンプレ: discussions/zos-library-management/details/section-k12-operational-materials.md
         - 出典: discussions/zos-library-management/details/sources.md
   - 参考情報: references.md

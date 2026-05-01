@@ -1,20 +1,30 @@
 # §K-7. PARMLIB 標準メンバ網羅 (7) — 環境設定 後半 + サイト固有
 
-T29.5 後半 + T29.6 のメンバを網羅する。
+T29.5 のメンバ後半 + T29.6 サイト固有
 
-| # | メンバ名 | 役割 |
-|---|---|---|
-| 54 | BPXPRMxx | USS 設定。**[SSOT ④](../overview/01-ssot.md) により対象環境では USS 不在のため対象外** |
-| 55 | OAMSPxx | Object Access Method (OAM) 設定 |
-| 56 | IOEPRMxx | zFS パラメータ (USS 不在環境では未使用) |
-| 57 | IEASVCxx | SVC 追加・置換 |
-| 58 | TIMEZONE | 時刻ゾーン定義 (固定名) |
-| 59 | UNICODE.IMAGE | Unicode 変換テーブル (固定名) |
-| 60 | (サイト独自) T29.6 | サイトカスタムメンバ。命名規則からは予測不可。年次棚卸しと文書化が必要 (T45) |
-
-!!! info "PARMLIB メンバ網羅完了"
-    §K-1〜§K-7 で PARMLIB 標準メンバ約 60 種を網羅した。BPXPRMxx は対象外、IEAICSxx/IEAIPSxx は廃止予定。サイト独自メンバ (T29.6) は命名規則からは予測不可で、現場棚卸しでのみ把握可能。
+本ページは概要。各メンバの詳細は表内のリンクから。
 
 ---
 
-次ページ → [§K-8 PROCLIB IPL/JES 起動](section-k8-proclib-ipl.md)
+## メンバ一覧
+
+| # | メンバ名 | 役割サマリ |
+|---|---|---|
+| 1 | [IOEPRMxx](k7-parmlib-env2/ioeprmxx.md) | zFS パラメータ |
+| 2 | [ASCHPMxx](k7-parmlib-env2/aschpmxx.md) | APPC スケジューラ パラメータ |
+| 3 | [CTncccxx](k7-parmlib-env2/ctncccxx.md) | Component Trace 設定 |
+| 4 | [CSVLLAxx](k7-parmlib-env2/csvllaxx.md) | LLA (Library Lookaside) 設定 |
+| 5 | [CUNUNIxx](k7-parmlib-env2/cununixx.md) | Unicode 変換指定 |
+| 6 | [EXITxx](k7-parmlib-env2/exitxx.md) | System Exit 登録 (旧) |
+| 7 | [GTFPARM](k7-parmlib-env2/gtfparm.md) | Generalized Trace Facility パラメータ |
+| 8 | [INDBPRMxx](k7-parmlib-env2/indbprmxx.md) | IBM Database Replication 設定 |
+| 9 | [IPCSPRMx](k7-parmlib-env2/ipcsprmx.md) | IPCS デフォルトパラメータ |
+| 10 | [IQPPRMxx](k7-parmlib-env2/iqpprmxx.md) | IBM Q Replication 設定 |
+| 11 | [IEASVCxx](k7-parmlib-env2/ieasvcxx.md) | SVC 追加・置換 |
+| 12 | [TIMEZONE](k7-parmlib-env2/timezone.md) | 時刻ゾーン定義 (固定名) |
+| 13 | [UNICODE.IMAGE](k7-parmlib-env2/unicode-image.md) | Unicode 変換テーブル (固定名) |
+| 14 | [(サイト独自カスタムメンバ)](k7-parmlib-env2/サイト独自カスタムメンバ.md) | 命名規則からは予測不可 |
+
+---
+
+次ページ → [§K-8 PROCLIB IPL/JES 起動 + 中核](section-k8-proclib-ipl.md)

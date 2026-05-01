@@ -1,25 +1,32 @@
 # §K-8. PROCLIB 標準 PROC 網羅 (1) — IPL/JES 起動 + 中核
 
-T30.1 のうち IBM 標準 PROC を網羅する。
+T30.1 のうち IBM 標準 PROC を網羅
 
-| # | PROC 名 | 役割 |
+本ページは概要。各メンバの詳細は表内のリンクから。
+
+---
+
+## メンバ一覧
+
+| # | メンバ名 | 役割サマリ |
 |---|---|---|
-| 1 | JES2 / JES3 | JES サブシステム本体。バッチ・出力管理の中核 |
-| 2 | VTAM | SNA ネットワーク (Virtual Telecommunications Access Method) 主タスク |
-| 3 | TCPIP | TCP/IP スタック本体 |
-| 4 | RACF | RACF サブシステム (RACF コマンド処理用、オプショナル) |
-| 5 | WLM | Workload Manager (システム自動起動) |
-| 6 | TRACE | システム トレース |
-| 7 | SYSLOG | システム ログ |
-| 8 | SMS | DFSMS スタートアップ |
-| 9 | DLF | Data Lookaside Facility |
-| 10 | LLA | Library Lookaside Address space |
-| 11 | VLF | Virtual Lookaside Facility |
-| 12 | BPXAS / BPXOINIT / BPXBATCH | USS 関連 (本ツール環境: [SSOT ④](../overview/01-ssot.md) により USS 不在で対象外) |
-| 13 | IZUSVR1 / IZUANG1 | z/OSMF (本ツール環境: [SSOT ①](../overview/01-ssot.md) により z/OSMF 不採用で対象外) |
-
-!!! warning "管理運用上の留意点 (T46)"
-    JES2/JES3/VTAM/TCPIP 起動失敗は OS 全体の停止に直結。変更前 syntax check + テスト LPAR 実起動テストを必須化すること。
+| 1 | [JES2](k8-proclib-ipl/jes2.md) | JES2 サブシステム本体 |
+| 2 | [JES3](k8-proclib-ipl/jes3.md) | JES3 サブシステム本体 (廃止予定) |
+| 3 | [VTAM](k8-proclib-ipl/vtam.md) | SNA ネットワーク主タスク |
+| 4 | [TCPIP](k8-proclib-ipl/tcpip.md) | TCP/IP スタック |
+| 5 | [RACF](k8-proclib-ipl/racf.md) | RACF サブシステム (オプショナル) |
+| 6 | [WLM](k8-proclib-ipl/wlm.md) | Workload Manager |
+| 7 | [TRACE](k8-proclib-ipl/trace.md) | システム トレース |
+| 8 | [SYSLOG](k8-proclib-ipl/syslog.md) | システム ログ |
+| 9 | [SMS](k8-proclib-ipl/sms.md) | DFSMS スタートアップ |
+| 10 | [DLF](k8-proclib-ipl/dlf.md) | Data Lookaside Facility |
+| 11 | [LLA](k8-proclib-ipl/lla.md) | Library Lookaside Address space |
+| 12 | [VLF](k8-proclib-ipl/vlf.md) | Virtual Lookaside Facility |
+| 13 | [BPXAS](k8-proclib-ipl/bpxas.md) | USS Async (本ツール対象外) |
+| 14 | [BPXOINIT](k8-proclib-ipl/bpxoinit.md) | USS Initialization (本ツール対象外) |
+| 15 | [BPXBATCH](k8-proclib-ipl/bpxbatch.md) | USS Batch (本ツール対象外) |
+| 16 | [IZUSVR1](k8-proclib-ipl/izusvr1.md) | z/OSMF サーバ (本ツール対象外) |
+| 17 | [IZUANG1](k8-proclib-ipl/izuang1.md) | z/OSMF Angel (本ツール対象外) |
 
 ---
 

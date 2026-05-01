@@ -1,20 +1,22 @@
 # §K-3. PARMLIB 標準メンバ網羅 (3) — サブシステム認可
 
-T29.3 のメンバを網羅する。
+T29.3 のメンバを網羅
 
-| # | メンバ名 | 役割 |
+本ページは概要。各メンバの詳細は表内のリンクから。
+
+---
+
+## メンバ一覧
+
+| # | メンバ名 | 役割サマリ |
 |---|---|---|
-| 21 | IEFSSNxx | サブシステム定義。JES2/Db2/MQ/CICS/RACF 等のサブシステム名と initialization routine |
-| 22 | IFAPRDxx | Product Registration / 課金。priced feature の有効化状態 |
-| 23 | LICEFLxx | License manager。z/OS feature の license 制御 |
-| 24 | IRRPRMxx | RACF Database 名前変換テーブル |
-| 25 | IEAICSxx | (旧) Installation Control Specification。WLM 移行で廃止予定 |
-| 26 | IEAIPSxx | (旧) Installation Performance Specification。WLM 移行で廃止予定 |
-| 27 | IEFOPZxx | Operator Auto-Reply 自動応答ルール |
-| 28 | BLSCUSER | IPCS デフォルト exit ルーチン |
-
-!!! warning "管理運用上の留意点 (T42)"
-    APF/LNKLST/LPALST/PROGxx は SOX 監査対象。変更時に監査ログ自動付与、LNKLST 順序差分の強調表示を要検討。
+| 1 | [IEFSSNxx](k3-parmlib-subsystem/iefssnxx.md) | サブシステム定義 |
+| 2 | [IFAPRDxx](k3-parmlib-subsystem/ifaprdxx.md) | Product Registration / 課金 |
+| 3 | [LICEFLxx](k3-parmlib-subsystem/liceflxx.md) | License manager |
+| 4 | [IRRPRMxx](k3-parmlib-subsystem/irrprmxx.md) | RACF Database 名前変換 |
+| 5 | [IEAICSxx](k3-parmlib-subsystem/ieaicsxx.md) | (旧) Installation Control Specification |
+| 6 | [IEAIPSxx](k3-parmlib-subsystem/ieaipsxx.md) | (旧) Installation Performance Specification |
+| 7 | [BLSCUSER](k3-parmlib-subsystem/blscuser.md) | IPCS デフォルト exit ルーチン |
 
 ---
 

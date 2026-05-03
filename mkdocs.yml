@@ -62,6 +62,9 @@ markdown_extensions:
   - toc:
       permalink: true
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - ホーム: index.md
   - 製品技術情報:
@@ -76,6 +79,8 @@ nav:
         - 05. トラブルシュート: products/aix-7-3/05-troubleshooting.md
         - 06. マニュアル参照マップ: products/aix-7-3/06-manual-map.md
         - 07. 出典一覧: products/aix-7-3/07-sources.md
+        - 08. 設定手順: products/aix-7-3/08-config-procedures.md
+        - 09. 障害対応手順: products/aix-7-3/09-incident-procedures.md
       - VIOS:
         - 概要: products/vios/index.md
         - 00. 概要: products/vios/00-overview.md

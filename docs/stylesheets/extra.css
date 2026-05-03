@@ -1,0 +1,63 @@
+/* AIX v3+: テーブル横スクロール解消 + 長文セル折返し */
+
+/* テーブル全体: 固定レイアウト + フル幅 */
+.md-typeset table:not([class]) {
+  table-layout: fixed;
+  width: 100%;
+  display: table;
+  font-size: 0.78rem;
+}
+
+/* セル: 折返し有効・改行制御 */
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+  padding: 0.4em 0.5em;
+  vertical-align: top;
+}
+
+/* ヘッダ: 中央寄せ + 太字 */
+.md-typeset table:not([class]) th {
+  text-align: center;
+  font-weight: 600;
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+/* 偶数行に薄い色を付けて読みやすく */
+.md-typeset table:not([class]) tr:nth-child(even) {
+  background-color: rgba(0,0,0,0.02);
+}
+
+/* code element はラッピング */
+.md-typeset table:not([class]) code {
+  word-break: break-all;
+  white-space: normal;
+}
+
+/* インライン code は半角詰め */
+.md-typeset code {
+  font-size: 0.85em;
+}
+
+/* AIX v3 用 procedure card レイアウト */
+.proc-card {
+  border-left: 4px solid #305496;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background-color: rgba(48,84,150,0.04);
+}
+.proc-card h3 {
+  margin-top: 0;
+}
+
+/* 関連リンクボックス */
+.related-links {
+  font-size: 0.8em;
+  color: #555;
+  margin-top: 0.3em;
+  padding-left: 0.5em;
+  border-left: 2px solid #ccc;
+}

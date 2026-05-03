@@ -43,7 +43,7 @@ ChromaDB の `embedding_metadata` から取得した全 source。本文引用 = 
 | S37 | `AIX73_web_007_install_nimadm` | en | Web | 007 Install Nimadm (Web) | — | — |
 | S38 | `AIX73_web_008_install_live_update` | en | Web | 008 Install Live Update (Web) | — | — |
 | S39 | `AIX73_web_009_install_tips` | en | Web | 009 Install Tips (Web) | — | — |
-| S40 | `AIX73_web_010_sys_lvm` | en | Web | 010 Sys Lvm (Web) | — | — |
+| S40 | `AIX73_web_010_sys_lvm` | en | Web | 010 Sys Lvm (Web) | — | ✓ |
 | S41 | `AIX73_web_012_sys_backup` | en | Web | 012 Sys Backup (Web) | — | ✓ |
 | S42 | `AIX73_web_013_sys_users` | en | Web | 013 Sys Users (Web) | — | ✓ |
 | S43 | `AIX73_web_014_sys_cron` | en | Web | 014 Sys Cron (Web) | — | ✓ |
@@ -54,22 +54,22 @@ ChromaDB の `embedding_metadata` から取得した全 source。本文引用 = 
 | S48 | `AIX73_web_019_dev_scsi` | en | Web | 019 Dev Scsi (Web) | — | — |
 | S49 | `AIX73_web_020_dev_fibre` | en | Web | 020 Dev Fibre (Web) | — | — |
 | S50 | `AIX73_web_021_net_tcpip` | en | Web | 021 Net Tcpip (Web) | — | — |
-| S51 | `AIX73_web_023_net_nfs` | en | Web | 023 Net Nfs (Web) | — | — |
-| S52 | `AIX73_web_024_net_etherchannel` | en | Web | 024 Net Etherchannel (Web) | — | — |
+| S51 | `AIX73_web_023_net_nfs` | en | Web | 023 Net Nfs (Web) | — | ✓ |
+| S52 | `AIX73_web_024_net_etherchannel` | en | Web | 024 Net Etherchannel (Web) | — | ✓ |
 | S53 | `AIX73_web_025_net_vlan` | en | Web | 025 Net Vlan (Web) | — | — |
-| S54 | `AIX73_web_026_net_smb` | en | Web | 026 Net Smb (Web) | — | — |
+| S54 | `AIX73_web_026_net_smb` | en | Web | 026 Net Smb (Web) | — | ✓ |
 | S55 | `AIX73_web_027_perf_overview` | en | Web | 027 Perf Overview (Web) | — | — |
 | S56 | `AIX73_web_029_perf_vmm` | en | Web | 029 Perf Vmm (Web) | — | — |
 | S57 | `AIX73_web_030_perf_cpu` | en | Web | 030 Perf Cpu (Web) | — | — |
 | S58 | `AIX73_web_031_perf_disk` | en | Web | 031 Perf Disk (Web) | — | — |
 | S59 | `AIX73_web_032_perf_sar` | en | Web | 032 Perf Sar (Web) | — | — |
 | S60 | `AIX73_web_033_sec_overview` | en | Web | 033 Sec Overview (Web) | — | — |
-| S61 | `AIX73_web_035_sec_rbac` | en | Web | 035 Sec Rbac (Web) | — | — |
+| S61 | `AIX73_web_035_sec_rbac` | en | Web | 035 Sec Rbac (Web) | — | ✓ |
 | S62 | `AIX73_web_036_sec_audit` | en | Web | 036 Sec Audit (Web) | — | — |
-| S63 | `AIX73_web_037_sec_encryption` | en | Web | 037 Sec Encryption (Web) | — | — |
+| S63 | `AIX73_web_037_sec_encryption` | en | Web | 037 Sec Encryption (Web) | — | ✓ |
 | S64 | `AIX73_web_038_sec_trusted_exec` | en | Web | 038 Sec Trusted Exec (Web) | — | — |
 | S65 | `AIX73_web_039_sec_ssh` | en | Web | 039 Sec Ssh (Web) | — | ✓ |
-| S66 | `AIX73_web_040_fs_jfs2` | en | Web | 040 Fs Jfs2 (Web) | — | — |
+| S66 | `AIX73_web_040_fs_jfs2` | en | Web | 040 Fs Jfs2 (Web) | — | ✓ |
 | S67 | `AIX73_web_042_fs_snapshot` | en | Web | 042 Fs Snapshot (Web) | — | — |
 | S68 | `AIX73_web_043_fs_quota` | en | Web | 043 Fs Quota (Web) | — | — |
 | S69 | `AIX73_web_044_prog_threads` | en | Web | 044 Prog Threads (Web) | — | — |
@@ -80,6 +80,6 @@ ChromaDB の `embedding_metadata` から取得した全 source。本文引用 = 
 | S74 | `AIX73_web_049_ha_live_update` | en | Web | 049 Ha Live Update (Web) | — | — |
 | S75 | `AIX73_workloadpartitions_en` | en | PDF | IBM Workload Partitions for AIX | SC23-? | ✓ |
 
-カバレッジ: 75 source 中 **41 source** (55%) を本文で引用。
+カバレッジ: 75 source 中 **48 source** (64%) を本文で引用。
 
 [← AIX 7.3 トップへ](index.md)

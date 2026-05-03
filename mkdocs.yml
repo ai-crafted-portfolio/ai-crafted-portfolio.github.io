@@ -37,6 +37,15 @@ theme:
     text: Noto Sans JP
     code: JetBrains Mono
 
+validation:
+  nav:
+    omitted_files: warn
+    not_found: warn
+    absolute_links: info
+
+not_in_nav: |
+  research/index.md
+
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -55,7 +64,95 @@ markdown_extensions:
 
 nav:
   - ホーム: index.md
-  - 製品技術情報: research/index.md
+  - 製品技術情報:
+    - 一覧: products/index.md
+    - Power 系:
+      - AIX 7.3:
+        - 概要: products/aix-7-3/index.md
+        - 00. 概要: products/aix-7-3/00-overview.md
+        - 01. 構成要素: products/aix-7-3/01-components.md
+        - 02. 主要設定項目: products/aix-7-3/02-settings.md
+        - 03. 典型ユースケース: products/aix-7-3/03-use-cases.md
+        - 04. トラブルシュート: products/aix-7-3/04-troubleshooting.md
+        - 05. 関連製品連携: products/aix-7-3/05-related.md
+        - 06. 出典一覧: products/aix-7-3/06-sources.md
+      - VIOS:
+        - 概要: products/vios/index.md
+        - 00. 概要: products/vios/00-overview.md
+        - 01. 構成要素: products/vios/01-components.md
+        - 02. 主要設定項目: products/vios/02-settings.md
+        - 03. 典型ユースケース: products/vios/03-use-cases.md
+        - 04. トラブルシュート: products/vios/04-troubleshooting.md
+        - 05. 関連製品連携: products/vios/05-related.md
+        - 06. 出典一覧: products/vios/06-sources.md
+    - Windows 系:
+      - Windows Server 2022:
+        - 概要: products/windows-server-2022/index.md
+        - 00. 概要: products/windows-server-2022/00-overview.md
+        - 01. 構成要素: products/windows-server-2022/01-components.md
+        - 02. 主要設定項目: products/windows-server-2022/02-settings.md
+        - 03. 典型ユースケース: products/windows-server-2022/03-use-cases.md
+        - 04. トラブルシュート: products/windows-server-2022/04-troubleshooting.md
+        - 05. 関連製品連携: products/windows-server-2022/05-related.md
+        - 06. 出典一覧: products/windows-server-2022/06-sources.md
+    - z/OS 系:
+      - z/OS システムプログラミング (ABCs):
+        - 概要: products/zos-system-programming/index.md
+        - 00. 概要: products/zos-system-programming/00-overview.md
+        - 01. 構成要素: products/zos-system-programming/01-components.md
+        - 02. 主要設定項目: products/zos-system-programming/02-settings.md
+        - 03. 典型ユースケース: products/zos-system-programming/03-use-cases.md
+        - 04. トラブルシュート: products/zos-system-programming/04-troubleshooting.md
+        - 05. 関連製品連携: products/zos-system-programming/05-related.md
+        - 06. 出典一覧: products/zos-system-programming/06-sources.md
+    - 監視・ジョブ運用 系:
+      - Netcool OMNIbus V8.1:
+        - 概要: products/netcool-omnibus/index.md
+        - 00. 概要: products/netcool-omnibus/00-overview.md
+        - 01. 構成要素: products/netcool-omnibus/01-components.md
+        - 02. 主要設定項目: products/netcool-omnibus/02-settings.md
+        - 03. 典型ユースケース: products/netcool-omnibus/03-use-cases.md
+        - 04. トラブルシュート: products/netcool-omnibus/04-troubleshooting.md
+        - 05. 関連製品連携: products/netcool-omnibus/05-related.md
+        - 06. 出典一覧: products/netcool-omnibus/06-sources.md
+      - IBM Workload Automation:
+        - 概要: products/ibm-workload-automation/index.md
+        - 00. 概要: products/ibm-workload-automation/00-overview.md
+        - 01. 構成要素: products/ibm-workload-automation/01-components.md
+        - 02. 主要設定項目: products/ibm-workload-automation/02-settings.md
+        - 03. 典型ユースケース: products/ibm-workload-automation/03-use-cases.md
+        - 04. トラブルシュート: products/ibm-workload-automation/04-troubleshooting.md
+        - 05. 関連製品連携: products/ibm-workload-automation/05-related.md
+        - 06. 出典一覧: products/ibm-workload-automation/06-sources.md
+    - データ保護・セキュリティ 系:
+      - IBM Spectrum Protect 8.1:
+        - 概要: products/ibm-spectrum-protect/index.md
+        - 00. 概要: products/ibm-spectrum-protect/00-overview.md
+        - 01. 構成要素: products/ibm-spectrum-protect/01-components.md
+        - 02. 主要設定項目: products/ibm-spectrum-protect/02-settings.md
+        - 03. 典型ユースケース: products/ibm-spectrum-protect/03-use-cases.md
+        - 04. トラブルシュート: products/ibm-spectrum-protect/04-troubleshooting.md
+        - 05. 関連製品連携: products/ibm-spectrum-protect/05-related.md
+        - 06. 出典一覧: products/ibm-spectrum-protect/06-sources.md
+      - IBM Guardium Data Protection 12.x:
+        - 概要: products/ibm-guardium-data-protection/index.md
+        - 00. 概要: products/ibm-guardium-data-protection/00-overview.md
+        - 01. 構成要素: products/ibm-guardium-data-protection/01-components.md
+        - 02. 主要設定項目: products/ibm-guardium-data-protection/02-settings.md
+        - 03. 典型ユースケース: products/ibm-guardium-data-protection/03-use-cases.md
+        - 04. トラブルシュート: products/ibm-guardium-data-protection/04-troubleshooting.md
+        - 05. 関連製品連携: products/ibm-guardium-data-protection/05-related.md
+        - 06. 出典一覧: products/ibm-guardium-data-protection/06-sources.md
+    - 端末エミュレータ 系:
+      - IBM Personal Communications 15.0:
+        - 概要: products/ibm-personal-communications/index.md
+        - 00. 概要: products/ibm-personal-communications/00-overview.md
+        - 01. 構成要素: products/ibm-personal-communications/01-components.md
+        - 02. 主要設定項目: products/ibm-personal-communications/02-settings.md
+        - 03. 典型ユースケース: products/ibm-personal-communications/03-use-cases.md
+        - 04. トラブルシュート: products/ibm-personal-communications/04-troubleshooting.md
+        - 05. 関連製品連携: products/ibm-personal-communications/05-related.md
+        - 06. 出典一覧: products/ibm-personal-communications/06-sources.md
   - 検討資料生成:
     - 一覧: discussions/index.md
     - z/OS 運用資材の軽量ライブラリ管理ツール:

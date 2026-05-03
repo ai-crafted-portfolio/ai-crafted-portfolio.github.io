@@ -1,0 +1,32 @@
+# IBM Personal Communications 15.0 — 構成要素
+
+IBM Personal Communications 15.0 — 構成要素（コンポーネント・機能ブロック）
+
+各コンポーネント記述の末尾「出典」列に [SX] 形式の出典 ID（06_出典一覧 参照）。
+
+| コンポーネント名 | 役割 | 主要機能 | 関連サブシステム | 出典 |
+|---|---|---|---|---|
+| 3270 エミュレータ (zSeries) | z/OS / z/VM 等のメインフレーム接続用ディスプレイ／プリンタエミュレーション | TN3270 / TN3270E（TCP/IP）、3270 via Communications Server for Windows （IEEE 802.2 LAN）、APPC 3270 via LAN、3270 via iSeries (passthru)、 Microsoft SNA client (LUA / APPC interface) 等、SDLC / X.25 / Hayes AutoSync の各物理層に対応。Print セッション、PDT (Printer Definition Table)、 ZipPrint、Express Logon Feature、Quick Connect bar に対応。 | Workstation Profile, SNA Node, Communications Server | S31, S32, S36, S38 |
+| 5250 エミュレータ (iSeries) | IBM i / iSeries 接続用ディスプレイ／プリンタエミュレーション | Telnet5250 over TCP/IP / IPX/SPX、APPC 5250、LAN via IEEE 802.2、 COM ポート接続。Host Print Transform 対応プリンタセッション、 Print Job Collection（5250 Printer Session）、iSeries Connection Configuration Utility (.ndc)、iSeries User Profile (.upr)、 Data Transfer Request (.tto / .tfr) を提供。 | Data Transfer, Host Print Transform | S31, S32 |
+| ASCII (VT) エミュレータ | VT100/VT220/VT420 等の ASCII ホスト接続 | VT-over-Telnet (TCP/IP)、VT over Async (COM ポート)。 SBCS のみサポート。Tab Setup、ASCII Host Data Transfer、 Arabic / Hebrew VT 設定（コードページ・Bidi 表示）に対応。 | VT 設定, ASCII Host Data Transfer | S31, S32, S34 |
+| SNA Node (内蔵 SNA スタック) | Personal Communications 同梱の SNA プロトコルスタック | APPN End Node、Dependent LU Requester (DLUR)、CPI-C、APPC 接続、 DLC（IEEE 802.2 LAN / SDLC / X.25 / Enterprise Extender / Hayes AutoSync）。 SNA Node Configuration (.acg)、SNA Node Operations、SNA Node Configuration Verification、APING、Display SNA Sense Data 等のユーティリティを伴う。 | Communications Server, NOF API | S32, S44, S47 |
+| AnyNet SNA over TCP/IP | SNA エミュレータ／クライアントサーバアプリを TCP/IP 上で透過実行 | 既存 SNA アプリやハードウェアを変更せずに、ネットワークプロトコル数を削減。 SNA-over-Async / X.25 / SDLC / OEM Deep adapter / Enterprise Extender と 並列の DLC オプションとして利用可。 | SNA Node, TCP/IP | S32 |
+| Enterprise Extender (HPR over IP) | SNA を IP 網で High-Performance Routing 経由で延伸 | SNA レベルの信頼性 / スケーラビリティ / 制御を IP 網で維持。 DLC として SNA Node 設定で選択。 | SNA Node, TCP/IP | S32 |
+| IND$FILE ファイル転送 (3270) | ホスト⇔PC のファイル転送（3270 セッション経由） | ASCII / BINARY、CRLF（改行コード変換）、NOSO（DBCS shift-out 抑制）、 recfm / lrecl / blksize / space オプション等を Send/Receive で指定。 CMS / TSO / CICS で対応。Send / Receive 用テンプレート保存可。 | 3270 セッション, Workstation Profile | S30, S36, S6 |
+| Data Transfer (5250) | iSeries / IBM i との 5250 経由データ転送 | *.tto / *.tfr リクエストファイルとして転送定義を保存。 iSeries Connection Configuration、iSeries User Profile (.upr) と組み合わせ。 ASCII Host Data Transfer は VT/ASCII 用に別系統で提供。 | 5250 セッション, iSeries Profile | S30, S37 |
+| EHLLAPI | Emulator High-Level Language API | IBM Standard / WinHLLAPI / DOS EHLLAPI（x64 では非導入）。 プレゼンテーションスペース読み書き、SendKey、フィールド操作、 File Transfer 起動、ファンクション 1〜9x の同期 / 非同期呼び出し。 16-bit / 32-bit / 64-bit ライブラリ提供（x64 では 32/64-bit のみ）。 | HACL, セッション API | S1, S6, S12, S13, S18 |
+| Host Access Class Library (HACL) C++ | オブジェクト指向のホスト接続抽象クラス群 | ECLBase, ECLConnection, ECLPS（Presentation Space）, ECLOIA, ECLXfer, ECLWinMetrics, ECLField, ECLScreenDesc 等。プレゼンテーションスペース 読み書き、フィールド列挙、OIA 状態取得、ファイル転送、非同期イベント通知を提供。 IBM VisualAge C++ / Microsoft Visual C++ コンパイラに対応。 | EHLLAPI, OO API | S1, S4, S5, S6, S7, S8, S9, S10, S11, S14 |
+| Host Access Class Library Java / Beans | Java からホストセッションを操作するクラス／JavaBeans 群 | HACL Java と Host Access Beans for Java を同梱。Object-Oriented API として 位置付けられ、C++ HACL と概ね同等の機能（ECL 系クラスの Java 版）。 | HACL C++, OO API | S32, S2 |
+| ActiveX / OLE 2.0 Automation | Visual Basic / VBScript / Excel VBA 等からのホスト操作 | セッション操作・画面取得・キー送信・ファイル転送を ActiveX オートメーション オブジェクトとして公開。Object-Oriented API の一形態。 | OO API, EHLLAPI | S31, S32 |
+| DDE (Dynamic Data Exchange) | Windows 標準のプロセス間通信を介したホスト連携 | EHLLAPI と並列の旧来 API。PC 上の Windows アプリから 3270/5250 画面と データをやり取り。EHLLAPI の代替・補助として位置付け。 | EHLLAPI | S33 |
+| SNA Node Operator Facility (NOF) API | SNA Node のプログラム経由構成・運用 | WinNOF / WinAsyncNOF / WinAsyncNOFEx 等の Windows API エントリと、 DEFINE_LS / DEFINE_PORT / DEFINE_LOCAL_LU / DEFINE_LU_0_TO_3 / START_LS / STOP_LS / ACTIVATE_SESSION / DEACTIVATE_SESSION 等の Verb を VCB (Verb Control Block) 経由で発行。Communications Server SNA API Client もサポート。 | SNA Node, Communications Server | S43, S44, S45, S46, S47, S48, S49, S50, S51, S55, S56, S57, S58, S59, S60, S61, S62, S63 |
+| Workstation Profile (.ws) | セッション設定の永続化ファイル | セッション種別 (3270/5250/ASCII)、接続種別 (Telnet/SNA/AnyNet 等)、 ホスト・ポート・LU 名、フォント、コードページ、PDT、TLS/SSL、 キーボード (.kmp)、ポップアップキーパッド (.pmp)、ツールバー (.bar)、 マウス (.mmp)、Hotspot 等の参照を保持。Windows 環境変数を値に埋め込み可。 | Session Manager, .acg, .kmp | S30, S33 |
+| Session Manager / Session Manager Online | セッションアイコン管理 GUI と Web ベース管理（HACP 連携） | ローカル *.ws を一覧化して起動。Session Manager Online は HACP Server を介してプロファイルを集中管理（HACP Server Detail / Web Server Details を Preferences Manager の Advanced タブで設定）。Auto-Upgrade 通知も担う。 | HACP Server, Workstation Profile | S30, S37 |
+| Multiple Sessions / Batch File (.bch) | 複数 *.ws を一括起動するバッチプログラム | PCSWS.EXE が *.bch を解釈し、複数 Workstation Profile を同時起動。 外部アプリケーション（ZipPrint 等）の同時起動も記述可。 /V=myview のようなビュー切替オプションも対応。 | PCSWS.EXE | S35 |
+| ZipPrint (3270 only) | 3270 セッション内のホスト文書を一括印刷するユーティリティ | PROFS / OfficeVision のメモ・カレンダー・ドキュメント、CMS ファイル、 XEDIT ワークスペース、ホスト画面そのものを Windows プリンタに印刷。 起動するとセッションウィンドウのメニューバーに項目を追加。 | 3270 セッション | S30, S32 |
+| FTP Client / Command Line FTP | 汎用 FTP クライアント（ホストとは独立） | ファイル / ディレクトリのアップロード・ダウンロード、ローカルとリモートの ナビゲーション。Configuration は .cfg、データファイルは .dat。 FTP Client config は Application Data 配下の FTP フォルダに保存。 ASCII / Binary / RTL / Bidi 印刷オプションを含む。 | ネットワーク, NLS | S30, S33 |
+| 問題判別ユーティリティ | PD (Problem Determination) 用ツール群 | Display SNA Sense Data、Information Bundler（システムファイル・トレース・ レジストリ収集）、Internet Service（収集データを FTP サーバへ送信）、 Log Viewer（メッセージ／トレースログをマージ・ソート）、Trace Facility （通信プロトコルトレース）、SNA Node Configuration Verification、 APING、Migration Utility 等。 | ログ, Trace, SNA Node | S32 |
+| Quick Connect Bar | Telnet (3270/5250/ASCII) ディスプレイ／プリンタ用簡易接続バー | Host / Port / LU Name (3270) または Workstation Id (5250) のみで接続を 開始。LU Name と Workstation ID は省略可。非 Telnet セッションでは 非表示。残りのパラメータはアクティブセッションから引き継ぐ。 View → Quick Connect Bar で表示／非表示切替。 | Telnet セッション | S36 |
+| Express Logon Feature (ELF) | ホストパスワード入力なしでの自動ログオン | クライアント証明書 / RACF Pass-Ticket と連携し、PCOMM マクロ実行時に 証明書ベース認証で自動ログオン。Macro/Script Setup から構成。 | Macro, Certificate | S30, S36 |
+| PD ユーティリティ追加要素 (Power Management) | Windows 電源イベント時の接続維持 | Microsoft Windows Power Management 要件に準拠。 Connected / Non-Connected / Critical Sleep の 3 状態で sleep / hibernate 時のセッション切断を抑制（Windows 7 以降）。 | OS 電源管理 | S36 |
+

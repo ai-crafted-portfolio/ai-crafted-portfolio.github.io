@@ -1,0 +1,16 @@
+# Netcool OMNIbus V8.1 — トラブルシュート
+
+Netcool/OMNIbus V8.1 — トラブルシュート（既知の症状と対処）
+
+| 症状 | 原因 | 対処手順 | 関連ログ・コマンド | 出典 |
+|---|---|---|---|---|
+| Probe が ObjectServer に接続できない | interfaces ファイルに対象 ObjectServer が無い／ポート閉塞／FIPS/SSL 設定不一致 | 1) ObjectServer ホストで nco_objserv プロセスと listen ポートを確認<br>2) Probe ホストで $NCHOME/etc/omni.dat と interfaces を確認、必要なら nco_xigen で再生成<br>3) Probe を MessageLevel debug で起動し接続エラー詳細を取得<br>4) FIPS / SSL 利用時は GSKit 証明書とキー DB の整合を確認 | nco_xigen, MessageLevel debug, nc_gskcmd | S1, S4 |
+| ObjectServer で性能ボトルネック（応答遅延） | alerts.status の行数過多／非効率な custom trigger／Netcool/Impact からの過剰問い合わせ | 1) Profiling log（trigger statistics）を見て高コスト trigger を特定<br>2) 非効率 trigger を generic_clear ベースに書き直し、UPDATE 文の WHERE には主キー (Identifier) を使う<br>3) Netcool/Impact ポリシーの ObjectServer read/write を最小化<br>4) 必要なら Display ObjectServer 層を分離してユーザクライアント負荷を逃がす | trigger statistics log, profiling log, alter trigger | S1 |
+| Bidirectional Gateway で resync が終わらない / イベントが片寄せされない | Gateway cache が不整合／cache サイズ不足／mapping table 定義漏れ | 1) ObjectServer Gateway のログで cache 状態と Status Serial を確認<br>2) cache サイズ・mapping table（複製対象）の定義を見直し<br>3) 必要なら Gateway を再起動して cache を再構築（resynchronization 走行）<br>4) bidirectional 構成で trigger 内容が左右で異なると差分が止まらない → 両系の triggers を一致 | nco_g_objserv のログ, alerts.status SELECT で diff 確認 | S1 |
+| Web GUI でイベントが更新されない | IDUC が動作していない／Granularity が長すぎる／ObjectServer 側で IDUC 接続拒否 | 1) ObjectServer の Iduc.ListeningPort と Granularity を確認<br>2) Web GUI 側で IDUC 接続が確立しているかログで確認<br>3) AEN 利用時は nco_aen が起動済みかチェック<br>4) 必要なら Granularity を一時的に短縮して反応性をテスト | Iduc.ListeningPort, Granularity, nco_aen | S1 |
+| EIF イベントが alerts.status に到着しない | tivoli_eif.rules / eif_default.rules の include 漏れ／EIF アダプタの送信先誤設定／GSKit パス不整合 | 1) Probe for Tivoli EIF (nco_p_tivoli_eif) のログで rules file 読み込みを確認<br>2) tivoli_eif.rules の include 文（predictive_event.rules 等）の comment-out を確認<br>3) C-based EIF アプリは LIBPATH / SHLIB_PATH / LD_LIBRARY_PATH に GSKit を含む<br>4) ObjectServer 側 alerts.status のスキーマ拡張が反映されているか確認 | nco_p_tivoli_eif log, tivoli_eif.rules, eif_default.rules | S2, S3 |
+| alerts.status が肥大化してメモリ逼迫 | delete_clears が無効化されている／hk_set_expiretime が止まっている／DisableDetails 未設定で alerts.details が膨張 | 1) trigger_group の有効状態を確認（housekeeping / delete_clears を enable）<br>2) ExpireTime と master.properties の値を確認<br>3) alerts.details が不要な Probe には DisableDetails=1 を設定<br>4) 必要に応じて Aggregation 層を導入し ObjectServer の役割を分離 | alter trigger group, master.properties, DisableDetails | S1 |
+| WAAPI スクリプトがエラー応答を返す | Web GUI 側ユーザ権限不足／XML 構文不正／runwaapi の接続先設定誤り | 1) runwaapi の出力 XML をファイル化してエラーコードを確認<br>2) Web GUI ユーザのロールに WAAPI 操作権限が割当てられているか確認<br>3) DASH 側 Web GUI ログでサーバ側応答を確認<br>4) コマンドファイル XML を最小例に縮退して切り分け | runwaapi -file, Web GUI server log | S5 |
+| Probe / Gateway のプロセスを nco_pa_status で見ても起動表示にならない | Process Agent (nco_pad) が未起動／PA.Username 認証失敗／プロセス定義エントリ漏れ | 1) nco_pad が動作していることを ps -ef で確認<br>2) PA.Username / PA.Password を再設定<br>3) nco_pad の設定ファイル（プロセス定義エントリ）を確認しエントリを追加<br>4) nco_pa_start でプロセス起動を再試行 | nco_pad, nco_pa_status, nco_pa_start, nco_pa_stop | S1 |
+| MIB Manager で SNMP Trap 生成が打ち切られる | Number of Traps の上限超過／MIB ファイル構文不一致 | 1) Generating SNMP traps の Number of Traps を必要数まで引き上げ<br>2) MIB Manager で MIB を再ロードし構文エラーがないか確認<br>3) 生成された rules を Probe rules file に統合し、Probe を reload | Netcool MIB Manager, Probe HTTP コマンド reload | S1 |
+

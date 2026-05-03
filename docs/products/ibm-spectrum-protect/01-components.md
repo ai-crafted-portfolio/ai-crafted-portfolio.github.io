@@ -1,0 +1,34 @@
+# IBM Spectrum Protect 8.1 — 構成要素
+
+IBM Spectrum Protect 8.1 — 構成要素（コンポーネント・機能ブロック）
+
+各コンポーネント記述の末尾「出典」列に [SX] 形式の出典 ID（06_出典一覧 参照）。
+
+| コンポーネント名 | 役割 | 主要機能 | 関連サブシステム | 出典 |
+|---|---|---|---|---|
+| IBM Spectrum Protect Server | クライアントデータを集中管理する中核サービス（dsmserv） | Server inventory（Server Database＋Recovery Log）でクライアントファイル単位のメタデータを管理。Storage Pool に物理データを格納。Policy（domain／policy set／management class／copy group）に基づきデータ保管期間と保管先を決定。dsmserv プロセスとして AIX／Linux／Windows で稼働 | Server DB（Db2）、Recovery Log、Storage Pool | S5, S6 |
+| Server Database（IBM Db2 内蔵） | 全クライアントオブジェクトのメタデータを保持する内部 DB | アーカイブ／バックアップ／マイグレーションされた各ファイル・LV・DB のメタ情報、policy／schedule 情報を格納。サーバインストール時に IBM Db2 インスタンスが自動構築される（dsmserv が Db2 owner directory を要求） | Db2、DBPATH、ACTIVELOGDIRECTORY | S5, S6 |
+| Recovery Log（Active／Archive／Mirror／Failover） | Server DB トランザクションログ | Active log は DB 整合性維持の現用ログ（ACTIVELOGSIZE で容量指定）。Archive log は古い active log の退避先（ARCHLOGDIRECTORY）。Mirror log は active log 二重化用、Failover log は archive log 不可時の退避先。利用率が閾値を超えると ANR4531I／ANR0297I／ANR4529I 系の警告が activity log に出る | Server DB、Storage Pool Backup | S6, S3 |
+| Storage Pool（Primary） | クライアントデータの保管先プール | Directory-container（重複排除・圧縮を inline 実行、reclamation 不要）／Cloud-container（IBM Cloud Object Storage 等）／FILE／DISK／Sequential（テープ・VTL）の各タイプ。Restore 時はここから取得。階層化（disk→tape）可能 | Storage Device、Device Class | S5 |
+| Directory-Container Storage Pool | 8.1 系の推奨 Primary プール形態 | Storage pool directory 配下のコンテナにデータ格納。inline data deduplication／inline compression／client-side dedup／client-side compression 対応。Migration／Reclamation／Aggregation／Colocation／Simultaneous-write／Storage pool backup／Virtual volumes は対象外。データ保護は container-copy pool もしくは node replication で実施 | Storage Pool、PROTECT STGPOOL、REPAIR STGPOOL | S5, S3 |
+| Container-Copy Storage Pool | directory-container を保護するための副プール | directory-container の data extent をコピー保管。replication との代替もしくは補完で利用。データだけが保護されメタデータは別途 DB バックアップで保護する必要あり。テープボリューム上にも作成可能 | PROTECT STGPOOL、Container-Copy Volume | S5 |
+| Cloud-Container Storage Pool | Cloud Object Storage 上のプール | IBM Cloud Object Storage（COS）等にデータを格納。地理的分散・暗号化・REST API ベース。inline dedup／inline compression を活用しエグレス費用と容量を抑制。directory-container からの tier 先としても使用可 | IBM Cloud Object Storage（COS） | S5 |
+| Active-Data／Retention／Copy Storage Pool | 目的別に分かれた storage pool 種類 | Active-data pool: アクティブ版バックアップのみ保管（高速復旧）。Retention pool: 長期保持専用、backup／archive copy group や space-managed の宛先には不可。Copy pool: primary pool の複製、reclamation の対象 | Backup Copy Group、Archive Copy Group | S5 |
+| Policy Domain | クライアントノードのポリシー枠組み | 1 つ以上の policy set を含む論理グループ。各クライアントノードはいずれか 1 つの policy domain に所属。Active policy set のみが有効 | Policy Set、Management Class | S5, S3 |
+| Policy Set | Management Class の集合 | 1 policy domain 内に複数定義可、ACTIVATE POLICYSET で有効化。default management class を含む | ACTIVATE POLICYSET、ASSIGN DEFMGMTCLASS | S3 |
+| Management Class | ファイルがどのように保管されるかを定義 | DEFINE MGMTCLASS で定義。Backup Copy Group／Archive Copy Group を 1 つずつ持つ。クライアントは include／exclude リスト（INCLEXCL オプション）でファイル → management class を bind。VVOL データストアのローカルバックアップで Data Version Exists が 1〜30 を外れると ANS1111E が発生 | DEFINE MGMTCLASS、UPDATE MGMTCLASS、INCLEXCL | S3, S15 |
+| Backup Copy Group／Archive Copy Group | 管理クラス内の保管詳細ルール | Backup Copy Group: バージョン保持数（VEREXISTS／VERDELETED）、保持日数（RETEXTRA／RETONLY）、frequency。Archive Copy Group: 保持日数（RETVER）。それぞれ DESTINATION で保管先 storage pool を指定。DEFINE COPYGROUP で定義 | DEFINE COPYGROUP、Storage Pool | S3, S5 |
+| Backup-Archive Client（BA Client） | クライアント側ファイル／LV バックアップエージェント | Windows／UNIX／Linux 用に提供。dsmc CLI、GUI、Web Client。dsm.opt（Windows）／dsm.sys＋dsm.opt（UNIX／Linux）の構成ファイル。schedule mode は POLLING／PROMPTED。Client Acceptor (dsmcad) と Scheduler (dsmcsvc／dsmsched) で常駐実行 | dsm.opt、dsm.sys、Scheduler、Client Acceptor | S16, S14 |
+| Storage Agent | LAN-Free データパスを提供するクライアント側エージェント | IBM Spectrum Protect for SAN 製品に同梱。クライアント上で動作し、SAN 経由で tape library／共有 FS（GPFS 等）に直接書き込み。Server は library manager としてデバイスを制御するが、データ転送は LAN を経由しない。GENERICTAPE デバイスタイプは LAN-Free 共有不可 | SAN、Tape Library、GPFS、Server (library manager) | S5 |
+| Library Manager／Library Client | テープライブラリの共有制御 | 複数 IBM Spectrum Protect サーバ間で 1 つのテープライブラリを共有する場合、いずれかのサーバが library manager となりドライブ／ボリュームを統括。他サーバは library client。SAN 上で構成。GENERICTAPE 型は対象外 | DEFINE LIBRARY、PERFORM LIBACTION、LABEL LIBVOLUME | S5, S3 |
+| Operations Center | Web／モバイル GUI（管理者向け統合監視・操作） | 複数サーバとクライアントの同時監視。データパス（Server DB、Storage Pool、Replication）のトランザクション活動可視化。アラート監視、policy／schedule 操作、リカバリ計画確認。Hub Server に集約、Spoke Server から状況収集 | Hub／Spoke Server、REST／HTTPS | S5 |
+| Administrative Command-Line Client（dsmadmc） | サーバ管理 CLI | 対話モード／バッチモード／macro 実行。SQL（SELECT）による DB 直接照会対応。REGISTER ADMIN で登録、GRANT AUTH で権限割当（System／Policy／Storage／Operator／Node） | dsmadmc、SELECT、Macro | S5, S3 |
+| API Client（dsmapi） | プログラミング向けデータ保護インタフェース | TDP for SAP HANA／Oracle 等のアプリケーション統合に利用。dsmInit／dsmSendObj／dsmGetObj 等の C 言語 API を提供。アプリケーションが backup-archive と同じ inventory にデータ格納可能 | dsmapi、Application Client（TDP） | S1, S5 |
+| Disaster Recovery Manager (DRM) | テープ環境向け災害復旧自動化（Extended Edition のみ） | PREPARE コマンドで Recovery Plan File（RPF）を自動生成。MOVE DRMEDIA でオフサイト搬出を管理。SET DRMxxx 系コマンドで保管先・期限・コマンド・接頭辞などを指定。INSERT MACHINE でハード情報も RPF に統合 | PREPARE、MOVE DRMEDIA、SET DRMxxx、INSERT MACHINE | S3, S5 |
+| Node Replication | ノード単位の非同期サーバ間複製 | REPLICATE NODE コマンドでターゲットサーバへ複製。SET BKREPLRULEDEFAULT／SET ARREPLRULEDEFAULT で既定の複製ルールを定義。directory-container ⇔ container-copy と組み合わせて優先順を最適化（既に複製済み extent はスキップ） | REPLICATE NODE、PROTECT STGPOOL、Target Server | S5, S3 |
+| Schedule（Server／Client） | 周期実行スケジュール | Server schedule（DEFINE SCHEDULE TYPE=ADMIN）で管理コマンドを定期実行。Client schedule（TYPE=CLIENT）で BA クライアント上の dsmc 操作（incremental／archive／image／restore）を定期実行。SCHEDMODE は POLLING（client poll 方式）または PROMPTED（server push 方式） | DEFINE SCHEDULE、Client Acceptor、Scheduler service | S3, S16 |
+| Activity Log／Event Log | サーバの実行ログ | Activity log（dsmserv 内部ログ、QUERY ACTLOG で参照）に ANR／ANE／ANS メッセージを記録。SET ACTLOGRETENTION で保持期間を制御。BEGIN／END EVENTLOGGING、ENABLE／DISABLE EVENTS で外部レシーバ（FILEEXIT／USEREXIT／TIVOLI／SNMP）に転送 | QUERY ACTLOG、SET ACTLOGRETENTION | S3, S2, S4 |
+| Volume History／Device Configuration File | サーバ復旧時に必須の構成ファイル | volhistory ファイル（VOLHISTORY オプション、BACKUP VOLHISTORY）にはシーケンシャルボリュームの利用履歴を記録。devconfig ファイル（DEVCONFIG オプション、BACKUP DEVCONFIG）にはデバイス／ライブラリ／ドライブ定義を記録。サーバ DB リストア時に必要 | BACKUP VOLHISTORY、BACKUP DEVCONFIG | S3 |
+| Server Options File（dsmserv.opt） | サーバ起動オプション設定ファイル | TCPPORT／TCPADMINPORT／SSLTCPPORT／COMMMETHOD 等の通信、ACTIVELOGSIZE／ARCHLOGDIRECTORY 等の DB／ログ、3494SHARED／ACSACCESSID 等のデバイス共有を定義。サーバインストール時に dsmserv format で雛形が生成される | dsmserv、QUERY OPTION | S3, S6 |
+| Client Options File（dsm.opt／dsm.sys） | BA Client の構成ファイル | Windows: dsm.opt のみ。UNIX／Linux: システム共通設定の dsm.sys ＋ ユーザ単位の dsm.opt の 2 段構成。NODENAME／TCPSERVERADDRESS／TCPPORT／PASSWORDACCESS／SCHEDMODE／SCHEDLOGNAME 等を記述。INCLEXCL でバックアップ対象とバインド先 management class を指定 | dsmc、Scheduler、Client Acceptor | S16, S14 |
+

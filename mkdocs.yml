@@ -69,13 +69,13 @@ nav:
     - Power 系:
       - AIX 7.3:
         - 概要: products/aix-7-3/index.md
-        - 00. 概要: products/aix-7-3/00-overview.md
-        - 01. 構成要素: products/aix-7-3/01-components.md
-        - 02. 主要設定項目: products/aix-7-3/02-settings.md
-        - 03. 典型ユースケース: products/aix-7-3/03-use-cases.md
-        - 04. トラブルシュート: products/aix-7-3/04-troubleshooting.md
-        - 05. 関連製品連携: products/aix-7-3/05-related.md
-        - 06. 出典一覧: products/aix-7-3/06-sources.md
+        - 01. コマンド一覧: products/aix-7-3/01-commands.md
+        - 02. 設定値一覧: products/aix-7-3/02-settings.md
+        - 03. 用語集: products/aix-7-3/03-glossary.md
+        - 04. プレイブック: products/aix-7-3/04-playbook.md
+        - 05. トラブルシュート: products/aix-7-3/05-troubleshooting.md
+        - 06. マニュアル参照マップ: products/aix-7-3/06-manual-map.md
+        - 07. 出典一覧: products/aix-7-3/07-sources.md
       - VIOS:
         - 概要: products/vios/index.md
         - 00. 概要: products/vios/00-overview.md

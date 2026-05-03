@@ -1,4 +1,4 @@
-# 参考情報
+# リンク集
 
 技術領域の公式ドキュメント・コミュニティリソース・学習リソースを、カテゴリごとに整理しています。
 
@@ -41,6 +41,14 @@
 
 - [z/OS Change Tracker functionality (HTML)](https://www.ibm.com/docs/en/zos/3.1.0?topic=overview-zos-change-tracker-functionality) — z/OS 公式の運用資材変更管理 priced feature の機能仕様（日本語化確認済）
 
+### サブシステム / 関連製品
+
+- [CICS Transaction Server for z/OS 6.x documentation (HTML)](https://www.ibm.com/docs/en/cics-ts/6.x) — z/OS 上のトランザクションサーバ。アプリケーションサーバ機能・トランザクション管理を提供
+- [Db2 for z/OS documentation (HTML)](https://www.ibm.com/docs/en/db2-for-zos) — z/OS 上のリレーショナル・データベース管理システム
+- [IMS 15.5 documentation (HTML)](https://www.ibm.com/docs/en/ims/15.5.0) — z/OS 上の階層型データベース / トランザクション・マネージャ
+- [PSF for z/OS 4.7 documentation (HTML)](https://www.ibm.com/docs/en/psf-for-zos/4.7.0) — Print Services Facility。z/OS の印刷サブシステム
+- [z/OS 3.1 全体ドキュメントポータル](https://www.ibm.com/docs/en/zos/3.1.0) — z/OS System Programming 系マニュアル（PARMLIB / PROCLIB / SDSF / RACF 等）の集約ポータル
+
 ---
 
 ## B. AIX / Power 系
@@ -66,6 +74,8 @@
 ## C. 監視 / 運用ツール
 
 - [IBM Netcool/OMNIbus 8.1.0 documentation (HTML)](https://www.ibm.com/docs/en/netcoolomnibus/8.1.0) — エンタープライズ向けイベント監視・統合運用基盤の公式ドキュメント
+- [IBM Workload Automation documentation (HTML)](https://www.ibm.com/docs/en/workload-automation) — エンタープライズ向けジョブスケジューラ / ワークロード自動化（旧 Tivoli Workload Scheduler）
+- [Tivoli Log File Agent 6.3 User's Guide (PDF)](https://www.ibm.com/docs/en/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/logfileagent63_user.pdf) **(英)** — ログファイル監視エージェントの構成・運用ガイド
 
 ---
 
@@ -75,12 +85,13 @@
 
 ---
 
-## E. セキュリティ・監査
+## E. セキュリティ・監査・バックアップ
 
 - [IBM Guardium Data Protection 12 documentation (HTML)](https://www.ibm.com/docs/en/guardium/12.0) — データベース・ファイルアクセス監査の公式ドキュメント
 - [Redbook: IBM Security Guardium Key Lifecycle Manager (SG24-8472)](https://www.redbooks.ibm.com/abstracts/sg248472.html) **(英)** — Guardium 暗号鍵管理ソリューションの導入・統合 Redbook
 - [Symantec Endpoint Protection — Tech Docs (Broadcom)](https://techdocs.broadcom.com/us/en/symantec-security-software/endpoint-security-and-management/endpoint-protection/all/Related-Documents.html) **(英)** — エンドポイントセキュリティ製品の公式 Tech Docs（Broadcom 配下）
 - [ESS REC（特権操作記録ツール）公式 — エンカレッジ・テクノロジ](https://product.et-x.jp/rec6/function/) **(日)** — 国内市販の特権操作記録・証跡管理ツールの製品情報
+- [IBM Spectrum Protect 8.1 documentation (HTML)](https://www.ibm.com/docs/en/spectrum-protect/8.1) — エンタープライズバックアップ / リカバリ基盤（現 IBM Storage Protect）の公式ドキュメント
 
 ---
 
@@ -88,6 +99,7 @@
 
 - [IBM Personal Communications 14.0 documentation (HTML)](https://www.ibm.com/docs/en/personal-communications/14.0.0) — IBM 純正の 3270 / 5250 端末エミュレータ公式ドキュメント
 - [PCOMM 14 Quick Beginnings (PDF)](https://www.ibm.com/docs/en/SSEQ5Y_14.0.0/com.ibm.pcomm.doc/books/pdf/quick_beginningsV140.pdf) **(英)** — PCOMM 14.0 のセットアップ・基本操作ガイド（IND$FILE 等のファイル転送機能を含む）
+- [IBM Personal Communications 15.0 documentation (HTML)](https://www.ibm.com/docs/en/personal-communications/15.0.0) — PCOMM 15.0（14.0 の後継メジャー）公式ドキュメント
 
 ---
 
@@ -107,7 +119,14 @@
 
 ---
 
-## I. コミュニティ・学習（英語圏）
+## I. AI / LLM 関連
+
+- [Anthropic Claude documentation](https://docs.anthropic.com/en/home) — Claude API 全体ドキュメント。モデル仕様、API リファレンス、Tool use、Claude Code 等を網羅
+- [Anthropic Claude support](https://support.anthropic.com/) — Claude 利用全般の FAQ / トラブルシュート（消費者・開発者共通のヘルプセンター）
+
+---
+
+## J. コミュニティ・学習（英語圏）
 
 - [IBM Redbooks 公式](https://www.redbooks.ibm.com/) **(英)** — IBM 製品全般の Redbook / Redpaper を全文検索できる入口
 - [IBM Mainframer Community](https://www.ibmmainframer.com/) **(英)** — z/OS 入門〜認定試験対策までを体系化した非公式チュートリアル集
@@ -116,7 +135,7 @@
 
 ---
 
-## I2. 日本語コミュニティ・学習リソース
+## J2. 日本語コミュニティ・学習リソース
 
 - [i-Learning（アイ・ラーニング）IBM Z 研修](https://www.i-learning.jp/service/it/zseries.html) **(日)** — IBM 公式研修パートナー。z/OS 入門〜セキュリティまでの体系コース
 - [Qiita: メインフレームタグ](https://qiita.com/tags/メインフレーム) **(日)** — 日本人エンジニアによる日本語技術記事集積

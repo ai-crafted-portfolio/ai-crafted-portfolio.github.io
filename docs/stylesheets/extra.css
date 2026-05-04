@@ -61,3 +61,48 @@
   padding-left: 0.5em;
   border-left: 2px solid #ccc;
 }
+
+/* ========================================================================
+   PC表示強制 - モバイルでもデスクトップレイアウトで表示
+   js: docs/javascripts/view-toggle.js が body.force-desktop を toggle
+   ======================================================================== */
+body.force-desktop .md-grid {
+  max-width: 1440px !important;
+}
+body.force-desktop .md-sidebar {
+  display: block !important;
+  width: 12.1rem !important;
+  position: sticky !important;
+}
+body.force-desktop .md-content {
+  max-width: 100% !important;
+}
+body.force-desktop .md-header__button.md-icon[for="__drawer"] {
+  display: none !important;
+}
+body.force-desktop {
+  /* モバイル breakpoint のメディアクエリを無効化 */
+  min-width: 1280px;
+}
+
+/* floating button (右下 FAB) */
+.view-toggle-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  padding: 0.6rem 1rem;
+  background: #5470c4;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+.view-toggle-btn:hover {
+  background: #6a85d4;
+}
+.view-toggle-btn:active {
+  background: #455ba8;
+}

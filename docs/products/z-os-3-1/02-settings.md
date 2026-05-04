@@ -28,28 +28,30 @@
 
 ## チューナブル / パラメータ（20 件）
 
-| パラメータ名 | 設定コマンド | 既定値 | 取り得る値 | 影響範囲 | 関連手順 | 注意点 |
-|---|---|---|---|---|---|---|
-| `MAXASSIZE` | `BPXPRMxx` | 2147483647（≒ 2GB-1） | 0〜2147483647（バイト） | 次回 IPL or SET OMVS=xx で動的反映 | [cfg-uss-fs](08-config-procedures.md#cfg-uss-fs) | USS プロセスの最大 address space サイズ。Java 等の大規模アプリでは 4GB 以上推奨。 |
-| `MAXFILEPROC` | `BPXPRMxx` | 64000 | 1〜524287 | 次回 IPL or SET OMVS=xx | [cfg-uss-fs](08-config-procedures.md#cfg-uss-fs) | USS プロセスあたりの最大オープンファイル数。Web/DB サーバで増量必要なケース多い。 |
-| `MAXTHREADS` | `BPXPRMxx` | 200 | 0〜100000 | 次回 IPL or SET OMVS=xx | [cfg-uss-fs](08-config-procedures.md#cfg-uss-fs) | USS プロセスあたりの最大スレッド数。Java application server で増量推奨。 |
-| `SMF TYPE` | `SMFPRMxx の TYPE() オペランド` | サイトにより異なる（典型 0,30,42,70-79,80,89,90,99 等） | 0-255 の任意組み合わせ | SET SMF=xx で動的反映 | [cfg-smf-collect](08-config-procedures.md#cfg-smf-collect) | TYPE 30 = ジョブ統計、80 = RACF、70-79 = RMF、89 = USS、99 = WLM。 |
-| `CSAALOC` | `IEASYSxx の CSA= オペランド` | サイトにより異なる（例: 256M） | 0M〜2047M | 次回 IPL 時のみ | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) | Common Storage Area サイズ。アプリ要件で増減。 |
-| `ECSA` | `IEASYSxx の CSA= で 2 番目の値` | サイトにより異なる（例: 1024M） | 0M〜2047M | 次回 IPL 時のみ | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) | Extended CSA。16MB 境界より上の CSA。多くのサブシステム（Db2, CICS）が消費。 |
-| `GRSCNF` | `IEASYSxx の GRS= オペランド` | STAR（Sysplex 環境） | NONE / RING / STAR | 次回 IPL 時のみ | [cfg-grs-setup](08-config-procedures.md#cfg-grs-setup) | Sysplex 環境では STAR 必須。CF を介した Lock 構造で性能向上。 |
-| `CLPA` | `IEASYSxx の CLPA` | （なし）= 既存 LPA を再利用 | CLPA 指定 or 不指定 | 次回 IPL 時のみ | [cfg-clpa-ipl](08-config-procedures.md#cfg-clpa-ipl) | LPALIB から LPA 再構築。常駐モジュール変更 / メンテ後に必要。 |
-| `JOBCLASS` | `JES2 INITDECK の JOBCLASS(x)` | サイトにより異なる | JOBCLASS(A)〜JOBCLASS(9) | $T JOBCLASS(x),... で動的変更 | [cfg-jes2-init](08-config-procedures.md#cfg-jes2-init) | クラスごとに優先度・MAXJOBS 等を設定。CLASS=A は通常運用、TSU は TSO 専用。 |
-| `INITDEF` | `JES2 INITDECK の INITDEF` | サイトにより異なる | 1〜100 のイニシエータ数 | JES2 warm/cold start。$S I, $P I で動的開始/停止 | [cfg-jes2-init](08-config-procedures.md#cfg-jes2-init) | INITDEF=10,A,B 等で 10 個のイニシエータを Class A,B 受け持ちで定義。 |
-| `SPOOLDEF` | `JES2 INITDECK の SPOOLDEF` | サイトにより異なる | VOLSER, BUFSIZE 等 | JES2 cold start のみ | `cfg-jes2-spool` | SPOOL volume 追加時は cold start 必要 or $T で hot add（条件あり）。 |
-| `WLM Velocity Goal` | `WLM Service Class 定義` | サイトにより異なる | 1〜99（%） | WLM POLICY ACTIVATE で動的 | [cfg-wlm-policy](08-config-procedures.md#cfg-wlm-policy) | Velocity = (CPU using) / (CPU using + delays) %。バッチで 30〜60、STC で 70〜90 が一般的（要 IBM Sizing Guide 確認）。 |
-| `WLM Response Time Goal` | `WLM Service Class 定義` | サイトにより異なる | ms / sec | WLM POLICY ACTIVATE | [cfg-wlm-policy](08-config-procedures.md#cfg-wlm-policy) | Average Response Time / Percentile Response Time の 2 種。CICS/IMS 等の対話業務で使用。 |
-| `AUTH` | `CONSOLxx の AUTH() オペランド` | INFO（最小権限） | INFO / SYS / IO / CONS / MASTER | 次回 IPL or VARY CN | [cfg-console-add](08-config-procedures.md#cfg-console-add) | MASTER 権限のコンソールは重要オペレータコマンド発行可能。RACF 連携でユーザ単位制御も可能。 |
-| `TCPIP MAXSOCK` | `PROFILE.TCPIP の TCPCONFIG MAXSOCK` | TCPIP STC 起動時の値 | 整数 | TCPIP STC 再起動 or VARY TCPIP,,OBEYFILE | [cfg-tcpip-profile](08-config-procedures.md#cfg-tcpip-profile) | 同時オープン socket 上限。Web/Server 用途では大きくする必要あり。 |
-| `RACF SETROPTS` | `SETROPTS コマンド` | サイトポリシーにより異なる | PASSWORD(...) / GENERIC(...) / CLASSACT(...) / AUDIT(...) 等 | 即時 | [cfg-racf-permit](08-config-procedures.md#cfg-racf-permit) | RACF 全体設定変更コマンド。SETR LIST で現状確認。 |
-| `PASSWORD INTERVAL` | `RACF SETROPTS PASSWORD(INTERVAL(n))` | サイトポリシーで設定（典型 30/60/90 日） | 1〜254 日 / 0=無期限 | 即時 | [cfg-racf-permit](08-config-procedures.md#cfg-racf-permit) | ユーザパスワード有効期限。組織のセキュリティポリシーに従い設定。 |
-| `FUNCTION suffix (LE)` | `CEEPRMxx` | サイトにより異なる | Language Environment runtime options | 次回 IPL or SET CEE=xx |  | LE runtime options（HEAP, STACK, ABTERMENC 等）。COBOL/PL/I/C プログラム実行環境。 |
-| `MAXSPACE` | `IEASYSxx の MAXSPACE` | 1500M | 100M 〜 | 次回 IPL 時のみ | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) | Aux Storage に書き出される SVC dump の最大サイズ。dump 過大化抑止。 |
-| `SCH` | `IEASYSxx の SCH= オペランド` | 00（IEASCH00 を読む） | 00〜99 の suffix 連結 | 次回 IPL 時のみ | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) | Schedule（スケジュール）情報。IEASCHxx で program properties 定義。 |
+**種別の凡例**: サイジング = 容量チューニング、モード選択 = 動作モード切替、運用ポリシー = SLA/セキュリティ目標、構成定義 = サブシステム構成、ランタイム = LE 等の実行時設定。
+
+| パラメータ名 | 種別 | 設定コマンド | 既定値 | 取り得る値 | 影響範囲 | 関連手順 | 注意点 |
+|---|---|---|---|---|---|---|---|
+| `MAXASSIZE` | サイジング | `BPXPRMxx` | 2147483647（≒ 2GB-1） | 0〜2147483647（バイト） | 次回 IPL or SET OMVS=xx で動的反映 | [cfg-uss-fs](08-config-procedures.md#cfg-uss-fs) | USS プロセスの最大 address space サイズ。Java 等の大規模アプリでは 4GB 以上推奨。 |
+| `MAXFILEPROC` | サイジング | `BPXPRMxx` | 64000 | 1〜524287 | 次回 IPL or SET OMVS=xx | [cfg-uss-fs](08-config-procedures.md#cfg-uss-fs) | USS プロセスあたりの最大オープンファイル数。Web/DB サーバで増量必要なケース多い。 |
+| `MAXTHREADS` | サイジング | `BPXPRMxx` | 200 | 0〜100000 | 次回 IPL or SET OMVS=xx | [cfg-uss-fs](08-config-procedures.md#cfg-uss-fs) | USS プロセスあたりの最大スレッド数。Java application server で増量推奨。 |
+| `SMF TYPE` | 構成定義 | `SMFPRMxx の TYPE() オペランド` | サイトにより異なる（典型 0,30,42,70-79,80,89,90,99 等） | 0-255 の任意組み合わせ | SET SMF=xx で動的反映 | [cfg-smf-collect](08-config-procedures.md#cfg-smf-collect) | TYPE 30 = ジョブ統計、80 = RACF、70-79 = RMF、89 = USS、99 = WLM。 |
+| `CSAALOC` | サイジング | `IEASYSxx の CSA= オペランド` | サイトにより異なる（例: 256M） | 0M〜2047M | 次回 IPL 時のみ | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) | Common Storage Area サイズ。アプリ要件で増減。 |
+| `ECSA` | サイジング | `IEASYSxx の CSA= で 2 番目の値` | サイトにより異なる（例: 1024M） | 0M〜2047M | 次回 IPL 時のみ | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) | Extended CSA。16MB 境界より上の CSA。多くのサブシステム（Db2, CICS）が消費。 |
+| `GRSCNF` | モード選択 | `IEASYSxx の GRS= オペランド` | STAR モード（Sysplex 環境の標準値、CF 経由 Lock 構造） | NONE / RING / STAR | 次回 IPL 時のみ | [cfg-grs-setup](08-config-procedures.md#cfg-grs-setup) | Sysplex 環境では STAR 必須。CF を介した Lock 構造で性能向上。 |
+| `CLPA` | モード選択 | `IEASYSxx の CLPA` | （指定なし = 既存 LPA キャッシュを再利用、CLPA 指定で再構築） | CLPA 指定 or 不指定 | 次回 IPL 時のみ | [cfg-clpa-ipl](08-config-procedures.md#cfg-clpa-ipl) | LPALIB から LPA 再構築。常駐モジュール変更 / メンテ後に必要。 |
+| `JOBCLASS` | 構成定義 | `JES2 INITDECK の JOBCLASS(x)` | サイトにより異なる | JOBCLASS(A)〜JOBCLASS(9) | $T JOBCLASS(x),... で動的変更 | [cfg-jes2-init](08-config-procedures.md#cfg-jes2-init) | クラスごとに優先度・MAXJOBS 等を設定。CLASS=A は通常運用、TSU は TSO 専用。 |
+| `INITDEF` | 構成定義 | `JES2 INITDECK の INITDEF` | サイトにより異なる | 1〜100 のイニシエータ数 | JES2 warm/cold start。$S I, $P I で動的開始/停止 | [cfg-jes2-init](08-config-procedures.md#cfg-jes2-init) | INITDEF=10,A,B 等で 10 個のイニシエータを Class A,B 受け持ちで定義。 |
+| `SPOOLDEF` | 構成定義 | `JES2 INITDECK の SPOOLDEF` | サイトにより異なる | VOLSER, BUFSIZE 等 | JES2 cold start のみ | `cfg-jes2-spool` | SPOOL volume 追加時は cold start 必要 or $T で hot add（条件あり）。 |
+| `WLM Velocity Goal` | 運用ポリシー | `WLM Service Class 定義` | サイトにより異なる | 1〜99（%） | WLM POLICY ACTIVATE で動的 | [cfg-wlm-policy](08-config-procedures.md#cfg-wlm-policy) | Velocity = (CPU using) / (CPU using + delays) %。バッチで 30〜60、STC で 70〜90 が一般的（要 IBM Sizing Guide 確認）。 |
+| `WLM Response Time Goal` | 運用ポリシー | `WLM Service Class 定義` | サイトにより異なる | ms / sec | WLM POLICY ACTIVATE | [cfg-wlm-policy](08-config-procedures.md#cfg-wlm-policy) | Average Response Time / Percentile Response Time の 2 種。CICS/IMS 等の対話業務で使用。 |
+| `AUTH` | 構成定義 | `CONSOLxx の AUTH() オペランド` | INFO（最小権限。コマンド入力可・システム影響なし） | INFO / SYS / IO / CONS / MASTER | 次回 IPL or VARY CN | [cfg-console-add](08-config-procedures.md#cfg-console-add) | MASTER 権限のコンソールは重要オペレータコマンド発行可能。RACF 連携でユーザ単位制御も可能。 |
+| `TCPIP MAXSOCK` | サイジング | `PROFILE.TCPIP の TCPCONFIG MAXSOCK` | TCPIP STC 起動時の値 | 整数 | TCPIP STC 再起動 or VARY TCPIP,,OBEYFILE | [cfg-tcpip-profile](08-config-procedures.md#cfg-tcpip-profile) | 同時オープン socket 上限。Web/Server 用途では大きくする必要あり。 |
+| `RACF SETROPTS` | 構成定義 | `SETROPTS コマンド` | サイトポリシーにより異なる | PASSWORD(...) / GENERIC(...) / CLASSACT(...) / AUDIT(...) 等 | 即時 | [cfg-racf-permit](08-config-procedures.md#cfg-racf-permit) | RACF 全体設定変更コマンド。SETR LIST で現状確認。 |
+| `PASSWORD INTERVAL` | 運用ポリシー | `RACF SETROPTS PASSWORD(INTERVAL(n))` | サイトポリシーで設定（典型 30/60/90 日） | 1〜254 日 / 0=無期限 | 即時 | [cfg-racf-permit](08-config-procedures.md#cfg-racf-permit) | ユーザパスワード有効期限。組織のセキュリティポリシーに従い設定。 |
+| `FUNCTION suffix (LE)` | ランタイム | `CEEPRMxx` | サイトにより異なる | Language Environment runtime options | 次回 IPL or SET CEE=xx |  | LE runtime options（HEAP, STACK, ABTERMENC 等）。COBOL/PL/I/C プログラム実行環境。 |
+| `MAXSPACE` | サイジング | `IEASYSxx の MAXSPACE` | 1500M | 100M 〜 | 次回 IPL 時のみ | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) | Aux Storage に書き出される SVC dump の最大サイズ。dump 過大化抑止。 |
+| `SCH` | モード選択 | `IEASYSxx の SCH= オペランド` | 00（IEASCH00 メンバを読む。site で複数連結も可） | 00〜99 の suffix 連結 | 次回 IPL 時のみ | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) | Schedule（スケジュール）情報。IEASCHxx で program properties 定義。 |
 
 ---
 

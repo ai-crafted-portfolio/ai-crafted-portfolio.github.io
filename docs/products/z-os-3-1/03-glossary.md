@@ -1,6 +1,6 @@
 # 用語集
 
-> 掲載：**70 件（関連用語クロスリンク）**（定番のみ）。除外項目は [11. 対象外項目](10-out-of-scope.md) を参照。
+> 掲載：**70 件（関連用語クロスリンク + 仮想記憶カテゴリ追加）**（定番のみ）。除外項目は [11. 対象外項目](10-out-of-scope.md) を参照。
 
 ## コア OS（10 件）
 
@@ -23,6 +23,11 @@
 ![SSI Directed/Broadcast Request](images/v02_jes_p0036_img1.jpeg)
 
 *図: z/OS Subsystem Interface のリクエスト経路 （出典: ABCs of z/OS Vol.02 (SG24-7977) p.36）*
+
+
+![JES2 概要](images/v02_jes_p0017_img1.jpeg)
+
+*図: JES2 の役割（Job Entry / Initiation / Output Processing） （出典: ABCs of z/OS Vol.02 (SG24-7977) p.17）*
 
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|
@@ -51,6 +56,11 @@
 ## Storage / DFSMS（8 件）
 
 
+![DFSMS 概要](images/v03_dfsms_p0019_img1.jpeg)
+
+*図: DFSMS の構成（DFSMSdfp / dss / hsm / rmm） （出典: ABCs of z/OS Vol.03 (SG24-7978) p.19）*
+
+
 ![SMS Storage Groups](images/v03_dfsms_p0111_img1.jpeg)
 
 *図: SMS Storage Groups の分類 （出典: ABCs of z/OS Vol.03 (SG24-7978) p.111）*
@@ -69,9 +79,14 @@
 ## セキュリティ（5 件）
 
 
-![RACF Database Administrator](images/v06_racf_p0137_img1.jpeg)
+![RACF Database 管理者](images/v06_racf_p0137_img1.jpeg)
 
 *図: RACF Database 管理者（ADMINA）の概念 （出典: ABCs of z/OS Vol.06 (SG24-7981) p.137）*
+
+
+![RACF Profile 階層](images/v06_racf_p0137_img2.jpeg)
+
+*図: RACF プロファイル階層の概念 （出典: ABCs of z/OS Vol.06 (SG24-7981) p.137）*
 
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|
@@ -82,6 +97,11 @@
 | <span id="omvs-segment">**OMVS Segment**</span> | RACF USERID の OMVS セグメント。USS で使う UID/GID/HOME/PROGRAM を定義。 | [RACF](#racf), [USS](#uss), UID | `cfg-uss-setup` |
 
 ## Sysplex / GRS（5 件）
+
+
+![Parallel Sysplex 構成](images/v05_sysplex_p0018_img1.png)
+
+*図: Parallel Sysplex（CF + XCF + CDS）の構成 （出典: ABCs of z/OS Vol.05 (SG24-7980) p.18）*
 
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|
@@ -98,6 +118,11 @@
 
 *図: WLM External / Internal Service Class （出典: ABCs of z/OS Vol.12 (SG24-7987) p.137）*
 
+
+![WLM Service Class の構造](images/v11_wlm_p0049_img1.png)
+
+*図: WLM Service Class とトランザクション関係 （出典: ABCs of z/OS Vol.11 (SG24-7986) p.49）*
+
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|
 | <span id="wlm">**WLM**</span> | Workload Manager。サービスクラス（response time goal / velocity）でアドレス空間に CPU・I/O 優先度を動的割り当て。 | [Service Class](#service-class), Goal, IEAOPT | [cfg-wlm-policy](08-config-procedures.md#cfg-wlm-policy) |
@@ -107,6 +132,11 @@
 | <span id="rmf">**RMF**</span> | Resource Measurement Facility。リアルタイム性能監視（Monitor I/II/III）と Postprocessor レポート。 | [SMF](#smf), [WLM](#wlm) |  |
 
 ## USS（5 件）
+
+
+![USS / OMVS 構造](images/v09_uss_p0239_img1.jpeg)
+
+*図: USS（OMVS）と MVS Address Space の関係 （出典: ABCs of z/OS Vol.09 (SG24-7984) p.239）*
 
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|
@@ -141,6 +171,11 @@
 | <span id="iodf">**IODF**</span> | I/O Definition File。HCD で生成、IPL 時に読み込まれる I/O 構成データ。 | [HCD](#hcd), IOCDS | `cfg-hcd-iodf` |
 
 ## コンソール（2 件）
+
+
+![z/OS コンソール概念](images/v01_intro_p0091_img1.jpeg)
+
+*図: MCS / EMCS / SMCS コンソールの関係 （出典: ABCs of z/OS Vol.01 (SG24-7976) p.91）*
 
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|

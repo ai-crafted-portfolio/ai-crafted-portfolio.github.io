@@ -1,6 +1,6 @@
 # 設定手順
 
-> 掲載：**18 件（S/A/B/C × 用途）**（定番のみ）。除外項目は [11. 対象外項目](10-out-of-scope.md) を参照。
+> 掲載：**18 件（S/A/B/C × 用途、S 級は期待出力サンプル付き）**（定番のみ）。除外項目は [11. 対象外項目](10-out-of-scope.md) を参照。
 
 ## 重要度 × 用途 マトリクス
 
@@ -31,11 +31,26 @@
 4. 不可な場合は次回 IPL で反映
 5. 反映後 D <type> で値確認
 
-**期待出力**:
+**期待出力（実機サンプル）**:
 
+コンソール（D PARMLIB 結果）:
 ```
-D <type> 出力に新値が反映
+RESPONSE=SY1
+ IEE251I 14.32.07 PARMLIB DISPLAY 123
+ PARMLIB DATA SETS SPECIFIED AT IPL
+ ENTRY FLAGS DATA SET NAME                           VOLUME
+   1   S    SYS1.PARMLIB                             SYSRES
+   2   S    SYS1.IBM.PARMLIB                         SYSRES
 ```
+SET IEASYS=01 成功時:
+```
+ IEE252I MEMBER IEASYS01 FOUND IN SYS1.PARMLIB
+ IEA007I STATIC SYSTEM SYMBOL VALUES 124
+   ...（symbol 反映）
+```
+失敗時に出る代表メッセージ:
+- IEE301I PARMLIB MEMBER NOT FOUND（メンバ不在）
+- IEA302W PARMLIB SYNTAX ERROR LINE nnnn（構文エラー）
 
 **検証**: コマンド応答で新値、関連サブシステムの動作確認
 
@@ -63,11 +78,27 @@ D <type> 出力に新値が反映
 4. cold start 必須項目は次回 IPL
 5. $D <option> で確認
 
-**期待出力**:
+**期待出力（実機サンプル）**:
 
+JES2 cold start 成功時:
 ```
-$D 出力に新値反映
+ $HASP423 SY1     SYS1.HASPACE  CHKPT INITIALIZED
+ $HASP493 JES2  COLD START COMPLETE
+ $HASP000 JES2 IS ACTIVE
 ```
+$D INITDEF 結果（成功時）:
+```
+ $HASP824 INITDEF=10
+ $HASP822 NUM=10  CLASS=A,B
+```
+失敗時に出る代表メッセージ:
+- $HASP442 JES2 ABENDED（INITDECK 構文エラー）
+- $HASP441 REPLY 'Y' OR CANCEL（warm start 確認 WTOR）
+
+
+![Subsystem Interface Request Pattern](images/v02_jes_p0036_img1.jpeg)
+
+*図: JES2 サブシステムへのリクエスト経路（Directed/Broadcast） （出典: ABCs of z/OS Vol.02 (SG24-7977) p.36）*
 
 **検証**: $DA でジョブ動作確認
 
@@ -125,11 +156,26 @@ D SMF が新 TYPE 値表示
 3. SETROPTS GENERIC(DATASET) REFRESH で反映
 4. RLIST DATASET '<dsn>' AUTHUSER で確認
 
-**期待出力**:
+**期待出力（実機サンプル）**:
 
+PERMIT 成功時のレスポンス（SDSF / TSO ともに無音 = 成功）。
+RLIST で確認:
 ```
-RLIST 出力に対象 ID と access level 表示
+RLIST DATASET 'PROD.PAYROLL.**' AUTHUSER
+CLASS      NAME
+-----      ----
+DATASET    PROD.PAYROLL.** (G)
+USER       ACCESS   ACCESS COUNT
+----       ------   ------------
+PAYUSR     UPDATE        0
 ```
+SETR REFRESH 成功時:
+```
+ ICH14063I SETROPTS COMMAND COMPLETE.
+```
+失敗時に出る代表メッセージ:
+- ICH06011I RACDEF FUNCTION SUCCESSFUL（実は成功）
+- ICH408I INSUFFICIENT AUTHORITY（自分の権限不足、SPECIAL 必要）
 
 **検証**: 対象ユーザでアクセステスト
 
@@ -156,11 +202,23 @@ RLIST 出力に対象 ID と access level 表示
 3. VARY TCPIP,,OBEYFILE,'<modified profile>' で動的反映
 4. NETSTAT で確認
 
-**期待出力**:
+**期待出力（実機サンプル）**:
 
+V TCPIP,,OBEYFILE 成功時:
 ```
-NETSTAT HOME/DEV/ROUTE で新値表示
+ EZZ0060I PROCESSING COMMAND: VARY TCPIP,TCPIP,OBEY,USER.OBEY(NEWPROF)
+ EZZ0053I COMMAND VARY OBEYFILE COMPLETED SUCCESSFULLY
 ```
+NETSTAT HOME（成功確認）:
+```
+MVS TCP/IP NETSTAT CS V2R5       TCPIP Name: TCPIP
+Home address list:
+LinkName: VIPA1     IPv4 Address: 10.0.0.1
+LinkName: OSA1      IPv4 Address: 10.0.1.10
+```
+失敗時に出る代表メッセージ:
+- EZZ0050I COMMAND VARY OBEYFILE FAILED（PROFILE 構文エラー）
+- EZZ0307I LOST CONNECTION TO TCPIP（STC 異常）
 
 **検証**: ping/telnet で疎通確認
 
@@ -187,11 +245,25 @@ NETSTAT HOME/DEV/ROUTE で新値表示
 3. SET OMVS=xx で動的反映
 4. df -k で確認
 
-**期待出力**:
+**期待出力（実機サンプル）**:
 
+zfsadm grow 成功時:
 ```
-df -k 出力に容量増 or 新 FS 表示
+IOEZ00099I /sysplex/u GROW completed successfully
 ```
+df -k 確認:
+```
+Filesystem        1024-blocks      Used  Available Capacity Mounted on
+ZFS.U.AGGR1          524288     262144     262144      50%  /u
+```
+失敗時に出る代表メッセージ:
+- IOEZ00043E AGGR_NOT_GROWABLE（aggr が固定サイズ）
+- BPXF015I FILE SYSTEM IS FULL
+
+
+![zFS Aggregate / FileSystem](images/v09_uss_p0315_img2.jpeg)
+
+*図: zFS Aggregate と FileSystem の階層 （出典: ABCs of z/OS Vol.09 (SG24-7984) p.315）*
 
 **検証**: ls / touch で書き込みテスト
 
@@ -224,6 +296,11 @@ df -k 出力に容量増 or 新 FS 表示
 ```
 D XCF,COUPLE で全 CDS active 表示
 ```
+
+
+![Sysplex Couple Data Set](images/v05_sysplex_p0020_img1.png)
+
+*図: Sysplex CDS（XCF / CFRM / SFM / LOGR / WLM）の役割 （出典: ABCs of z/OS Vol.05 (SG24-7980) p.20）*
 
 **検証**: 全 Sysplex メンバから D XCF が一致
 
@@ -282,11 +359,29 @@ D GRS,A で MODE=STAR 表示
 4. Save / Install (ACDS への反映)
 5. POLICY ACTIVATE で動的反映
 
-**期待出力**:
+**期待出力（実機サンプル）**:
 
+WLM POLICY ACTIVATE 成功時:
 ```
-ACTIVATE 後 D WLM,SYSTEMS で新 policy 表示
+ IWMAM727I WLM POLICY 'STDPOL' ACTIVATED ON SY1
+ IWMAM729I PRIOR POLICY 'OLDPOL' DEACTIVATED
 ```
+D WLM,SYSTEMS 確認:
+```
+RESPONSE=SY1
+ IWMSYS001I 14.55.21 WLM DISPLAY 200
+ ACTIVE POLICY NAME: STDPOL  ACTIVATED 2026.124 14.55.20
+ SYSTEM   STATE     POLICY    DATE/TIME ACTIVATED
+ SY1      AVAILABLE STDPOL    2026.124 14.55.20
+```
+失敗時に出る代表メッセージ:
+- IWMAM712I POLICY NOT FOUND IN SCDS
+- IWMAM702I ACTIVATE FAILED, RC=08（接続なし or syntax）
+
+
+![WLM Service Class 構造](images/v12_wlm2_p0137_img1.jpeg)
+
+*図: WLM External Service Class（Online High/Med/Test）と Internal Service Class（リージョン管理） （出典: ABCs of z/OS Vol.12 (SG24-7987) p.137）*
 
 **検証**: RMF Monitor III で goal 達成率確認
 
@@ -529,6 +624,11 @@ LISTC ENTRIES('<dsn>') で構造表示
 ```
 D SMS,STORCLAS で新クラス表示
 ```
+
+
+![SMS Class の関係](images/v03_dfsms_p0107_img1.jpeg)
+
+*図: SMS Storage / Data / Management Class と Storage Group の関係 （出典: ABCs of z/OS Vol.03 (SG24-7978) p.107）*
 
 **検証**: 新規データセット allocate でクラス割当て確認
 

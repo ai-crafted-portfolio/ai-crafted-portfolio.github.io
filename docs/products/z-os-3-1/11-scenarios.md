@@ -33,6 +33,11 @@
 
 ## 推奨フロー（参照ユースケース）
 
+
+![z/OS Subsystem Interface (SSI) 構造図](images/v02_jes_p0037_img1.jpeg)
+
+*図: z/OS SSI（JESCT → SSCVT → SSVT）の Master Scheduler / JES2 / 他サブシステム呼び出し構造 （出典: ABCs of z/OS Vol.02 (SG24-7977) p.37）*
+
 ### Phase 1: 基本設定
 1. **シンボル定義** → [uc-parmlib-iea-symdef](12-use-cases.md#uc-parmlib-iea-symdef)
    - Sysplex / システム別の共通シンボル設定
@@ -85,6 +90,11 @@
 
 $HASP050 SHORT ON SPOOL SPACE メッセージが発生し、SPOOL 使用率 95% 超。新規ジョブが受け付けられない状態。
 
+
+![Subsystem Interface Directed/Broadcast Request](images/v02_jes_p0036_img1.jpeg)
+
+*図: SSI 経由のサブシステム要求パターン（Directed Request / Broadcast Request） （出典: ABCs of z/OS Vol.02 (SG24-7977) p.36）*
+
 ## 即時対応
 
 1. **現状把握** → `$D Q` `$D SPL` で使用率と volume 別状態確認
@@ -119,6 +129,11 @@ $HASP050 SHORT ON SPOOL SPACE メッセージが発生し、SPOOL 使用率 95% 
 ## シナリオの状況
 
 業務系の応答時間が普段の 2-3 倍に劣化、ユーザクレームが発生。
+
+
+![WLM External / Internal Service Class 構造](images/v12_wlm2_p0137_img1.jpeg)
+
+*図: WLM の External Service Class（Online High/Med/Test）と Internal Service Class（管理単位）の関係 （出典: ABCs of z/OS Vol.12 (SG24-7987) p.137）*
 
 ## 切り分け手順
 

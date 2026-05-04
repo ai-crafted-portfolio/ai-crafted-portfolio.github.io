@@ -37,8 +37,8 @@
 | 主要サブシステム | JES2 / RACF / USS / TCP/IP / SMS / SMF / WLM | S_ZOS_Intro |
 | 補助辞典 | ABCs of z/OS Redbooks 13冊（出典 S_ZOS_ABCs01〜13） | S_ZOS_Review |
 
-!!! note "v1 構築方針"
-    z/OS 3.1 の staple な範囲を AIX v9 と同じ品質ゲートで構築（C subroutine ノイズなし、定性記述なし、公式マニュアル準拠、URL 必須）。
+!!! note "v2 構築方針"
+    z/OS 3.1 の staple な範囲を AIX v9 と同じ品質ゲートで構築 + ABCs Redbooks から構成図を関連章に埋込（C subroutine ノイズなし、定性記述なし、公式マニュアル準拠、URL 必須）。
 
 !!! warning "AI 生成と人手の併用"
     本ページは公式マニュアル等の公開情報のみを根拠に整理した二次資料。AI 生成と人手の併用で作成しているため、情報の正確性は保証しない。実装・適用前には公式情報での再確認を推奨。

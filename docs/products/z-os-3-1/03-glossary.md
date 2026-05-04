@@ -19,6 +19,11 @@
 
 ## JES2 / JCL（8 件）
 
+
+![SSI Directed/Broadcast Request](images/v02_jes_p0036_img1.jpeg)
+
+*図: z/OS Subsystem Interface のリクエスト経路 （出典: ABCs of z/OS Vol.02 (SG24-7977) p.36）*
+
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|
 | <span id="jes2">**JES2**</span> | Job Entry Subsystem 2。z/OS のジョブ管理サブシステム。JCL 受付、初期化、出力管理を担当。JES3 もあるが JES2 が主流。 | [JCL](#jcl), [SPOOL](#jes2-spool), [Initiator](#jes2-initiator), [NJE](#nje) | [cfg-jes2-init](08-config-procedures.md#cfg-jes2-init) |
@@ -45,6 +50,11 @@
 
 ## Storage / DFSMS（8 件）
 
+
+![SMS Storage Groups](images/v03_dfsms_p0111_img1.jpeg)
+
+*図: SMS Storage Groups の分類 （出典: ABCs of z/OS Vol.03 (SG24-7978) p.111）*
+
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|
 | <span id="dasd">**DASD**</span> | Direct Access Storage Device。z/OS のディスク（3390 互換）。VOLSER で識別。 | Volume, UCB, [VOLSER](#volser) | `cfg-device-vary` |
@@ -57,6 +67,11 @@
 | <span id="hsm">**HSM**</span> | Hierarchical Storage Manager。データセットの自動マイグレ（DASD→Tape）・回復管理。Migration Level 1/2、Backup。 | [DFSMS](#dfsms) |  |
 
 ## セキュリティ（5 件）
+
+
+![RACF Database Administrator](images/v06_racf_p0137_img1.jpeg)
+
+*図: RACF Database 管理者（ADMINA）の概念 （出典: ABCs of z/OS Vol.06 (SG24-7981) p.137）*
 
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|
@@ -77,6 +92,11 @@
 | <span id="grs">**GRS**</span> | Global Resource Serialization。データセット排他制御。GRS NONE / RING / STAR モード。Sysplex で STAR 必須。 | [Sysplex](#sysplex), ENQ, GRSRNLxx | [cfg-grs-setup](08-config-procedures.md#cfg-grs-setup) |
 
 ## WLM / SMF（5 件）
+
+
+![WLM Service Class](images/v12_wlm2_p0137_img1.jpeg)
+
+*図: WLM External / Internal Service Class （出典: ABCs of z/OS Vol.12 (SG24-7987) p.137）*
 
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|

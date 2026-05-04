@@ -2,8 +2,6 @@
 
 > 掲載：**40 件**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-本サイト本文で参照する出典のみを掲載。**全件に URL 必須**。
-
 | 出典 ID | 正式名称 | 形式 | 言語 | URL |
 |---|---|---|---|---|
 | `S_AIX73_release_notes` | AIX 7.3 Release Notes | Web | en | <https://www.ibm.com/docs/en/aix/7.3.0?topic=notes-aix-73-release> |

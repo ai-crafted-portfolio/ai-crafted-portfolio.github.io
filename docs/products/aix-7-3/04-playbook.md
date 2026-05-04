@@ -1,8 +1,6 @@
 # タスクプレイブック
 
-> 掲載：**3 × 8 = 22 セル（空セル 2）**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
-
-**習熟度（入門/中級/上級）× シーン** のマトリクス。
+> 掲載：**3 × 8 = 22 セル**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
 | 習熟度＼シーン | 構築 | 日常運用 | バックアップ | 障害対応 | 性能 | マイグレ | セキュリティ | スケーリング |
 |---|---|---|---|---|---|---|---|---|
@@ -10,5 +8,5 @@
 | **中級** | VG/LV 設計、JFS2 FS 配置、rootvg ミラー化<br><br>→ [cfg-vg-lv](08-config-procedures.md#cfg-vg-lv), [cfg-rootvg-mirror](08-config-procedures.md#cfg-rootvg-mirror) | errnotify でメール通知、cron 自動化、パッケージ更新管理<br><br>→ [cfg-errnotify](08-config-procedures.md#cfg-errnotify), [cfg-package-install](08-config-procedures.md#cfg-package-install), [inc-cron-fail](09-incident-procedures.md#inc-cron-fail) | mksysb + savevg、NIM image 連携<br><br>→ [cfg-mksysb-backup](08-config-procedures.md#cfg-mksysb-backup) | 性能低下切り分け（CPU/Mem/Disk/Net）、NFS stale、core 解析<br><br>→ [inc-perf-degradation](09-incident-procedures.md#inc-perf-degradation), [inc-nfs-stale](09-incident-procedures.md#inc-nfs-stale), [inc-core-dump](09-incident-procedures.md#inc-core-dump) | TCP バッファ・MPIO queue_depth・j2_inodeCacheSize 調整<br><br>→ [cfg-tcp-buffers](08-config-procedures.md#cfg-tcp-buffers), [cfg-mpio-tuning](08-config-procedures.md#cfg-mpio-tuning), [cfg-ioo-tuning](08-config-procedures.md#cfg-ioo-tuning) | AIX 7.x → 7.3.4 マイグレ（premigration script、廃止 fileset） | errnotify 監査連動、syslog 集中転送、LDAP クライアント<br><br>→ [cfg-errnotify](08-config-procedures.md#cfg-errnotify), [cfg-syslog](08-config-procedures.md#cfg-syslog) | FS 拡張、PV 追加、新規 VG 作成<br><br>→ [cfg-fs-extend](08-config-procedures.md#cfg-fs-extend), [cfg-disk-add](08-config-procedures.md#cfg-disk-add), [cfg-vg-lv](08-config-procedures.md#cfg-vg-lv) |
 | **上級** | NIM サーバ、CAA リポジトリ、PowerHA 連携、暗号化 rootvg | snap でサポート用情報定期取得、性能ベースライン取得（nmon）<br><br>→ [inc-snap-collect](09-incident-procedures.md#inc-snap-collect) | NIM 連携の bootable mksysb、別 LPAR への restore リハーサル<br><br>→ [cfg-mksysb-backup](08-config-procedures.md#cfg-mksysb-backup) | kdb / dbx でカーネル / プロセスダンプ解析、HMC SRC コード解析<br><br>→ [inc-core-dump](09-incident-procedures.md#inc-core-dump), [inc-errpt-hardware-error](09-incident-procedures.md#inc-errpt-hardware-error) | ASO/DSO 利用、large page 適用、AIO チューニング、NUMA awareness | Live Kernel Update、Live Library Update、別 LPAR への nimadm migration | RBAC 設計、Trusted Execution + CHKSHOBJS、AIX Key Manager (PKS)、IPsec | DLPAR でリソース動的増減、LPM で別物理機へ移動、scalable VG（1024 PV） |
 
-!!! note "空セル（2 件）について"
-    入門 × マイグレ、入門 × スケーリング は意図的に空にしています。
+!!! note "空セル"
+    入門 × マイグレ、入門 × スケーリング は意図的に空。

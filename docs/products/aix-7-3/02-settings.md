@@ -2,11 +2,9 @@
 
 > 掲載：**40 件（tunable 20 + 設定ファイル 20）**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-vmo / no / nfso / ioo / schedo の tunable と /etc/ 配下の主要設定ファイル。Default / 取り得る値は日本語化、影響範囲（applyType）は個別記載。
-
 ## チューナブルパラメータ（20 件）
 
-| パラメータ名 | 設定コマンド | 既定値 | 取り得る値 | 影響範囲（再起動要否） | 関連手順 | 注意点 |
+| パラメータ名 | 設定コマンド | 既定値 | 取り得る値 | 影響範囲 | 関連手順 | 注意点 |
 |---|---|---|---|---|---|---|
 | `j2_inodeCacheSize` | `ioo -p -o` | 200（AIX 7.1 で 400 → 200 に変更、AIX 7.3 も同値） | 1〜1000 の整数（メモリ GB あたりの inode キャッシュ目安） | 動的反映（再起動不要）。-p 指定で /etc/tunables/nextboot にも書き込み恒久化。 | [cfg-ioo-tuning](08-config-procedures.md#cfg-ioo-tuning) | 低メモリ機 (4GB 以下) で同時 open file が多いと不足する。`vmstat -v \| grep inode` で extend 失敗回数を確認。 |
 | `j2_metadataCacheSize` | `ioo -p -o` | 200 | 1〜1000 の整数 | 動的反映 | [cfg-ioo-tuning](08-config-procedures.md#cfg-ioo-tuning) | 通常 j2_inodeCacheSize と同値で運用。 |

@@ -1,9 +1,18 @@
-/* view-toggle.js (v2 - minimal, viewport-only)
- * 携帯で「💻 PC表示」ボタンを押すと viewport meta を width=1280 に切り替える。
- * CSS や body class は一切触らない（v1 でこれをやって layout を壊した教訓）。
- * 仕組みは Chrome の「デスクトップ表示を要求」と同じ：
- *   ブラウザが 1280px のページを物理画面幅に縮小して描画する。
- * これだけで充分 PC 表示になる。CSS の force-desktop は危険なので使わない。
+/* view-toggle.js (v3 - reload-based)
+ *
+ * 変更点 vs v2:
+ *   v2 ではボタンクリックで viewport meta を動的に書き換えていたが、一部のブラウザ
+ *   (特にモバイル Safari) は <meta name="viewport"> の attribute 変更後の再評価を
+ *   ロード後にはサポートしない / 部分的にしかサポートしないため、
+ *   「localStorage は desktop なのに実表示はモバイルのまま」というズレが発生した。
+ *
+ *   v3 では「ボタンクリック → localStorage 更新 → location.reload()」の単純な流れに
+ *   する。reload 直後の初期化で viewport meta を localStorage の値に合わせて設定するため、
+ *   localStorage = 実表示 が必ず一致する。
+ *
+ *   ボタンラベルもこのルールに連動：
+ *     view-mode-v2 === 'desktop' のとき: 「📱 モバイル表示」(タップでモバイルに戻る)
+ *     それ以外:                          「💻 PC表示」     (タップで PC に切替)
  */
 (function () {
   'use strict';
@@ -26,23 +35,27 @@
     }
   }
 
+  function labelFor(m) {
+    return (m === 'desktop') ? '📱 モバイル表示' : '💻 PC表示';
+  }
+
   function makeBtn() {
     if (document.getElementById('pc-view-btn')) return;
     var btn = document.createElement('button');
     btn.id = 'pc-view-btn';
     btn.type = 'button';
     btn.style.cssText = 'position:fixed;bottom:1rem;right:1rem;z-index:9999;padding:0.6rem 1rem;background:#5470c4;color:#fff;border:none;border-radius:999px;font-size:0.85rem;box-shadow:0 2px 6px rgba(0,0,0,0.3);cursor:pointer;font-family:sans-serif;';
-    btn.textContent = (mode === 'desktop') ? '📱 モバイル' : '💻 PC表示';
+    btn.textContent = labelFor(mode);
     btn.onclick = function () {
-      mode = (mode === 'desktop') ? 'auto' : 'desktop';
-      try { localStorage.setItem(KEY, mode); } catch (e) {}
-      setViewport(mode);
-      btn.textContent = (mode === 'desktop') ? '📱 モバイル' : '💻 PC表示';
+      var next = (mode === 'desktop') ? 'auto' : 'desktop';
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+      /* viewport を動的に書き換えず、reload で確実に適用する */
+      location.reload();
     };
     document.body.appendChild(btn);
   }
 
-  /* viewport は init 時に同期で適用（描画前に行うとリフロー回数最小） */
+  /* 初期描画前に viewport を確定 */
   setViewport(mode);
 
   if (document.readyState === 'loading') {
@@ -51,17 +64,13 @@
     makeBtn();
   }
 
-  /* mkdocs Material の navigation.instant 対策。
-     URL が変わった後、ボタンが消えていれば再生成する。viewport は HTML 再読み込み時に
-     書き換わるので毎回呼ぶ。 */
+  /* mkdocs Material navigation.instant でページが SPA 遷移した場合、ボタンが消えるので
+     再生成する。viewport は HTML 再ロードで再適用されるので、ここでは触らない。 */
   var lastUrl = location.href;
   setInterval(function () {
     if (location.href !== lastUrl) {
       lastUrl = location.href;
-      setTimeout(function () {
-        setViewport(mode);
-        makeBtn();
-      }, 50);
+      setTimeout(makeBtn, 50);
     }
   }, 200);
 })();

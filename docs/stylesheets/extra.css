@@ -88,7 +88,9 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* ===== v12: PC ビュー切替ボタンの遮蔽問題対策 ===== */
+/* ===== v12: PC ビュー切替ボタンの遮蔽問題対策 =====
+   v13: overflow:hidden + white-space:nowrap でテキストの 32px 円外リークを抑止
+   （内部 textContent "💻 PC 表示" が scrollHeight=96 で下方 64px 漏れていた）*/
 #pc-view-btn {
   bottom: calc(env(safe-area-inset-bottom, 0) + 80px) !important;
   width: 32px !important;
@@ -98,6 +100,8 @@
   line-height: 32px !important;
   text-align: center;
   z-index: 100;
+  overflow: hidden !important;
+  white-space: nowrap !important;
 }
 @media (min-width: 769px) {
   #pc-view-btn {
@@ -107,5 +111,7 @@
     font-size: inherit !important;
     padding: 0.5em 1em !important;
     line-height: 1.4 !important;
+    overflow: visible !important;
+    white-space: normal !important;
   }
 }

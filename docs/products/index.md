@@ -18,22 +18,13 @@
 
 ## 製品一覧
 
-!!! note "z/OS 系の読み分けガイド"
-    z/OS 関連のページは役割が異なる **3 か所** に分かれています。目的に応じて使い分けてください。
-
-    - **[z/OS 3.1](z-os-3-1/)** — 公式マニュアル系の **運用リファレンス**（13 章、コマンド / 設定 / 用語 / 設定手順 / 障害対応 / シナリオ / ユースケース）。日々の運用で「やり方」を引く用途。
-    - **[Db2 13 for z/OS](db2-for-zos-13/)** — Db2 13 公式マニュアル系の **運用リファレンス**（13 章）。DBA / オペレータが「やり方」を引く用途。
-    - **[z/OS システムプログラミング (ABCs)](zos-system-programming/)** — IBM Redbooks「ABCs of z/OS System Programming」13 巻ベースの **教材構造化**（7 シート）。Sysprog 視点で「何が何のためにあるか」を学ぶ用途。
-    - **[discussions/zos-library-management](../discussions/zos-library-management/)** — ChangeTracker 代替ツールの **設計提案資料**（検討中）。製品リファレンスではない。
-
 | 製品 | カテゴリ | 概要 | 詳細ページ | Excel |
 |---|---|---|---|---|
 | AIX 7.3 | OS（UNIX） | IBM Power 上の UNIX。カーネル / FS / ネットワーク / セキュリティの運用情報 | [詳細](aix-7-3/index.md) | [📥](files/AIX_7.3.xlsx) |
 | VIOS | 仮想化 | Power VM 上の I/O 仮想化レイヤ。SEA / NPIV / vSCSI 管理 | [詳細](vios/index.md) | [📥](files/VIOS.xlsx) |
 | PowerHA SystemMirror 7.2 | 高可用性 | AIX 上のクラスタ HA。リソースグループとフェイルオーバー | （準備中） | [📥](files/PowerHA_72.xlsx) |
 | Windows Server 2022 | OS（Windows） | Microsoft x64 サーバ OS。AD / Hyper-V / IIS / Storage Spaces 等 | [詳細](windows-server-2022/index.md) | [📥](files/Windows_Server_2022.xlsx) |
-| z/OS 3.1 | OS（メインフレーム） | z/OS V3R1 公式マニュアル系。実運用リファレンス（13 章） | [詳細](z-os-3-1/) | [📥](files/z_OS_3.1.xlsx) |
-| z/OS システムプログラミング (ABCs) | OS（メインフレーム） | ABCs Redbooks 13 巻ベースの Sysprog 教材構造化（7 シート） | [詳細](zos-system-programming/index.md) | [📥](files/z_OS_System_Programming.xlsx) |
+| z/OS 3.1 | OS（メインフレーム） | z/OS V3R1。基幹システムの中核 OS（13 章構成） | [詳細](z-os-3-1/) | [📥](files/z_OS_3.1.xlsx) |
 | Db2 13 for z/OS | データベース | z/OS 上のリレーショナル DB。Db2 13 公式マニュアル系。実運用リファレンス（13 章） | [詳細](db2-for-zos-13/) | [📥](files/Db2_for_z_OS.xlsx) |
 | IMS 15.5 | データベース / TM | 階層型 DB / トランザクションマネージャ | （準備中） | [📥](files/IMS_15.5.xlsx) |
 | IIDR 11.4 | データレプリケーション | InfoSphere Data Replication。CDC ベースの DB レプリケーション | （準備中） | [📥](files/IIDR_11.4.xlsx) |

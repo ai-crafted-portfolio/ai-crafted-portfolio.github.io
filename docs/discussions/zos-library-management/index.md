@@ -3,12 +3,9 @@
 **Excel/VBA + 3270 エミュレータによる Change Tracker 軽量代替の検討**
 
 !!! warning "本資料の位置付け（製品リファレンスではありません）"
-    本ページは **ChangeTracker 代替ツールの設計提案資料**（検討中）であり、IBM 公式製品の運用リファレンスではありません。z/OS そのものの運用情報をお探しの場合は以下を参照：
+    本ページは **ChangeTracker 代替ツールの設計提案資料**（検討中）であり、IBM 公式製品の運用リファレンスではありません。z/OS そのものの運用情報は **[products/z-os-3-1](../../products/z-os-3-1/)**（13 章構成）を参照してください。
 
-    - **[products/z-os-3-1](../../products/z-os-3-1/)** — z/OS 3.1 公式マニュアル系の運用リファレンス（13 章）
-    - **[products/zos-system-programming](../../products/zos-system-programming/)** — ABCs Redbooks ベースの Sysprog 教材構造化（7 シート）
-
-    なお §K の「対象データセット定義表」は本ツール（ChangeTracker 代替）が監視対象とするデータセット群の定義であり、ABCs Redbooks リファレンスではありません。
+    なお §K の「対象データセット定義表」は本ツール（ChangeTracker 代替）が監視対象とするデータセット群の定義です。
 
 本資料は、z/OS の運用資材 (運用部門が日常編集する JCL / REXX / PROC 等) について、公式ツール (z/OS Change Tracker) を導入できない小規模現場での軽量代替案を提案する。背景・対象範囲・選択肢比較・本ツールの守備範囲・残された判断を順に説明する。
 

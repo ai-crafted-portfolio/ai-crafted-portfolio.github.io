@@ -45,6 +45,14 @@ validation:
 
 not_in_nav: |
   research/index.md
+  products/zos-system-programming/index.md
+  products/zos-system-programming/00-overview.md
+  products/zos-system-programming/01-components.md
+  products/zos-system-programming/02-settings.md
+  products/zos-system-programming/03-use-cases.md
+  products/zos-system-programming/04-troubleshooting.md
+  products/zos-system-programming/05-related.md
+  products/zos-system-programming/06-sources.md
 
 markdown_extensions:
   - admonition
@@ -134,15 +142,6 @@ nav:
         - 10. 対象外項目: products/db2-for-zos-13/10-out-of-scope.md
         - 11. シナリオ別ガイド: products/db2-for-zos-13/11-scenarios.md
         - 12. ユースケース集: products/db2-for-zos-13/12-use-cases.md
-      - z/OS システムプログラミング (ABCs):
-        - 概要: products/zos-system-programming/index.md
-        - 00. 概要: products/zos-system-programming/00-overview.md
-        - 01. 構成要素: products/zos-system-programming/01-components.md
-        - 02. 主要設定項目: products/zos-system-programming/02-settings.md
-        - 03. 典型ユースケース: products/zos-system-programming/03-use-cases.md
-        - 04. トラブルシュート: products/zos-system-programming/04-troubleshooting.md
-        - 05. 関連製品連携: products/zos-system-programming/05-related.md
-        - 06. 出典一覧: products/zos-system-programming/06-sources.md
     - 監視・ジョブ運用 系:
       - Netcool OMNIbus 8.1:
         - 概要: products/netcool-omnibus-8-1/index.md

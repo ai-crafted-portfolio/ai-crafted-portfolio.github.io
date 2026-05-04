@@ -1,11 +1,6 @@
 # z/OS 3.1
 
-!!! info "本ページの位置付け / 関連ページ"
-    本ページは **z/OS 3.1 公式マニュアル系の運用リファレンス**（13 章）。日々の運用で「どのコマンドを叩くか」「どの PARMLIB メンバを編集するか」「障害発生時の切り分け手順」を引く用途に最適化。
-
-    z/OS 関連の他資料：
-    - **[z/OS システムプログラミング (ABCs)](../zos-system-programming/)** — ABCs Redbooks 13 巻ベースの Sysprog 教材構造化（7 シート）。学習・全体俯瞰の用途。
-    - **[discussions/zos-library-management](../../discussions/zos-library-management/)** — ChangeTracker 代替ツールの設計提案（検討中、製品リファレンスではない）。
+!!! info "関連: z/OS 運用資材の管理ツール検討は [discussions/zos-library-management/](../../discussions/zos-library-management/) を参照。"
 
 > IBM Z メインフレームの 64-bit エンタープライズ OS。**13 章構成**で staple なコマンド・設定・用語・手順 + シナリオ別ガイド + ユースケース集を整理。**v3 でレビュー B → A 改善（仮説分岐 / 期待出力 / 図表拡張）**。
 
@@ -42,7 +37,6 @@
 | 対応 HW | IBM Z（z14 以降推奨） | S_ZOS_Intro |
 | 想定読者 | z/OS システムプログラマ、オペレータ、運用者 | S_ZOS_MVS_Init |
 | 主要サブシステム | JES2 / RACF / USS / TCP/IP / SMS / SMF / WLM | S_ZOS_Intro |
-| 補助辞典 | ABCs of z/OS Redbooks 13冊（出典 S_ZOS_ABCs01〜13） | S_ZOS_Review |
 
 !!! note "v3 改善ポイント"
     レビュー B → A への改善差分：(1) Master Catalog の事実訂正 (2) 仮想記憶カテゴリ追加（PSA/CSA/ECSA/SQA/ESQA/LPA/SVC/CVT）(3) tunable 種別列（サイジング / モード選択 / 運用ポリシー / 構成定義）(4) 09 章 S 級 incident に A/B/C 仮説分岐 (5) 08 章 S 級 cfg に期待出力サンプル (6) シナリオ「本記事の範囲」を個別化 (7) 図表埋込を 8 → 73 エントリに拡張。

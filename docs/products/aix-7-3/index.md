@@ -72,3 +72,9 @@
     2. **08-config-procedures.md** — 概念 anchor 26 件 + cfg-vmo-tuning 補完
     3. **09-incident-procedures.md** — 概念 anchor 6 件補完
     各 stub は IBM 公式コマンド/マニュアル URL のみで構成（推測内容ゼロ）。
+
+
+!!! note "v12 改善ポイント（v11 → v12 差分）"
+    1. **01-commands.md** — 38 件の関連コマンドに `cmd-XX` 形式 anchor も併存付与（`<a id="cmd-hostname"></a>` 形式の HTML 注入。素のコマンド名 anchor `#hostname` と両方有効）
+    2. **extra.css** — モバイル（≤768px）テーブル overflow 対策 + PC ビュー切替ボタン遮蔽防止（bottom 位置上げ + サイズ縮小）
+    3. v11 changelog と実装の乖離（cmd-XX anchor 不在）を解消

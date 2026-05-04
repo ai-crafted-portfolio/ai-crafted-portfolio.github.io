@@ -2266,6 +2266,7 @@ smitty chfs           # FS 拡張
 
 本ページ上部 45 件の主要コマンドの他に、08 章 / 09 章 / 11 章から参照される関連コマンド 38 件の anchor を補完。各 stub は IBM 公式コマンドリファレンスへのリンクのみ（要約は当該マニュアルの 1 行抜粋系）。詳細は IBM Docs 参照。
 
+<a id="cmd-hostname"></a>
 ### `hostname` { #hostname }
 
 **用途**: システムホスト名の表示・設定
@@ -2274,6 +2275,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-nslookup"></a>
 ### `nslookup` { #nslookup }
 
 **用途**: DNS 名前解決問い合わせ（対話・非対話）
@@ -2282,6 +2284,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-host"></a>
 ### `host` { #host }
 
 **用途**: DNS ホスト情報照会
@@ -2290,6 +2293,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-dig"></a>
 ### `dig` { #dig }
 
 **用途**: DNS 詳細問い合わせ
@@ -2298,6 +2302,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-mount"></a>
 ### `mount` { #mount }
 
 **用途**: ファイルシステムマウント（NFS/JFS2 等）
@@ -2306,6 +2311,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-umount"></a>
 ### `umount` { #umount }
 
 **用途**: ファイルシステムアンマウント
@@ -2314,6 +2320,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-showmount"></a>
 ### `showmount` { #showmount }
 
 **用途**: NFS エクスポート/マウント状況表示
@@ -2322,6 +2329,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-fuser"></a>
 ### `fuser` { #fuser }
 
 **用途**: ファイル・FS を使用中のプロセス特定
@@ -2330,6 +2338,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-ntpq"></a>
 ### `ntpq` { #ntpq }
 
 **用途**: NTP サーバ状態問い合わせ
@@ -2338,6 +2347,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-stopsrc"></a>
 ### `stopsrc` { #stopsrc }
 
 **用途**: SRC 経由でサブシステム停止
@@ -2346,6 +2356,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-refresh"></a>
 ### `refresh` { #refresh }
 
 **用途**: SRC 経由でサブシステム設定再読み込み
@@ -2354,6 +2365,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-logger"></a>
 ### `logger` { #logger }
 
 **用途**: syslogd へメッセージ送出
@@ -2362,6 +2374,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-errlogger"></a>
 ### `errlogger` { #errlogger }
 
 **用途**: errpt へ独自メッセージ書き込み
@@ -2370,6 +2383,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-odmadd"></a>
 ### `odmadd` { #odmadd }
 
 **用途**: ODM クラスへ stanza 追加
@@ -2378,6 +2392,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-odmget"></a>
 ### `odmget` { #odmget }
 
 **用途**: ODM クラスから stanza 取得
@@ -2386,6 +2401,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-odmdelete"></a>
 ### `odmdelete` { #odmdelete }
 
 **用途**: ODM クラスから stanza 削除
@@ -2394,6 +2410,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-sysdumpdev"></a>
 ### `sysdumpdev` { #sysdumpdev }
 
 **用途**: システムダンプデバイス管理
@@ -2402,6 +2419,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-rmlv"></a>
 ### `rmlv` { #rmlv }
 
 **用途**: Logical Volume 削除
@@ -2410,6 +2428,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-crfs"></a>
 ### `crfs` { #crfs }
 
 **用途**: ファイルシステム作成
@@ -2418,6 +2437,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-extendvg"></a>
 ### `extendvg` { #extendvg }
 
 **用途**: Volume Group に PV 追加
@@ -2426,6 +2446,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-mirrorvg"></a>
 ### `mirrorvg` { #mirrorvg }
 
 **用途**: VG の LV をミラー化
@@ -2434,6 +2455,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-unmirrorvg"></a>
 ### `unmirrorvg` { #unmirrorvg }
 
 **用途**: VG ミラーを解除
@@ -2442,6 +2464,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-syncvg"></a>
 ### `syncvg` { #syncvg }
 
 **用途**: VG ミラーの同期
@@ -2450,6 +2473,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-lsfs"></a>
 ### `lsfs` { #lsfs }
 
 **用途**: ファイルシステム一覧・属性表示
@@ -2458,6 +2482,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-mkuser"></a>
 ### `mkuser` { #mkuser }
 
 **用途**: ユーザ追加
@@ -2466,6 +2491,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-rmuser"></a>
 ### `rmuser` { #rmuser }
 
 **用途**: ユーザ削除
@@ -2474,6 +2500,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-chuser"></a>
 ### `chuser` { #chuser }
 
 **用途**: ユーザ属性変更
@@ -2482,6 +2509,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-pwdadm"></a>
 ### `pwdadm` { #pwdadm }
 
 **用途**: パスワード管理（管理者モード）
@@ -2490,6 +2518,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-lppchk"></a>
 ### `lppchk` { #lppchk }
 
 **用途**: fileset 整合性チェック
@@ -2498,6 +2527,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-restore"></a>
 ### `restore` { #restore }
 
 **用途**: backup コマンドで取得したアーカイブから復元
@@ -2506,6 +2536,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-lsmksysb"></a>
 ### `lsmksysb` { #lsmksysb }
 
 **用途**: mksysb イメージ内容一覧
@@ -2514,6 +2545,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-lspath"></a>
 ### `lspath` { #lspath }
 
 **用途**: MPIO パス状態一覧
@@ -2522,6 +2554,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-rmdev"></a>
 ### `rmdev` { #rmdev }
 
 **用途**: デバイスを ODM から削除（または unconfigure）
@@ -2530,6 +2563,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-mailq"></a>
 ### `mailq` { #mailq }
 
 **用途**: sendmail メールキュー表示
@@ -2538,6 +2572,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-crontab"></a>
 ### `crontab` { #crontab }
 
 **用途**: cron ジョブ表編集
@@ -2546,6 +2581,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-at"></a>
 ### `at` { #at }
 
 **用途**: 1 回限りジョブ予約
@@ -2554,6 +2590,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-dbx"></a>
 ### `dbx` { #dbx }
 
 **用途**: ソースレベルデバッガ
@@ -2562,6 +2599,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-truss"></a>
 ### `truss` { #truss }
 
 **用途**: システムコール / シグナルトレース
@@ -2570,6 +2608,7 @@ smitty chfs           # FS 拡張
 
 ---
 
+<a id="cmd-coreadm"></a>
 ### `coreadm` { #coreadm }
 
 **用途**: コアダンプ生成パターン管理

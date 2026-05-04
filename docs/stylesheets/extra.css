@@ -65,3 +65,47 @@
   padding-left: 0.5em;
   border-left: 2px solid #ccc;
 }
+
+/* ===== v12 / zos-v4: モバイル時テーブル overflow 対策 ===== */
+@media (max-width: 768px) {
+  .md-typeset__table {
+    max-width: calc(100vw - 1rem) !important;
+    overflow-x: auto !important;
+  }
+  .md-typeset__table table {
+    min-width: auto !important;
+    width: max-content;
+    max-width: none;
+  }
+  .md-typeset table:not([class]) {
+    font-size: 0.7rem;
+  }
+}
+
+/* ===== v12: 広いマトリクス表の横スクロールラッパ ===== */
+.md-typeset__scrollwrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ===== v12: PC ビュー切替ボタンの遮蔽問題対策 ===== */
+#pc-view-btn {
+  bottom: calc(env(safe-area-inset-bottom, 0) + 80px) !important;
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 14px !important;
+  padding: 0 !important;
+  line-height: 32px !important;
+  text-align: center;
+  z-index: 100;
+}
+@media (min-width: 769px) {
+  #pc-view-btn {
+    bottom: 24px !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: inherit !important;
+    padding: 0.5em 1em !important;
+    line-height: 1.4 !important;
+  }
+}

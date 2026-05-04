@@ -1,6 +1,6 @@
 # Db2 13 for z/OS
 
-> IBM メインフレーム向けエンタープライズ RDBMS。**13 章構成** で staple なコマンド・設定・用語・手順 + シナリオ別ガイド + ユースケース集を整理。**v1（v13.1 Function Level 500/501、Continuous Delivery 体系）に対応**。
+> IBM メインフレーム向けエンタープライズ RDBMS。**13 章構成** で staple なコマンド・設定・用語・手順 + シナリオ別ガイド + ユースケース集を整理。**v1.1（v13.1 Function Level 500/501/510/513、Continuous Delivery 体系）に対応**。
 
 **カテゴリ**: z/OS 系 / リレーショナル DB
 
@@ -18,9 +18,9 @@
 | [08. 出典一覧](07-sources.md) | **40 件**（公式 22 + Redbook 10 + 補完 z/OS 8） |
 | [09. 設定手順](08-config-procedures.md) | **18 件** + S 級は実機期待出力サンプル付き |
 | [10. 障害対応手順](09-incident-procedures.md) | **18 件** + S 級は A/B/C 仮説分岐付き |
-| [11. 対象外項目](10-out-of-scope.md) | カテゴリ別整合（30 ユースケース + 6 シナリオに対応） |
+| [11. 対象外項目](10-out-of-scope.md) | カテゴリ別整合（33 ユースケース + 6 シナリオに対応） |
 | [12. シナリオ別ガイド](11-scenarios.md) | **6 本**（新規導入・性能・DR・セキュリティ監査・移行・データ共用追加） |
-| [13. ユースケース集](12-use-cases.md) | **30 件**（独立タスク粒度） |
+| [13. ユースケース集](12-use-cases.md) | **33 件**（独立タスク粒度、カテゴリ別に分類） |
 
 各章の関連エントリには、設定手順 / 障害対応手順 / 用語 / ユースケースへの双方向リンクを付与。
 
@@ -36,7 +36,7 @@
 | 想定読者 | Db2 DBA、システムプログラマ、アプリ開発者（バインド・SQL チューニング担当）、運用者 | S_DB2_Admin |
 | 主要アドレス空間 | DB2MSTR（マスタ）/ DB2DBM1（DB マネージャ）/ DB2DIST（DDF）/ DB2SPAS（WLM 起動 SP）/ IRLM（ロックマネージャ） | S_DB2_Admin |
 | 主要オブジェクト | Catalog（DSNDB06）/ Directory（DSNDB01）/ Buffer Pool（BP0–BP49 ほか）/ Tablespace / Indexspace / Plan / Package / Schema / Stogroup | S_DB2_SQLRef |
-| 主要 Function Level | FL500（V13R1 Initial）→ FL501（SQL Data Insights）→ FL502 以降（Continuous Delivery） | S_DB2_FuncLevels |
+| 主要 Function Level | FL500（V13R1 Initial）→ FL501（SQL Data Insights）→ FL510 → **FL513（最新 FL、2025 公開）** | S_DB2_FuncLevels |
 | 補助 Redbook | Db2 13 for z/OS and More（SG24-8527）、Performance Topics（SG24-8525）他 | S_DB2_RB_Db213More |
 
 !!! note "v13 主要新機能（v12 → v13 のうち本サイト範囲）"
@@ -45,6 +45,7 @@
     3. **Function Level の継続拡張（Continuous Delivery）** — Db2 v10 以降の `APPLCOMPAT`（アプリケーション互換レベル）と並行で、サブシステム機能を `FL` 単位で段階適用。`-ACTIVATE FUNCTION LEVEL` コマンドで切替。
     4. **lock 性能改善** — Lock avoidance / Insert algorithm 2 の既定化（v12 から継承）、retained lock 短期化。
     5. **utility 強化** — `REORG TABLESPACE SHRLEVEL CHANGE` の改善、`MERGECOPY` 自動化、新 `CATMAINT` フローによる移行簡易化。
+    6. **Function Level 513（最新 FL）** — Continuous Delivery で順次拡張された FL510/FL511/FL512 を経て、**FL513** が最新の到達点。`-DISPLAY GROUP DETAIL` の `HIGHEST POSSIBLE FUNCTION LEVEL` で V13R1M513 が表示される環境では `-ACTIVATE FUNCTION LEVEL(V13R1M513)` で有効化できる（前提として CATMAINT による Catalog Level 引き上げ + 直前 FL の activate 完了）。FL513 で追加された個別機能は IBM 公式 Function Level Summary（[S_DB2_FuncLevels](07-sources.md)）参照。
 
 !!! warning "AI 生成と人手の併用"
     本ページは公式マニュアル等の公開情報のみを根拠に整理した二次資料。AI 生成と人手の併用で作成しているため、情報の正確性は保証しない。実装・適用前には公式情報での再確認を推奨。

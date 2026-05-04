@@ -80,6 +80,12 @@
   .md-typeset table:not([class]) {
     font-size: 0.7rem;
   }
+  /* db2 v1.1: re-enforce 32x32 button on mobile (defensive against JS inline padding) */
+  #pc-view-btn {
+    padding: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
 }
 
 /* ===== v12: 広いマトリクス表の横スクロールラッパ ===== */

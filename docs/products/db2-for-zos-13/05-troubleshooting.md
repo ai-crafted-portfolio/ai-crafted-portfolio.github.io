@@ -1,6 +1,6 @@
 # トラブル早見表
 
-> 掲載：**20 件**（定番のみ）。除外項目は [11. 対象外項目](10-out-of-scope.md) を参照。
+> 掲載：**21 件**（定番のみ）。除外項目は [11. 対象外項目](10-out-of-scope.md) を参照。
 
 | ID | 症状 | 原因 | 対処（要約） | ラベル | 関連手順 |
 |---|---|---|---|---|---|
@@ -24,3 +24,18 @@
 | ts-18 | catalog の整合性問題（カタログ構造起因の anomaly） | CATMAINT 失敗の残骸、catalog level mismatch | `-DISPLAY GROUP DETAIL` で CATALOG LEVEL / FUNCTION LEVEL、CATMAINT 再実行（適切な FL 指定） | `DSNT408I（catalog level 関連）` | [cfg-functionlevel-activate](08-config-procedures.md#cfg-functionlevel-activate) |
 | ts-19 | データ共用 GBP castout 遅延 / GBP 枯渇 | CF GBP size 不足、castout owner の writer 不足 | `-DISPLAY GROUPBUFFERPOOL`、CFRM policy で GBP size 拡大、CASTOUT thread 増設 | `DSNB325I / DSNB341I` | [cfg-datasharing-add-member](08-config-procedures.md#cfg-datasharing-add-member) |
 | ts-20 | BSDS 損傷（DSNJ100I / DSNJ107I） | I/O エラー、誤った直接編集 | dual BSDS の片方から復元（DSNJU003 CHANGE LOG INVENTORY）、catalog 上の SYSCOPY と整合性確認 | `DSNJ100I / DSNJ107I` | [inc-bsds-corrupt](09-incident-procedures.md#inc-bsds-corrupt) |
+| ts-21 | SQLCODE -922（authorization failure / connection failure） | RACF 認証 NG、Db2 接続権限不足、SECURITY (AUTH) 系 DSNZPARM 不整合、PASSWORD/PASSTICKET 失敗、DDF 接続元の SAF mapping 不在 | reason code で原因特定（後述表）→ SAF/RACF 側で確認 + Db2 SECURITY 系 DSNZPARM 確認。DDF 経由なら `-DISPLAY THREAD` の rc / DSNL031I/DSNL511I も併読 | `-922 / DSNT408I / DSNL031I` | [inc-auth-fail](09-incident-procedures.md#inc-auth-fail) |
+
+### SQLCODE -922 reason code 早見表
+
+`-922` は SQL の authentication / authorization 失敗の汎用コード。reason code（DSNT408I / SQLCA の sqlerrmc）で具体原因を特定する。
+
+| Reason code | 意味 | 第一手 |
+|---|---|---|
+| `00F30040` | RACF passticket 検証失敗 | KEYR の鍵共有ずれ確認、time skew 確認 |
+| `00F30041` | RACF user ID + password 検証失敗 | RACF passwd 期限・LIST USER 確認、`-DISPLAY THREAD` で接続経路特定 |
+| `00F30083` | DDF からの接続で SAF/EIM mapping なし | SYSIBM.USERNAMES、Trusted Context、AT-TLS、AUTHEXIT_CHECK の値再確認 |
+| `00F30085` | DBADM/SYSADM 権限不足、または `RESTRICT WHEN ALTERED` 違反 | DSN6SPRM の AUTHCACH、SECURITY 系 DSNZPARM、SYSTABAUTH/SYSPLANAUTH 確認 |
+| `00F300xx`（汎用） | その他の認可失敗（GRANT 不在、role 不足） | `-DISPLAY THREAD(*) DETAIL` の AUTHID と SYSIBM.SYSAUTH 系で突合 |
+
+詳細は IBM 公式 Codes（DSNCODES）を参照。本表は代表 reason のみ抜粋。

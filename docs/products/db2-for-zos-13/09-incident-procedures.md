@@ -628,4 +628,30 @@ STATUS = ACTIVE
 
 ---
 
+### inc-auth-fail: SQLCODE -922 認証 / 接続失敗 { #inc-auth-fail }
+
+**重要度**: `A` / **用途**: セキュリティ
+
+**目的**: SQLCODE -922（authorization failure / connection failure）の reason code 別切り分けと復旧。詳しい reason 表は [05. トラブル早見表 ts-21](05-troubleshooting.md) を参照。
+
+**手順**:
+
+1. アプリ / SDSF / DSNT408I メッセージから `-922` の reason code を取得（00F30040 / 00F30041 / 00F30083 / 00F30085 等）
+2. reason 別の第一手:
+   - `00F30040` (passticket): KEYR の鍵共有・time skew 確認
+   - `00F30041` (password): RACF user の状態 (`LISTUSER <id>`) 確認、期限切れなら resume
+   - `00F30083` (DDF mapping): SYSIBM.USERNAMES、Trusted Context、AT-TLS、AUTHEXIT_CHECK 値再確認
+   - `00F30085` (DBADM 等不足): SYSTABAUTH/SYSPLANAUTH を SQL で確認、必要なら GRANT
+3. DDF 経由の場合は `-DISPLAY THREAD(*) DETAIL` で接続経路と AUTHID 確認、DSNL031I/DSNL511I も併読
+4. RACF/SAF 側修正後、アプリ再接続テスト
+5. 監査記録: SMF type 80 (RACF) / 102 IFCID 140/141 で認証履歴確認
+
+**注意点**: `-922` は SQL レベルのエラーだが、根本は SAF/RACF 側の場合が多い。RACF 担当者 (SECADM) と協調が必須。本手順は Db2 側の確認のみ。
+
+**関連手順**: [cfg-grant-permission](08-config-procedures.md#cfg-grant-permission), [cfg-audit-trace](08-config-procedures.md#cfg-audit-trace)
+
+**出典**: S_DB2_Codes, S_DB2_Admin
+
+---
+
 *出典 ID は [08. 出典一覧](07-sources.md) を参照。*

@@ -123,11 +123,12 @@
 | <span id="function-level">**Function Level**</span> | Db2 13 の Continuous Delivery で機能を段階適用する単位。FL500 / FL501 / FL502... と進化。`-ACTIVATE FUNCTION LEVEL(...)` で適用、`CATMAINT` で catalog level も連動。 | [Catalog Level](#catalog-level), [Application Compatibility](#applcompat), [CATMAINT](#catmaint) | [cfg-functionlevel-activate](08-config-procedures.md#cfg-functionlevel-activate) |
 | <span id="catalog-level">**Catalog Level**</span> | カタログ構造のバージョン。Function Level の前提条件、CATMAINT で更新。 | [Function Level](#function-level), [CATMAINT](#catmaint) | [cfg-functionlevel-activate](08-config-procedures.md#cfg-functionlevel-activate) |
 
-## アプリ / アクセスパス（8 件）
+## アプリ / アクセスパス（9 件）
 
 | 用語 | 定義 | 関連用語 | 関連手順 |
 |---|---|---|---|
 | <span id="thread">**Thread**</span> | Db2 内のトランザクション実行単位。各 thread は plan/package・isolation level・auth context を持つ。`-DISPLAY THREAD` で確認。 | [Plan](#plan), [Package](#package), [DBAT](#dbat) |  |
+| <span id="dbrm">**DBRM（Database Request Module）**</span> | DB2 precompile（COBOL/PL/I/C 等）が生成する SQL 抽出物。BIND の入力単位で、collection に複数まとめて Package を生成する。Native COBOL 開発の主要中間成果物。 | [Package](#package), [Plan](#plan), [BIND PACKAGE](#bind-package-cmd) |  |
 | <span id="applcompat">**Application Compatibility（APPLCOMPAT）**</span> | アプリレベルでサポートする SQL 機能セット（V11R1 / V12R1 / V13R1 / V13R1M501 等）。BIND の `APPLCOMPAT` 句、または動的 SQL の `SET CURRENT APPLICATION COMPATIBILITY` で指定。Function Level と独立に制御可。 | [Function Level](#function-level), [Package](#package) | [cfg-applcompat-set](08-config-procedures.md#cfg-applcompat-set) |
 | <span id="access-path">**Access Path**</span> | Optimizer が選んだ SQL の実行戦略（index scan / table scan / merge join / nested loop / hash join 等）。EXPLAIN で確認。 | [EXPLAIN](#explain), [PLAN_TABLE](#plan-table), [Catalog Statistics](#catalog-statistics) |  |
 | <span id="explain">**EXPLAIN**</span> | SQL の access path を PLAN_TABLE 等に書出すコマンド。性能チューニングの第一手。 | [Access Path](#access-path), [PLAN_TABLE](#plan-table) |  |

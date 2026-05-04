@@ -240,9 +240,21 @@ Db2 12（FL510 等）で稼働中のサブシステムを Db2 13 に移行。Con
 11. **FL501 activate（SQL Data Insights 含む）** → [uc-functionlevel-activate](12-use-cases.md#uc-functionlevel-activate)
 12. **必要なら SQL DI 学習** → [uc-sqldi-model-train](12-use-cases.md#uc-sqldi-model-train)
 
+#### Phase 6: 最新 FL（FL510 → FL513）への引き上げ
+
+Continuous Delivery で順次拡張された FL を計画的に活性化する。本サイト記載時点の最新は **FL513**。
+
+13. **DSNZPARM 確認 + DESCRIPTOR レベル整合**: `DESCSTAT` 系の DSNZPARM（DESCRIPTOR の挙動）と APPLCOMPAT の現行値を `-DISPLAY GROUP DETAIL` で確認し、FL510/FL511/FL512/FL513 で要求される前提値に揃える。
+
+14. **CATMAINT で Catalog Level を引き上げ**: 各 FL 活性化前に CATMAINT UPDATE LEVEL(V13R1MNNN) を投入（IBM Migration Guide のフロー）。
+
+15. **直前 FL を順番に activate**: FL501 → FL502 → ... → FL510 → FL511 → FL512 → FL513 のように、間を飛ばさず順番に `-ACTIVATE FUNCTION LEVEL(V13R1MNNN)`。`-DISPLAY GROUP DETAIL` の `HIGHEST POSSIBLE FUNCTION LEVEL` が当該 FL を含むことを毎回確認。
+
+16. **FL513 activate**: 最終的に `-ACTIVATE FUNCTION LEVEL(V13R1M513)` で最新 FL を有効化。`-DISPLAY GROUP DETAIL` で `CURRENT FUNCTION LEVEL = V13R1M513` を確認。新 FL で追加された SQL 構文 / utility オプションは APPLCOMPAT 側でも段階適用（既存アプリへの影響を制御）。
+
 ### ポイント
 
-FL500 activation 後は Db2 12 への fallback 不可。activation 前に必ず image copy / DR 計画を確認。`-DISPLAY GROUP DETAIL` の `HIGHEST POSSIBLE FUNCTION LEVEL` で次の到達可能 FL を把握。
+FL500 activation 後は Db2 12 への fallback 不可。activation 前に必ず image copy / DR 計画を確認。`-DISPLAY GROUP DETAIL` の `HIGHEST POSSIBLE FUNCTION LEVEL` で次の到達可能 FL を把握。FL510 → FL513 の引き上げは、PTF/APAR の前提が満たされていない場合 `-DISPLAY GROUP DETAIL` で次 FL が `HIGHEST POSSIBLE FUNCTION LEVEL` に出ない（FL511 で止まる等）ため、HOLDDATA + PSP（Preventive Service Planning）バケットで前提を満たす作業が並走する。
 
 ---
 

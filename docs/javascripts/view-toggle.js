@@ -62,7 +62,15 @@
 
   function updateButtonLabel() {
     var btn = document.getElementById('pc-view-btn');
-    if (btn) btn.textContent = labelFor(getMode());
+    if (!btn) return;
+    /* db2 v1.1 fix: read actual viewport meta, not just localStorage.
+       On Db2 pages we observed a stale-state race where mode === 'desktop'
+       but label still showed the auto label. Cross-check against the live
+       viewport meta so the label always reflects what the user sees. */
+    var meta = document.querySelector('meta[name="viewport"]');
+    var content = meta ? (meta.getAttribute('content') || '') : '';
+    var isDesktop = (getMode() === 'desktop') || /width=1280/.test(content);
+    btn.textContent = isDesktop ? '📱 モバイル表示' : '💻 PC表示';
   }
 
   function applyAll() {

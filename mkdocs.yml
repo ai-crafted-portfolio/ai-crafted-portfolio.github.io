@@ -106,6 +106,20 @@ nav:
         - 05. 関連製品連携: products/windows-server-2022/05-related.md
         - 06. 出典一覧: products/windows-server-2022/06-sources.md
     - z/OS 系:
+      - z/OS 3.1:
+        - 概要: products/z-os-3-1/index.md
+        - 01. コマンド一覧: products/z-os-3-1/01-commands.md
+        - 02. 設定値一覧: products/z-os-3-1/02-settings.md
+        - 03. 用語集: products/z-os-3-1/03-glossary.md
+        - 04. プレイブック: products/z-os-3-1/04-playbook.md
+        - 05. トラブル早見表: products/z-os-3-1/05-troubleshooting.md
+        - 06. マニュアル参照マップ: products/z-os-3-1/06-manual-map.md
+        - 07. 出典一覧: products/z-os-3-1/07-sources.md
+        - 08. 設定手順: products/z-os-3-1/08-config-procedures.md
+        - 09. 障害対応手順: products/z-os-3-1/09-incident-procedures.md
+        - 10. 対象外項目: products/z-os-3-1/10-out-of-scope.md
+        - 11. シナリオ別ガイド: products/z-os-3-1/11-scenarios.md
+        - 12. ユースケース集: products/z-os-3-1/12-use-cases.md
       - z/OS システムプログラミング (ABCs):
         - 概要: products/zos-system-programming/index.md
         - 00. 概要: products/zos-system-programming/00-overview.md

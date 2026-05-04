@@ -7,4 +7,4 @@
 
 | 公開日 | タイトル | 概要 |
 |---|---|---|
-| 2026-04 | [z/OS 運用資材の軽量ライブラリ管理ツール](zos-library-management/index.md) | Excel/VBA + 3270 エミュレータによる Change Tracker 軽量代替の検討（IBM 公式マニュアル 21 出典に基づく / 全 175 ページ構成、§K-1〜§K-12 で PARMLIB/PROCLIB の標準メンバ 140 件を網羅） |
+| 2026-04 | [z/OS 運用資材の軽量ライブラリ管理ツール](zos-library-management/index.md) | Excel/VBA + 3270 エミュレータによる Change Tracker 軽量代替の検討（IBM 公式マニュアル 21 出典に基づく / 全 175 ページ構成、§K-1〜§K-12 で PARMLIB/PROCLIB の標準メンバ 140 件を網羅）。**検討資料・設計提案。z/OS の運用リファレンスは [products/z-os-3-1](../products/z-os-3-1/) を参照。** |

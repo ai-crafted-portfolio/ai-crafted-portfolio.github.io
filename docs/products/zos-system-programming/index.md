@@ -1,5 +1,12 @@
 # z/OS システムプログラミング (ABCs)
 
+!!! info "本ページの位置付け / 関連ページ"
+    本ページは **IBM Redbooks「ABCs of z/OS System Programming」13 巻ベースの教材構造化**（7 シート）。Sysprog 視点で「何が何のためにあるか」を学習・俯瞰する用途。
+
+    z/OS 関連の他資料：
+    - **[z/OS 3.1](../z-os-3-1/)** — 公式マニュアル系の運用リファレンス（13 章）。日々の運用で「やり方」を引く用途。
+    - **[discussions/zos-library-management](../../discussions/zos-library-management/)** — ChangeTracker 代替ツールの設計提案（検討中、製品リファレンスではない）。
+
 > z/OS のシステムプログラミング基礎（ABCs of z/OS）。SMS/JES2/RACF/USS 等の中核領域。
 
 **カテゴリ**: z/OS 系

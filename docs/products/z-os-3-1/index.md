@@ -1,5 +1,12 @@
 # z/OS 3.1
 
+!!! info "本ページの位置付け / 関連ページ"
+    本ページは **z/OS 3.1 公式マニュアル系の運用リファレンス**（13 章）。日々の運用で「どのコマンドを叩くか」「どの PARMLIB メンバを編集するか」「障害発生時の切り分け手順」を引く用途に最適化。
+
+    z/OS 関連の他資料：
+    - **[z/OS システムプログラミング (ABCs)](../zos-system-programming/)** — ABCs Redbooks 13 巻ベースの Sysprog 教材構造化（7 シート）。学習・全体俯瞰の用途。
+    - **[discussions/zos-library-management](../../discussions/zos-library-management/)** — ChangeTracker 代替ツールの設計提案（検討中、製品リファレンスではない）。
+
 > IBM Z メインフレームの 64-bit エンタープライズ OS。**13 章構成**で staple なコマンド・設定・用語・手順 + シナリオ別ガイド + ユースケース集を整理。**v3 でレビュー B → A 改善（仮説分岐 / 期待出力 / 図表拡張）**。
 
 **カテゴリ**: z/OS 系 / メインフレーム OS

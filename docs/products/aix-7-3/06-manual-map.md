@@ -1,39 +1,30 @@
-# AIX 7.3 — マニュアル参照マップ（31 テーマ）
+# マニュアル参照マップ
 
-もっと深掘りなら公式マニュアルのこの章。テーマ別に推奨マニュアルと参照箇所をマッピング。
+> 掲載：**22 テーマ（**全 URL 必須**）**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
+
+v3 で「URL 列がそもそも存在しない」と批判されたのを是正。22 テーマすべてに IBM Docs deep link を付与。
 
 | テーマ | 公式マニュアル | 参照章・観点 | 出典 |
 |---|---|---|---|
-| インストール / マイグレーション | Installation and Migration | 全体（特に 7.1/7.2 → 7.3 マイグレーション、NIM、alt_disk_install） | S18 |
-| クイックインストール | AIX Version 7.3 Quick Installation Guide | DVD/USB からの新規導入 | S28 |
-| OS 運用全般 | Operating System Management | 日常運用、SMIT、cron、users/groups | S24 |
-| デバイス管理 | Device Management | chdev / lsdev / cfgmgr / MPIO | S12 |
-| ネットワーク | Networking | TCP/IP、SMB、SSH、NFS、BIND、NTP | S22 |
-| NIS / NFS | Network Information Services | NIS、Automount、NFS-V4 ID マッピング | S23 |
-| 性能管理 | Performance Management | VMM / scheduler / I/O tunable、topas、AME | S25 |
-| 性能ツール | Performance Tools Guide and Reference | sar、tprof、curt、splat、filemon、perfagent | S26 |
-| セキュリティ | Security | RBAC、AIXPert、TE、IPsec、PKS、暗号化LV | S32 |
-| クラスタ | Cluster Aware AIX | CAA、リポジトリディスク、clmgr | S6 |
-| WPAR | IBM Workload Partitions for AIX | system / application WPAR、WLM 連携 | S75 |
-| コマンド網羅 a-k | Commands Reference, Volume 1 | コマンド a-k 全引用 | S7 |
-| コマンド網羅 l-r | Commands Reference, Volume 2 | コマンド l-r 全引用 | S8 |
-| コマンド網羅 s-z | Commands Reference, Volume 3 | コマンド s-z 全引用 | S9 |
-| カーネル | Kernel Technical Reference / Kernel Extensions and Device Support Programming | カーネル、デバイスドライバ、LKU | S21, S20 |
-| プログラミング | General Programming Concepts / Communications Programming Concepts | スレッド、IPC、共有メモリ、通信プログラミング | S16, S10 |
-| 診断 | Diagnostic Subsystem | diag、ハードウェア診断スケジューリング | S13 |
-| 暗号アクセラレータ | CCA Cryptographic Coprocessor (4765/4767) | PCIe Crypto Coprocessor、PKS 連携 | S4, S5 |
-| ASO/DSO | AIX Dynamic System Optimizer | 自動最適化、large page、prefetch | S33 |
-| 印刷 | Printers and printing | qconfig、bsh、enscript | S27 |
-| アカウンティング | Accounting Services | acct、acctcom、turnacct | S1 |
-| アセンブラ | Assembler Language Reference | POWER アセンブリ命令 | S2 |
-| ファイル形式 | Files Reference | /etc/* 全フォーマット | S15 |
-| BOS 技術詳細 | Base Operating System Technical Reference | BOS の API / システムコール | S3 |
-| 国際化 | Internationalization Programming | locale、コードページ | S17 |
-| ESA | Electronic Service Agent for AIX | esagent、コールホーム | S14 |
-| RDMA | RDMA | RoCE、InfiniBand 概念 | S29 |
-| カーネルデバッガ | Kernel Debugger | kdb、システムダンプ解析 | S19 |
-| 通信技術詳細 | Communication Technical Reference | 通信 API 全リファレンス | S11 |
-| What's new in AIX 7.3.3 | AIX 7.3 Web — What's new | TL3 / SP1 の新規追加機能サマリ | S34 |
-| AIX 7.3.3 Release Notes | AIX 7.3 Web — Release Notes | 既知の問題・廃止項目・互換性情報 | S35 |
-
-[← AIX 7.3 トップへ](index.md)
+| 概要・新機能 | [AIX 7.3.4 Release Notes](https://www.ibm.com/docs/en/aix/7.3.0?topic=notes-aix-734-release) | What's new in AIX 7.3.4 / TL4 | S_AIX73_release_notes_734 |
+| インストール（新規） | [Installing AIX](https://www.ibm.com/docs/en/aix/7.3?topic=installing) | Installation overview / Quick installation | S_AIX73_install |
+| インストール（マイグレーション） | [Installation and migration](https://www.ibm.com/docs/en/aix/7.3?topic=migrating) | Migration installation / NIM-assisted migration | S_AIX73_install |
+| コマンドリファレンス | [AIX Commands Reference](https://www.ibm.com/docs/en/aix/7.3?topic=reference-commands) | Volume 1〜6（コマンド ABC 順） | S_AIX73_commands1 |
+| ファイルリファレンス | [Files Reference](https://www.ibm.com/docs/en/aix/7.3?topic=reference-files) | /etc/* 各設定ファイルの形式 | S_AIX73_filesreference |
+| LVM（VG/LV） | [Logical Volume Manager](https://www.ibm.com/docs/en/aix/7.3?topic=storage-logical-volume-manager-lvm) | VG/LV/PV 概念、scalable VG、ミラー | S_AIX73_lvm |
+| JFS2 ファイルシステム | [Operating system management](https://www.ibm.com/docs/en/aix/7.3?topic=concepts-jfs2) | JFS2 file system / quota / snapshot | S_AIX73_jfs2 |
+| デバイス管理 | [Device management](https://www.ibm.com/docs/en/aix/7.3?topic=management-device) | MPIO / FC / SCSI / cfgmgr / chdev | S_AIX73_devicemanagement |
+| ネットワーク (TCP/IP) | [Networking](https://www.ibm.com/docs/en/aix/7.3?topic=networking) | TCP/IP / EtherChannel / VLAN / VIPA | S_AIX73_network |
+| NFS | [Networking — NFS](https://www.ibm.com/docs/en/aix/7.3?topic=services-network-file-system) | NFS server/client、nfso、/etc/exports | S_AIX73_network |
+| 性能管理 | [Performance management](https://www.ibm.com/docs/en/aix/7.3?topic=management-performance) | VMM / scheduler / I/O / tunable | S_AIX73_performance |
+| 性能ツール | [Performance Tools Guide and Reference](https://www.ibm.com/docs/en/aix/7.3?topic=tools-performance) | topas / nmon / sar / lvmstat | S_AIX73_performance |
+| Tunable Parameters Reference | [Performance management — Tunable Parameters](https://www.ibm.com/docs/en/aix/7.3?topic=concepts-tunable-parameters) | vmo / no / nfso / ioo / schedo の全 tunable | S_AIX73_performance |
+| セキュリティ | [Security](https://www.ibm.com/docs/en/aix/7.3?topic=security) | RBAC / Domain RBAC / Trusted Execution / EFS | S_AIX73_security |
+| Trusted AIX (BAS+EAL4+) | [Security — BAS+EAL4+ system configuration](https://www.ibm.com/docs/en/aix/7.3.0?topic=4-baseal4-system-configuration) | Trusted AIX install option（v3 の「削除」記述は誤り） | S_AIX73_security |
+| RBAC | [Security — RBAC](https://www.ibm.com/docs/en/aix/7.3.0?topic=control-domain-rbac) | role / authorization / privilege、Domain RBAC | S_AIX73_security |
+| OpenSSL / OpenSSH | [Security — OpenSSL on AIX](https://www.ibm.com/support/pages/downloading-and-installing-or-upgrading-openssl-and-openssh) | OpenSSL 3.0 移行、TL3 SP1 = 3.0.15.1001 | S_AIX73_security |
+| Cluster Aware AIX | [Cluster Aware AIX](https://www.ibm.com/docs/en/aix/7.3?topic=availability-cluster-aware-aix-caa) | Cluster Repository / clmgr / RSCT 3.3.0.0 | S_AIX73_cluster |
+| WPAR | [Workload Partitions](https://www.ibm.com/docs/en/aix/7.3?topic=management-workload-partitions) | system WPAR / application WPAR / WLM | S_AIX73_workloadpartitions |
+| Live Update | [Networking — Live Update](https://www.ibm.com/docs/en/aix/7.3.0?topic=update-live-library-llu) | LKU（Live Kernel Update）、LLU（Live Library Update） | S_AIX73_release_notes |
+| errpt / errnotify ワークフロー | [Operating system management — Error logging](https://www.ibm.com/docs/en/aix/7.3?topic=management-error-logging) | errpt, errdemon, errnotify, snap | S_AIX73_osmanagement |
+| SMIT 利用 | [Operating system management — SMIT](https://www.ibm.com/docs/en/aix/7.3?topic=interface-system-management) | smit/smitty fastpath、/smit.script の利用 | S_AIX73_osmanagement |

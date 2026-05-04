@@ -1,85 +1,48 @@
-# AIX 7.3 — 出典一覧（全 75 source、自動採番 S1..S75）
+# 出典一覧
 
-ChromaDB の `embedding_metadata` から取得した全 source。本文引用 = 各セクションで `[SX]` として参照されたか。
+> 掲載：**40 件**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-| 出典ID | source 名 | 言語 | 形式 | マニュアル名 | フォーム番号 | 本文引用 |
-|---|---|---|---|---|---|---|
-| S1 | `AIX73_accounting_en` | en | PDF | Accounting Services | SC23-? | ✓ |
-| S2 | `AIX73_assembler_en` | en | PDF | Assembler Language Reference | SC23-? | ✓ |
-| S3 | `AIX73_bostechref_en` | en | PDF | Base Operating System Technical Reference | SC23-? | ✓ |
-| S4 | `AIX73_cca4765_en` | en | PDF | CCA Cryptographic Coprocessor (4765) | SC23-? | ✓ |
-| S5 | `AIX73_cca4767_en` | en | PDF | CCA Cryptographic Coprocessor (4767) | SC23-? | ✓ |
-| S6 | `AIX73_cluster_en` | en | PDF | Cluster Aware AIX | SC23-? | ✓ |
-| S7 | `AIX73_commands1_en` | en | PDF | Commands Reference, Volume 1 | SC23-? | ✓ |
-| S8 | `AIX73_commands2_en` | en | PDF | Commands Reference, Volume 2 | SC23-? | ✓ |
-| S9 | `AIX73_commands3_en` | en | PDF | Commands Reference, Volume 3 | SC23-? | ✓ |
-| S10 | `AIX73_commprogramming_en` | en | PDF | Communications Programming Concepts | SC23-? | ✓ |
-| S11 | `AIX73_communicationtechref_en` | en | PDF | Communication Technical Reference | SC23-? | ✓ |
-| S12 | `AIX73_devicemanagement_en` | en | PDF | Device Management | SC23-? | ✓ |
-| S13 | `AIX73_diagnosticsubsystem_en` | en | PDF | Diagnostic Subsystem | SC23-? | ✓ |
-| S14 | `AIX73_electronicserviceagent_en` | en | PDF | Electronic Service Agent for AIX | SC23-? | ✓ |
-| S15 | `AIX73_filesreference_en` | en | PDF | Files Reference | SC23-? | ✓ |
-| S16 | `AIX73_generalprogramming_en` | en | PDF | General Programming Concepts | SC23-? | ✓ |
-| S17 | `AIX73_globalization_en` | en | PDF | Internationalization Programming | SC23-? | ✓ |
-| S18 | `AIX73_install_en` | en | PDF | Installation and Migration | SC23-? | ✓ |
-| S19 | `AIX73_kerneldebugger_en` | en | PDF | Kernel Debugger | SC23-? | ✓ |
-| S20 | `AIX73_kernelextension_en` | en | PDF | Kernel Extensions and Device Support Programming | SC23-? | ✓ |
-| S21 | `AIX73_kerneltechref_en` | en | PDF | Kernel Technical Reference | SC23-? | ✓ |
-| S22 | `AIX73_network_en` | en | PDF | Networking | SC23-? | ✓ |
-| S23 | `AIX73_networkinformation_en` | en | PDF | Network Information Services | SC23-? | ✓ |
-| S24 | `AIX73_osmanagement_en` | en | PDF | Operating System Management | SC23-? | ✓ |
-| S25 | `AIX73_performance_en` | en | PDF | Performance Management | SC23-? | ✓ |
-| S26 | `AIX73_performancetools_en` | en | PDF | Performance Tools Guide and Reference | SC23-? | ✓ |
-| S27 | `AIX73_printer_en` | en | PDF | Printers and Printing | SC23-? | ✓ |
-| S28 | `AIX73_quickinstall73_en` | en | PDF | AIX Version 7.3 Quick Installation Guide | SC23-? | ✓ |
-| S29 | `AIX73_rdma_en` | en | PDF | RDMA | SC23-? | ✓ |
-| S30 | `AIX73_rnbase730_en` | en | PDF | AIX 7.3 Base Release Notes | SC23-? | ✓ |
-| S31 | `AIX73_rnexp730_en` | en | PDF | AIX 7.3 Expansion Pack Release Notes | SC23-? | — |
-| S32 | `AIX73_security_en` | en | PDF | Security | SC23-? | ✓ |
-| S33 | `AIX73_systemoptimizer_en` | en | PDF | AIX Dynamic System Optimizer | SC23-? | ✓ |
-| S34 | `AIX73_web_001_whats_new` | en | Web | 001 Whats New (Web) | — | ✓ |
-| S35 | `AIX73_web_003_release_notes_733` | en | Web | 003 Release Notes 733 (Web) | — | ✓ |
-| S36 | `AIX73_web_005_install_overview` | en | Web | 005 Install Overview (Web) | — | — |
-| S37 | `AIX73_web_007_install_nimadm` | en | Web | 007 Install Nimadm (Web) | — | — |
-| S38 | `AIX73_web_008_install_live_update` | en | Web | 008 Install Live Update (Web) | — | — |
-| S39 | `AIX73_web_009_install_tips` | en | Web | 009 Install Tips (Web) | — | — |
-| S40 | `AIX73_web_010_sys_lvm` | en | Web | 010 Sys Lvm (Web) | — | ✓ |
-| S41 | `AIX73_web_012_sys_backup` | en | Web | 012 Sys Backup (Web) | — | ✓ |
-| S42 | `AIX73_web_013_sys_users` | en | Web | 013 Sys Users (Web) | — | ✓ |
-| S43 | `AIX73_web_014_sys_cron` | en | Web | 014 Sys Cron (Web) | — | ✓ |
-| S44 | `AIX73_web_015_sys_dump` | en | Web | 015 Sys Dump (Web) | — | — |
-| S45 | `AIX73_web_016_sys_errlog` | en | Web | 016 Sys Errlog (Web) | — | ✓ |
-| S46 | `AIX73_web_017_sys_wpar` | en | Web | 017 Sys Wpar (Web) | — | — |
-| S47 | `AIX73_web_018_dev_overview` | en | Web | 018 Dev Overview (Web) | — | — |
-| S48 | `AIX73_web_019_dev_scsi` | en | Web | 019 Dev Scsi (Web) | — | — |
-| S49 | `AIX73_web_020_dev_fibre` | en | Web | 020 Dev Fibre (Web) | — | — |
-| S50 | `AIX73_web_021_net_tcpip` | en | Web | 021 Net Tcpip (Web) | — | — |
-| S51 | `AIX73_web_023_net_nfs` | en | Web | 023 Net Nfs (Web) | — | ✓ |
-| S52 | `AIX73_web_024_net_etherchannel` | en | Web | 024 Net Etherchannel (Web) | — | ✓ |
-| S53 | `AIX73_web_025_net_vlan` | en | Web | 025 Net Vlan (Web) | — | — |
-| S54 | `AIX73_web_026_net_smb` | en | Web | 026 Net Smb (Web) | — | ✓ |
-| S55 | `AIX73_web_027_perf_overview` | en | Web | 027 Perf Overview (Web) | — | — |
-| S56 | `AIX73_web_029_perf_vmm` | en | Web | 029 Perf Vmm (Web) | — | — |
-| S57 | `AIX73_web_030_perf_cpu` | en | Web | 030 Perf Cpu (Web) | — | — |
-| S58 | `AIX73_web_031_perf_disk` | en | Web | 031 Perf Disk (Web) | — | — |
-| S59 | `AIX73_web_032_perf_sar` | en | Web | 032 Perf Sar (Web) | — | — |
-| S60 | `AIX73_web_033_sec_overview` | en | Web | 033 Sec Overview (Web) | — | — |
-| S61 | `AIX73_web_035_sec_rbac` | en | Web | 035 Sec Rbac (Web) | — | ✓ |
-| S62 | `AIX73_web_036_sec_audit` | en | Web | 036 Sec Audit (Web) | — | — |
-| S63 | `AIX73_web_037_sec_encryption` | en | Web | 037 Sec Encryption (Web) | — | ✓ |
-| S64 | `AIX73_web_038_sec_trusted_exec` | en | Web | 038 Sec Trusted Exec (Web) | — | — |
-| S65 | `AIX73_web_039_sec_ssh` | en | Web | 039 Sec Ssh (Web) | — | ✓ |
-| S66 | `AIX73_web_040_fs_jfs2` | en | Web | 040 Fs Jfs2 (Web) | — | ✓ |
-| S67 | `AIX73_web_042_fs_snapshot` | en | Web | 042 Fs Snapshot (Web) | — | — |
-| S68 | `AIX73_web_043_fs_quota` | en | Web | 043 Fs Quota (Web) | — | — |
-| S69 | `AIX73_web_044_prog_threads` | en | Web | 044 Prog Threads (Web) | — | — |
-| S70 | `AIX73_web_045_prog_ipc` | en | Web | 045 Prog Ipc (Web) | — | — |
-| S71 | `AIX73_web_046_prog_shared_mem` | en | Web | 046 Prog Shared Mem (Web) | — | — |
-| S72 | `AIX73_web_047_prog_dlpar` | en | Web | 047 Prog Dlpar (Web) | — | ✓ |
-| S73 | `AIX73_web_048_ha_cluster` | en | Web | 048 Ha Cluster (Web) | — | — |
-| S74 | `AIX73_web_049_ha_live_update` | en | Web | 049 Ha Live Update (Web) | — | — |
-| S75 | `AIX73_workloadpartitions_en` | en | PDF | IBM Workload Partitions for AIX | SC23-? | ✓ |
+本サイト本文で参照する出典のみを掲載（v3 の 75 件中 27 件が本文で一度も引用されていなかった問題を是正）。**全件に URL 必須**。Form 番号は IBM 公式で確定したものだけ記載、不明は `—`（v3 の `SC23-?` プレースホルダを撲滅）。
 
-カバレッジ: 75 source 中 **48 source** (64%) を本文で引用。
-
-[← AIX 7.3 トップへ](index.md)
+| 出典 ID | 正式名称 | 形式 | 言語 | URL |
+|---|---|---|---|---|
+| `S_AIX73_release_notes` | AIX 7.3 Release Notes | Web | en | <https://www.ibm.com/docs/en/aix/7.3.0?topic=notes-aix-73-release> |
+| `S_AIX73_release_notes_733` | AIX 7.3.3 Release Notes | Web | en | <https://www.ibm.com/docs/en/aix/7.3.0?topic=notes-aix-733-release> |
+| `S_AIX73_release_notes_734` | AIX 7.3.4 / TL4 Release Notes (2025-12) | Web | en | <https://www.ibm.com/docs/en/aix/7.3.0?topic=notes-aix-734-release> |
+| `S_AIX73_install` | Installing and managing AIX | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=installing> |
+| `S_AIX73_install_quick` | AIX Version 7.3 Quick Installation Guide | PDF | en | <https://www.ibm.com/docs/en/ssw_aix_73/pdf/quickinstall73.pdf> |
+| `S_AIX73_osmanagement` | Operating system management | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=management-operating-system> |
+| `S_AIX73_devicemanagement` | Device management | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=management-device> |
+| `S_AIX73_network` | Networking | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=networking> |
+| `S_AIX73_nfso` | nfso command (NFS tunables) | Web | en | <https://www.ibm.com/docs/en/aix/7.3.0?topic=n-nfso-command> |
+| `S_AIX73_performance` | Performance management | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=management-performance> |
+| `S_AIX73_security` | Security | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=security> |
+| `S_AIX73_baseal4` | BAS+EAL4+ system configuration (Trusted AIX) | Web | en | <https://www.ibm.com/docs/en/aix/7.3.0?topic=4-baseal4-system-configuration> |
+| `S_AIX73_trusted_install` | AIX trusted installation | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=updates-aix-trusted-installation> |
+| `S_AIX73_domain_rbac` | Domain RBAC | Web | en | <https://www.ibm.com/docs/en/aix/7.3.0?topic=control-domain-rbac> |
+| `S_AIX73_cluster` | Cluster Aware AIX | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=availability-cluster-aware-aix-caa> |
+| `S_AIX73_workloadpartitions` | IBM Workload Partitions for AIX | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=management-workload-partitions> |
+| `S_AIX73_lvm` | Logical Volume Manager (LVM) | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=storage-logical-volume-manager-lvm> |
+| `S_AIX73_jfs2` | JFS2 file system | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=concepts-jfs2> |
+| `S_AIX73_filesreference` | Files Reference | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=reference-files> |
+| `S_AIX73_commands1` | Commands Reference Volume 1 | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=reference-commands> |
+| `S_AIX73_commands2` | Commands Reference Volume 2 | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=reference-commands> |
+| `S_AIX73_commands3` | Commands Reference Volume 3 | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=reference-commands> |
+| `S_AIX73_commands4` | Commands Reference Volume 4 | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=reference-commands> |
+| `S_AIX73_commands5` | Commands Reference Volume 5 | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=reference-commands> |
+| `S_AIX73_commands6` | Commands Reference Volume 6 | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=reference-commands> |
+| `S_AIX73_systemoptimizer` | AIX Dynamic System Optimizer (ASO/DSO) | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=optimizer-aix-dynamic-system> |
+| `S_AIX73_kerneldebugger` | Kernel Debugger | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=technical-references-kernel-debugger> |
+| `S_AIX73_dlpar` | Dynamic logical partitioning (DLPAR) | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=concepts-dynamic-logical-partitioning> |
+| `S_AIX73_smb` | SMB Client File System | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=services-smb-client-file-system> |
+| `S_AIX73_etherchannel` | EtherChannel | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=communication-etherchannel-ieee-8023ad-link-aggregation> |
+| `S_AIX73_vlan` | Virtual LAN (VLAN) | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=tcp-virtual-local-area-networks> |
+| `S_AIX73_quickinstall73` | AIX Quick Installation Guide 7.3 | PDF | en | <https://www.ibm.com/docs/en/ssw_aix_73/pdf/quickinstall73.pdf> |
+| `S_AIX73_cut_command` | cut command — Cutting sections of text | Web | en | <https://www.ibm.com/docs/en/aix/7.2.0?topic=files-cutting-sections-text-cut-command> |
+| `S_AIX73_j2_dynamic` | j2_dynamicBufferPreallocation (Support note) | Web | en | <https://www.ibm.com/support/pages/blocked-ios-due-buffers-shortage> |
+| `S_AIX73_pksctl` | AIX Key Manager (pksctl) | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=security-aix-key-manager> |
+| `S_AIX73_hdcryptmgr` | hdcryptmgr — encrypted LV | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=encryption-managing-encrypted-logical-volumes-hdcryptmgr> |
+| `S_AIX73_aixpert` | AIX Security Expert (AIXPert) | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=security-aix-expert-aixpert> |
+| `S_AIX73_diag` | Diagnostic subsystem (diag) | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=availability-diagnostic-subsystem> |
+| `S_AIX73_smit` | SMIT — System Management Interface Tool | Web | en | <https://www.ibm.com/docs/en/aix/7.3?topic=interface-system-management-tool-smit> |
+| `S_AIX73_review` | AIX 7.3 v3 Review (本サイト用、2026-05-04) | Internal | ja | — |

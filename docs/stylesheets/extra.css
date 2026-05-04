@@ -80,11 +80,37 @@
   .md-typeset table:not([class]) {
     font-size: 0.7rem;
   }
+  /* netcool v1.1: scrollwrap div (manually wrapped wide tables) also needs mobile overflow */
+  .md-typeset__scrollwrap {
+    max-width: calc(100vw - 1rem) !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .md-typeset__scrollwrap table {
+    width: max-content;
+    min-width: auto !important;
+    max-width: none;
+    font-size: 0.7rem;
+  }
   /* db2 v1.1: re-enforce 32x32 button on mobile (defensive against JS inline padding) */
+  /* netcool v1.1: hide text via font-size:0, show emoji via ::before keyed on data-mode.
+     - default (mobile mode, no attribute or data-mode='mobile'): 💻 (click to switch to PC)
+     - data-mode='desktop' (PC mode active): 📱 (click to switch back to mobile)         */
   #pc-view-btn {
     padding: 0 !important;
     width: 32px !important;
     height: 32px !important;
+    font-size: 0 !important;
+    overflow: hidden !important;
+  }
+  #pc-view-btn::before {
+    content: "💻";
+    font-size: 18px;
+    line-height: 32px;
+    display: inline-block;
+  }
+  #pc-view-btn[data-mode="desktop"]::before {
+    content: "📱";
   }
 }
 

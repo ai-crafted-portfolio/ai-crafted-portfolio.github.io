@@ -63,14 +63,15 @@
   function updateButtonLabel() {
     var btn = document.getElementById('pc-view-btn');
     if (!btn) return;
-    /* db2 v1.1 fix: read actual viewport meta, not just localStorage.
-       On Db2 pages we observed a stale-state race where mode === 'desktop'
-       but label still showed the auto label. Cross-check against the live
-       viewport meta so the label always reflects what the user sees. */
+    /* db2 v1.1 + netcool v1.1 fix: read actual viewport meta + set data-mode attribute.
+       data-mode is consumed by extra.css ::before pseudo-element on mobile so the 32x32
+       circle shows just the emoji (no text leak), and aria-label keeps a11y intact. */
     var meta = document.querySelector('meta[name="viewport"]');
     var content = meta ? (meta.getAttribute('content') || '') : '';
     var isDesktop = (getMode() === 'desktop') || /width=1280/.test(content);
     btn.textContent = isDesktop ? '📱 モバイル表示' : '💻 PC表示';
+    btn.setAttribute('data-mode', isDesktop ? 'desktop' : 'mobile');
+    btn.setAttribute('aria-label', isDesktop ? 'モバイル表示に切り替え' : 'PC表示に切り替え');
   }
 
   function applyAll() {
@@ -83,9 +84,12 @@
   /* 初回適用：viewport は描画前に確定したい */
   applyAll();
 
+  /* netcool v1.1: 確実な初回適用のため、loading 中なら DOMContentLoaded、
+     load 完了後でも window.load で 1 回再走させる（SPA 遷移時にも data-mode 確定） */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', applyAll);
   }
+  window.addEventListener('load', function () { setTimeout(applyAll, 0); });
 
   /* (1) mkdocs Material の document$ Observable に subscribe */
   function hookDocument$() {

@@ -144,7 +144,21 @@ nav:
         - 05. 関連製品連携: products/zos-system-programming/05-related.md
         - 06. 出典一覧: products/zos-system-programming/06-sources.md
     - 監視・ジョブ運用 系:
-      - Netcool OMNIbus V8.1:
+      - Netcool OMNIbus 8.1:
+        - 概要: products/netcool-omnibus-8-1/index.md
+        - 01. コマンド一覧: products/netcool-omnibus-8-1/01-commands.md
+        - 02. 設定値一覧: products/netcool-omnibus-8-1/02-settings.md
+        - 03. 用語集: products/netcool-omnibus-8-1/03-glossary.md
+        - 04. プレイブック: products/netcool-omnibus-8-1/04-playbook.md
+        - 05. トラブル早見表: products/netcool-omnibus-8-1/05-troubleshooting.md
+        - 06. マニュアル参照マップ: products/netcool-omnibus-8-1/06-manual-map.md
+        - 07. 出典一覧: products/netcool-omnibus-8-1/07-sources.md
+        - 08. 設定手順: products/netcool-omnibus-8-1/08-config-procedures.md
+        - 09. 障害対応手順: products/netcool-omnibus-8-1/09-incident-procedures.md
+        - 10. 対象外項目: products/netcool-omnibus-8-1/10-out-of-scope.md
+        - 11. シナリオ別ガイド: products/netcool-omnibus-8-1/11-scenarios.md
+        - 12. ユースケース集: products/netcool-omnibus-8-1/12-use-cases.md
+      - Netcool OMNIbus V8.1（旧 7 シート）:
         - 概要: products/netcool-omnibus/index.md
         - 00. 概要: products/netcool-omnibus/00-overview.md
         - 01. 構成要素: products/netcool-omnibus/01-components.md

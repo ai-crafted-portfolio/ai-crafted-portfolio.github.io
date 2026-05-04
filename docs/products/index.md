@@ -40,7 +40,8 @@
 | CICS TS 6.x | トランザクションマネージャ | z/OS 上のオンライン業務基盤 | （準備中） | [📥](files/CICS_TS_6.x.xlsx) |
 | IBM MQ 9.3 MFT | メッセージング | MQ Managed File Transfer。マネージド・ファイル転送 | （準備中） | [📥](files/IBM_MQ_9.3_MFT.xlsx) |
 | IBM Workload Automation | ジョブ管理 | TWS。マスタ + FTA でジョブネットを実行 | [詳細](ibm-workload-automation/index.md) | [📥](files/IBM_Workload_Automation.xlsx) |
-| Netcool OMNIbus V8.1 | 監視・運用 | イベント管理・統合監視。プローブ → ObjectServer 集約 | [詳細](netcool-omnibus/index.md) | [📥](files/Netcool_OMNIbus_V8.1.xlsx) |
+| Netcool/OMNIbus 8.1 | 監視・運用 | イベント管理・統合監視。プローブ → ObjectServer 集約。**13 章 + S 級 A/B/C 仮説分岐 + 期待出力** | [詳細](netcool-omnibus-8-1/index.md) | [📥](files/Netcool_OMNIbus_V8.1.xlsx) |
+| Netcool OMNIbus V8.1（旧 7 シート） | 監視・運用 | 旧版（概要俯瞰用、新版 [Netcool/OMNIbus 8.1](netcool-omnibus-8-1/index.md) を推奨） | [詳細](netcool-omnibus/index.md) | — |
 | Tivoli Log File Agent 6.3 | 監視・運用 | ログファイル監視エージェント | （準備中） | [📥](files/Tivoli_Log_File_Agent_6.3.xlsx) |
 | IBM Spectrum Protect 8.1 | バックアップ | エンタープライズ・バックアップ（旧 TSM） | [詳細](ibm-spectrum-protect/index.md) | [📥](files/IBM_Spectrum_Protect_8.1.xlsx) |
 | IBM Guardium Data Protection 12.x | セキュリティ・監査 | DB アクセス監査プラットフォーム。S-TAP / コレクタ / アグリゲータ | [詳細](ibm-guardium-data-protection/index.md) | [📥](files/IBM_Guardium_Data_Protection_12.x.xlsx) |

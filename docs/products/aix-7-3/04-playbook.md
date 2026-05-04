@@ -2,7 +2,7 @@
 
 > 掲載：**3 × 8 = 22 セル（空セル 2）**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-**習熟度（入門/中級/上級）× シーン（構築/日常運用/バックアップ/障害対応/性能/マイグレ/セキュリティ/スケーリング）** のマトリクス。各セル末尾の `→ cfg-xxx` `→ inc-xxx` は [08-設定手順](08-config-procedures.md) / [09-障害対応手順](09-incident-procedures.md) への直接リンク。
+**習熟度（入門/中級/上級）× シーン** のマトリクス。
 
 | 習熟度＼シーン | 構築 | 日常運用 | バックアップ | 障害対応 | 性能 | マイグレ | セキュリティ | スケーリング |
 |---|---|---|---|---|---|---|---|---|
@@ -11,4 +11,4 @@
 | **上級** | NIM サーバ、CAA リポジトリ、PowerHA 連携、暗号化 rootvg | snap でサポート用情報定期取得、性能ベースライン取得（nmon）<br><br>→ [inc-snap-collect](09-incident-procedures.md#inc-snap-collect) | NIM 連携の bootable mksysb、別 LPAR への restore リハーサル<br><br>→ [cfg-mksysb-backup](08-config-procedures.md#cfg-mksysb-backup) | kdb / dbx でカーネル / プロセスダンプ解析、HMC SRC コード解析<br><br>→ [inc-core-dump](09-incident-procedures.md#inc-core-dump), [inc-errpt-hardware-error](09-incident-procedures.md#inc-errpt-hardware-error) | ASO/DSO 利用、large page 適用、AIO チューニング、NUMA awareness | Live Kernel Update、Live Library Update、別 LPAR への nimadm migration | RBAC 設計、Trusted Execution + CHKSHOBJS、AIX Key Manager (PKS)、IPsec | DLPAR でリソース動的増減、LPM で別物理機へ移動、scalable VG（1024 PV） |
 
 !!! note "空セル（2 件）について"
-    入門 × マイグレ、入門 × スケーリング は意図的に空にしています。AIX マイグレーション・LPAR スケーリングは中級以降で扱う作業です。
+    入門 × マイグレ、入門 × スケーリング は意図的に空にしています。

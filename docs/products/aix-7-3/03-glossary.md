@@ -4,8 +4,6 @@
 
 AIX 管理者として知っておくべき用語のみ。コマンドエントリ（errpt 等）は [02. コマンド一覧](01-commands.md) に分離、C 言語 ABI 用語等は [10. 対象外項目](10-out-of-scope.md) 参照。
 
-v3 で欠落していた SMS / NMON / vmstat / cfgmgr / syslogd / AIO / JFS / GPFS / LVCB / VGDA / VGSA / kdb / ML / VxFS（除外側に記載） / gennames（除外側に記載） を追加。
-
 ## コア OS（4 件）
 
 | 用語 | 定義 | 関連用語 | 関連手順 |

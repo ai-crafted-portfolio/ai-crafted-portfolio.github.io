@@ -1,8 +1,8 @@
 # コマンド一覧
 
-> 掲載：**45 コマンド / 325 主要オプション説明**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
+> 掲載：**45 コマンド / 710 全オプション説明**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-AIX 管理者が現場で月1回以上触る定番コマンドのみ。**v5 で各コマンドに主要オプション 5〜10 個の日本語説明**を追加。情報源は IBM AIX 7.3 Commands Reference。
+AIX 管理者が現場で月1回以上触る定番コマンドのみ。**v6 で各コマンドに全オプション**（IBM AIX 7.3 Commands Reference の Flags セクション全件抽出）を日本語説明付きで掲載（合計 710 件、平均 15.8 オプション/コマンド）。
 
 C 言語サブルーチン、廃止コマンド、ニッチ上級コマンドは [10. 対象外項目](10-out-of-scope.md) 参照。
 
@@ -34,20 +34,37 @@ C 言語サブルーチン、廃止コマンド、ニッチ上級コマンドは
 errpt [-a] [-d <Class>] [-s <mmddhhmmyy>] [-N <Resource>]
 ```
 
-**主要オプション**（10 件）:
+**全オプション一覧**（27 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-a` | 詳細形式で表示する（既定はサマリ）。 |
-| `-A` | 1 行サマリで表示する（カウント・最終発生時刻のみ）。 |
-| `-d <Class>` | クラスでフィルタ。H=ハードウェア、S=ソフトウェア、O=オペレータ、U=未定義。 |
-| `-T <Type>` | タイプでフィルタ。INFO / PEND / PERM / PERF / TEMP / UNKN。 |
-| `-j <ID>` | 特定の error ID でフィルタ。 |
-| `-J <Label>` | 特定の LABEL（例: J2_FS_FULL）でフィルタ。 |
-| `-N <Resource>` | 特定リソース（例: hdisk1）のエラーのみ表示。 |
-| `-s <mmddhhmmyy>` | 指定日時以降のエントリのみ表示。 |
-| `-e <mmddhhmmyy>` | 指定日時以前のエントリのみ表示。 |
-| `-c` | 並行（concurrent）モードで表示（リアルタイムで読む）。 |
+| `-@ wpar_name` | 指定 WPAR 名のエラーエントリのみ選択。 |
+| `-a` | 詳細形式で表示。-t と併用時はテンプレート全情報を表示。 |
+| `-A` | 詳細レポートの省略版（label/date/type/resource/desc/data のみ）。-a/-g/-t と併用不可。 |
+| `-c` | concurrent モード。エラー記録時にリアルタイム表示。 |
+| `-d <ErrorClassList>` | クラスでフィルタ。H=ハードウェア、S=ソフトウェア、O=オペレータ、U=未定義。 |
+| `-D` | 重複エラーを集約（数と最初/最後の発生時刻を表示）。-c/-g/-l/-t/-P と併用不可。 |
+| `-e <EndDate>` | 指定日時 mmddhhmmyy 以前のレコードを表示。 |
+| `-F <FlagList>` | Flag によるフィルタ（softerr 等）。 |
+| `-g` | アンフォーマット形式の ASCII 表示。 |
+| `-i <File>` | 代替エラーログファイルを指定。 |
+| `-I <File>` | 代替エラーレコードテンプレートリポジトリを指定。 |
+| `-j <ErrorID>` | 指定 error ID（カンマ区切り可）でフィルタ。 |
+| `-J <ErrorLabel>` | 指定 LABEL（例: J2_FS_FULL）でフィルタ。 |
+| `-k <ErrorID>` | 指定 error ID 以外を表示（exclusion）。 |
+| `-K <ErrorLabel>` | 指定 LABEL 以外を表示（exclusion）。 |
+| `-l <SequenceNumber>` | 指定シーケンス番号のレコードを表示。 |
+| `-m <Machine>` | 指定マシン ID のレコードを表示。 |
+| `-n <Node>` | 指定ノードのレコードを表示。 |
+| `-N <ResourceNameList>` | 指定リソース（例: hdisk1）のエラーのみ表示。 |
+| `-P` | エラー診断パススルー（pass-through）モード。 |
+| `-R <ResourceTypeList>` | 指定リソースタイプでフィルタ。 |
+| `-s <StartDate>` | 指定日時 mmddhhmmyy 以降のレコードを表示。 |
+| `-S <ResourceClassList>` | 指定リソースクラスでフィルタ。 |
+| `-t` | Error Record Template Repository から表示（実エラーログでなく）。 |
+| `-T <ErrorTypeList>` | タイプでフィルタ。INFO / PEND / PERM / PERF / TEMP / UNKN。 |
+| `-y <File>` | 代替エラーレコードテンプレートを使用。 |
+| `-z <File>` | 代替エラーレコードテンプレートファイルを指定。 |
 
 **典型例**:
 
@@ -76,15 +93,19 @@ errpt -d H -s 0501000026  # 5/1 以降のハード障害だけ
 errdemon [-l <ログ>] [-s <サイズ>] [-i <error_template_repository>]
 ```
 
-**主要オプション**（5 件）:
+**全オプション一覧**（9 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-l` | 現在の状態（log file path、サイズ等）を表示する。 |
-| `-s <Size>` | errlog ファイルの最大サイズを設定する（バイト）。 |
-| `-i <File>` | Error Record Template Repository を指定する。 |
-| `-B <Size>` | errlog ファイルの最小バッファサイズを指定する。 |
-| `（オプションなし）` | errdemon を起動する（通常は inittab から自動起動）。 |
+| `-B <BufferSize>` | errlog ファイルのバッファサイズを指定（バイト）。 |
+| `-d` | 重複エラー集約を無効化。 |
+| `-D` | 重複エラー集約を有効化（既定）。 |
+| `-i <File>` | Error Record Template Repository ファイルを指定。 |
+| `-l` | 現在の状態（log path、サイズ、buffer 等）を表示。 |
+| `-m <MaxDups>` | 重複として集約する最大数を指定。 |
+| `-R <enable\|disable>` | errlog の自動 rotate を有効/無効化。 |
+| `-s <LogSize>` | errlog ファイルの最大サイズ（バイト）を指定。 |
+| `-t <Time>` | 重複として扱う時間ウィンドウ（秒）を指定。 |
 
 **典型例**:
 
@@ -113,15 +134,24 @@ errdemon  # 開始（通常 inittab で自動起動）
 errclear [-d <Class>] [-J <Label>] <Days>
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（15 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-d <Class>` | クラスでフィルタして削除（H/S/O/U）。 |
-| `-J <Label>` | 特定 LABEL のエントリを削除。 |
-| `-j <ID>` | 特定 error ID のエントリを削除。 |
-| `-N <Resource>` | 特定リソースのエントリを削除。 |
-| `-y` | 確認プロンプトをスキップする。 |
+| `-d <ErrorClassList>` | クラスでフィルタ削除（H/S/O/U）。 |
+| `-i <File>` | 代替エラーログファイル指定。 |
+| `-j <ErrorID>` | 指定 error ID のエントリを削除。 |
+| `-J <ErrorLabel>` | 指定 LABEL のエントリを削除。 |
+| `-k <ErrorID>` | 指定 error ID 以外を削除（exclusion）。 |
+| `-K <ErrorLabel>` | 指定 LABEL 以外を削除（exclusion）。 |
+| `-l <SequenceNumber>` | 指定シーケンス番号のエントリを削除。 |
+| `-m <Machine>` | 指定マシン ID のエントリを削除。 |
+| `-n <Node>` | 指定ノードのエントリを削除。 |
+| `-N <ResourceNameList>` | 指定リソース（hdisk1 等）のエントリを削除。 |
+| `-R <ResourceTypeList>` | 指定リソースタイプのエントリを削除。 |
+| `-S <ResourceClassList>` | 指定リソースクラスのエントリを削除。 |
+| `-T <ErrorTypeList>` | 指定エラータイプのエントリを削除。 |
+| `-y` | 削除確認プロンプトをスキップ。 |
 | `<Days>` | 指定日数より古いエントリを削除（0 で全削除）。 |
 
 **典型例**:
@@ -151,17 +181,43 @@ errclear -d S 7  # 7 日より古い SW エラーだけ削除
 snap [-a] [-c] [-o <output device>] [-r] <component>
 ```
 
-**主要オプション**（7 件）:
+**全オプション一覧**（33 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-a` | 全コンポーネントの情報を収集する。 |
-| `-c` | 収集後 pax.gz 形式に圧縮する。 |
-| `-r` | 前回の snap データを削除（クリア）。 |
+| `-a` | 全コンポーネントの情報を収集。 |
+| `-A` | ATM 関連情報を収集。 |
+| `-b` | SSA 関連情報を収集。 |
+| `-B` | Boot 関連情報を収集。 |
+| `-c` | 収集後に pax.gz 形式で圧縮。 |
+| `-C` | コアファイルを収集。 |
 | `-d <Dir>` | 出力先ディレクトリを指定（既定 /tmp/ibmsupt）。 |
-| `-o <Device>` | テープなどの出力デバイスへ直接書き出す。 |
-| `-g` | general 情報のみ収集（軽量）。 |
+| `-D` | ダンプ情報を収集。 |
+| `-e` | HACMP 関連情報を収集。 |
+| `-f` | ファイルシステム情報を収集。 |
+| `-F` | WPAR 情報を収集。 |
+| `-g` | general 情報を収集（軽量）。 |
+| `-G` | GPFS 情報を収集。 |
+| `-i` | InfoExplorer 情報を収集。 |
+| `-I` | 印刷関連情報を収集。 |
+| `-k` | Kerberos 関連情報を収集。 |
+| `-l` | LPP 情報を収集。 |
+| `-L` | LVM 情報を収集。 |
+| `-n` | NFS 情報を収集。 |
 | `-N` | ハードウェア構成情報を含めない（高速化）。 |
+| `-o <Device>` | テープなどのデバイスへ直接書き出し。 |
+| `-p` | 印刷情報を収集。 |
+| `-P <PIDs>` | 指定プロセス ID の情報を収集。 |
+| `-r` | 前回の snap データを削除（クリア）。 |
+| `-R <Dir>` | 指定ディレクトリの内容を pax.gz 化。 |
+| `-s` | SNA 関連情報を収集。 |
+| `-S` | SSA 関連情報を収集。 |
+| `-t` | TCP/IP 関連情報を収集。 |
+| `-T <File>` | テープファイル名を指定。 |
+| `-v <Component>` | verbose 出力で指定コンポーネントの情報を収集。 |
+| `-w` | Web 関連情報を収集。 |
+| `-X` | X11 関連情報を収集。 |
+| `-z` | 圧縮レベルを指定。 |
 
 **典型例**:
 
@@ -191,16 +247,20 @@ alog -t <type> -o   # 表示
 alog -t boot -o     # ブートログ表示
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（10 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-t <Type>` | ログタイプを指定（boot / bosinst / cfg / console / nim 等）。 |
+| `-C` | ログをクリアする（current ログをリセット）。 |
+| `-f <FileName>` | 対象ログファイルを直接指定。 |
+| `-L` | 定義済みの全 alog タイプ一覧を表示。 |
 | `-o` | 指定タイプのログ内容を表示する。 |
-| `-L` | 定義済みの全 alog タイプ一覧を表示する。 |
+| `-O` | 出力時に古いほうから新しいほうへの順に表示。 |
 | `-q` | 標準入力をログに書き込む（パイプ用）。 |
-| `-V` | 現在のバッファサイズと出力ファイルを表示する。 |
-| `-C` | ログをクリアする。 |
+| `-s <Size>` | ログファイルの最大サイズ（バイト）を指定。 |
+| `-t <Type>` | ログタイプを指定（boot / bosinst / cfg / console / nim 等）。 |
+| `-V` | 現在のバッファサイズと出力ファイルを表示。 |
+| `-w <FileName>` | alog ファイル属性を再構成。 |
 
 **典型例**:
 
@@ -231,18 +291,24 @@ alog -L  # 定義済 alog タイプ一覧
 lsdev [-C] [-c <Class>] [-t <Type>] [-s <Subclass>]
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（14 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-C` | Customized デバイス（ODM 登録済み）を表示する（既定）。 |
-| `-P` | Predefined デバイス（カーネル既知）を表示する。 |
 | `-c <Class>` | クラスでフィルタ（disk / adapter / tape / printer 等）。 |
-| `-t <Type>` | タイプでフィルタ（fcp / scsi 等）。 |
+| `-C` | Customized デバイス（ODM 登録済み）を表示（既定）。 |
+| `-f <File>` | コマンド入力をファイルから取得。 |
+| `-F <Format>` | カスタム列フォーマットで出力（コロン区切り）。 |
+| `-h` | ヘッダ行を表示。 |
+| `-H` | ヘッダ行を表示（標準形式）。 |
+| `-l <Device>` | 個別デバイスを指定（例: hdisk0）。 |
+| `-p <Parent>` | 指定親デバイス配下の子デバイスを表示。 |
+| `-P` | Predefined デバイス（カーネル既知）を表示。 |
+| `-r <ColumnName>` | 指定列の値の重複なしリストを表示。 |
+| `-R` | リソースのリストを再帰的に表示。 |
 | `-s <Subclass>` | サブクラスでフィルタ。 |
-| `-S <State>` | 状態でフィルタ（Available / Defined）。 |
-| `-l <Device>` | 個別デバイスを指定して表示。 |
-| `-H` | ヘッダ行を表示する。 |
+| `-S <State>` | 状態でフィルタ（Available / Defined / Stopped）。 |
+| `-t <Type>` | タイプでフィルタ（fcp / scsi 等）。 |
 
 **典型例**:
 
@@ -272,17 +338,26 @@ lsdev -Cc tape     # テープ装置
 lsattr -El <Device> [-a <Attribute>]
 ```
 
-**主要オプション**（7 件）:
+**全オプション一覧**（16 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-E` | 現在の effective 値を表示する（最も使うモード）。 |
-| `-D` | default（出荷時）値を表示する。 |
-| `-l <Device>` | 対象デバイスを指定（必須）。 |
 | `-a <Attribute>` | 特定属性のみ表示（複数指定可）。 |
-| `-H` | ヘッダ行を表示する。 |
-| `-O` | コロン区切り形式で出力（スクリプト用）。 |
+| `-c <Class>` | クラス指定（-P と併用）。 |
+| `-D` | default（出荷時）値を表示。 |
+| `-E` | 現在の effective 値を表示（最も使うモード）。 |
+| `-f <File>` | コマンド入力をファイルから取得。 |
 | `-F <Format>` | カスタム列フォーマットで出力。 |
+| `-h` | ヘッダ行を表示。 |
+| `-H` | ヘッダ行を表示（標準形式）。 |
+| `-l <Device>` | 対象デバイスを指定（必須）。 |
+| `-O` | コロン区切り形式で出力（スクリプト用）。 |
+| `-P` | Predefined デバイスの属性を表示。 |
+| `-q <Match>` | 属性値マッチで絞り込み。 |
+| `-R` | 属性の許容値範囲を表示。 |
+| `-s <Subclass>` | サブクラス指定（-P と併用）。 |
+| `-t <Type>` | タイプ指定（-P と併用）。 |
+| `-Z` | 属性が NULL の場合 Z を表示。 |
 
 **典型例**:
 
@@ -312,16 +387,20 @@ lsattr -El ent0 -a media_speed
 chdev -l <Device> -a <Attribute>=<Value> [-P|-T|-U]
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（10 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-l <Device>` | 対象デバイスを指定（必須）。 |
 | `-a <Attr>=<Val>` | 属性と値を指定（複数指定可）。 |
+| `-f <File>` | 属性定義ファイルから一括変更。 |
+| `-h` | コマンド使用法を表示。 |
+| `-l <Device>` | 対象デバイスを指定（必須）。 |
+| `-p <ParentName>` | 指定親デバイスにアタッチ。 |
 | `-P` | ODM のみ更新、次回 boot で実機反映。 |
+| `-q` | quiet モード（メッセージ最小化）。 |
+| `-Q` | サブクラス変更時の確認スキップ。 |
 | `-T` | 実機（カーネル）のみ更新、ODM は変更しない。 |
 | `-U` | ODM と実機を動的に同時更新（オープン中も可）。 |
-| `-f <File>` | 属性定義ファイルから一括変更。 |
 
 **典型例**:
 
@@ -350,16 +429,18 @@ chdev -l ent0 -a jumbo_frames=yes -P  # 次回 boot 反映
 cfgmgr [-v] [-l <Device>]
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（8 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-v` | 詳細メッセージを表示しながら実行する。 |
-| `-l <Device>` | 特定デバイス配下のみ再構成する。 |
+| `-f` | ファースト boot 用 first boot phase 1 のみ実行。 |
 | `-i <Source>` | デバイスドライバの追加 source を指定。 |
+| `-l <Device>` | 特定デバイス配下のみ再構成。 |
 | `-p <Phase>` | 実行フェーズを指定（1=base, 2=disk, 3=others）。 |
-| `-s` | stop after Phase 1（最小構成のみ）。 |
+| `-s` | Phase 1 後に停止（最小構成のみ）。 |
 | `-S` | ファースト boot 用 stripped モード。 |
+| `-T <Timeout>` | I/O タイムアウト値を秒単位で指定。 |
+| `-v` | 詳細メッセージを表示しながら実行。 |
 
 **典型例**:
 
@@ -389,16 +470,20 @@ lspv  # 一覧
 lspv <PV>  # 詳細
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（10 件）:
 
 | オプション | 説明 |
 |---|---|
 | `（引数なし）` | 全 PV の一覧（hdisk名・PVID・所属VG・状態）を表示。 |
 | `<PV>` | 個別 PV の詳細情報を表示。 |
 | `-l <PV>` | PV 上に配置されている LV 一覧を表示。 |
-| `-p <PV>` | PV の PP マッピング（どの LV/LP に割当て済か）を表示。 |
+| `-L <PV>` | PV 上の LV のロック情報を表示。 |
 | `-M <PV>` | PP の物理マッピング詳細を表示。 |
-| `-u` | PV の UUID 形式 ID を表示する。 |
+| `-n <DescriptorPV>` | 代替 VGDA を持つ PV を指定。 |
+| `-p <PV>` | PV の PP マッピング（どの LV/LP に割当て済か）を表示。 |
+| `-P` | PV の物理ボリュームグループ情報を表示。 |
+| `-u` | PV の UUID 形式 ID を表示。 |
+| `-v <VGid>` | 指定 VG の PV のみ表示。 |
 
 **典型例**:
 
@@ -431,16 +516,22 @@ lsvg -l <VG>   # LV 一覧
 lsvg -p <VG>   # PV 一覧
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（12 件）:
 
 | オプション | 説明 |
 |---|---|
 | `（引数なし）` | 全 VG 一覧を表示。 |
 | `<VG>` | 個別 VG の詳細（PP サイズ、空き PP 数、状態等）を表示。 |
+| `-i` | VG リストを標準入力から読む。 |
 | `-l <VG>` | VG 内の LV 一覧と状態（open/syncd, stale 等）を表示。 |
-| `-p <VG>` | VG 内の PV 一覧と各 PV の状態を表示。 |
-| `-M <VG>` | PP の物理マッピングを表示。 |
+| `-L <VG>` | VG のロック取得を試行しない（読み取り専用）。 |
+| `-m <VG>` | PP の物理マッピングを表示。 |
+| `-M <VG>` | VG の詳細マッピングを表示。 |
+| `-n <DescriptorPV>` | 代替 VGDA を持つ PV を指定。 |
 | `-o` | varyon 状態の VG のみ表示。 |
+| `-p <VG>` | VG 内の PV 一覧と各 PV の状態を表示。 |
+| `-P` | VG プールの情報を表示。 |
+| `-T` | VG タイプ情報を表示。 |
 
 **典型例**:
 
@@ -471,15 +562,16 @@ lslv -l <LV>    # PV 別配置
 lslv -m <LV>    # PP マッピング
 ```
 
-**主要オプション**（5 件）:
+**全オプション一覧**（6 件）:
 
 | オプション | 説明 |
 |---|---|
 | `<LV>` | LV の詳細（type、サイズ、ミラー、ポリシー等）を表示。 |
 | `-l <LV>` | PV 別の LP/PP 配置を表示。 |
+| `-L <LV>` | LV のロック状態を表示（lock 取得しない）。 |
 | `-m <LV>` | 各 LP がどの PV のどの PP にあるか詳細マッピング表示。 |
+| `-n <DescriptorPV>` | 代替 VGDA を持つ PV を指定。 |
 | `-p <PV> <LV>` | 指定 PV における LV の物理配置を表示。 |
-| `-L <LV>` | LV のロック状態を表示。 |
 
 **典型例**:
 
@@ -508,17 +600,35 @@ lslv -l hd2  # /usr の物理配置
 mkvg [-S] [-y <VG>] [-s <PP_size>] <PV>
 ```
 
-**主要オプション**（7 件）:
+**全オプション一覧**（25 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-y <VG>` | 作成する VG 名を指定。 |
+| `-B` | Big VG として作成（旧形式、現在は -S 推奨）。 |
+| `-c` | 並行（concurrent）アクセス VG を作成（HACMP 用）。 |
+| `-C` | Enhanced concurrent capable VG を作成。 |
+| `-d <MaxPVs>` | 最大 PV 数を指定（scalable VG 用）。 |
+| `-f` | 強制作成（PV が他 VG に所属していても上書き）。 |
+| `-G <Pool>` | VG プールを指定。 |
+| `-i` | VG 名のリストを標準入力から読む。 |
+| `-I` | ノードロック VG として作成。 |
+| `-l` | ロック付き VG として作成。 |
+| `-L <Ltgsize>` | Logical Track Group サイズ（KB）を指定。 |
+| `-M` | ミラープール対応 VG として作成。 |
+| `-n` | varyon を実行しない（後で手動 varyonvg）。 |
+| `-N` | Quorum 維持なしで varyon。 |
+| `-O` | 上書きモードで varyon。 |
+| `-p` | プライマリパス指定。 |
+| `-P <MaxPP>` | scalable VG の最大 PP 数を指定。 |
+| `-Q` | Quorum 不要で動作する VG を作成（クリティカル VG）。 |
+| `-r <FactorRPV>` | Remote PV 設定。 |
+| `-R <RemotePool>` | Remote プール指定。 |
 | `-s <Size>` | PP サイズを指定（MB 単位、2 のべき乗）。 |
 | `-S` | scalable VG として作成（既定 1024 PV / 256 LV / 32768 PP）。 |
-| `-B` | Big VG として作成（旧形式、現在は -S 推奨）。 |
-| `-f` | 強制作成（PV が他 VG に所属していても上書き）。 |
-| `-n` | varyon を実行しない（後で手動）。 |
+| `-t <Factor>` | 従来 VG の PP 数倍率指定。 |
+| `-V <MajorNum>` | VG メジャー番号を指定。 |
 | `-x <PP数>` | scalable VG の最大 PP 数を指定。 |
+| `-y <VG>` | 作成する VG 名を指定。 |
 
 **典型例**:
 
@@ -546,18 +656,38 @@ mkvg -S -y datavg -s 64 hdisk1 hdisk2  # scalable VG, PP=64MB
 mklv [-y <LV>] [-t <fstype>] [-c <copies>] <VG> <PPs> [<PV>...]
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（28 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-y <LV>` | LV 名を指定（省略時は自動採番 lv00 等）。 |
-| `-t <Type>` | LV タイプ（jfs2 / jfs / sysdump / paging / boot 等）。 |
-| `-c <Copies>` | ミラーコピー数（1〜3）。 |
-| `-s <Strict>` | ミラー strict ポリシー（s=同 PV 不可、p=parallel、n=non-strict）。 |
 | `-a <Position>` | PV 上の物理位置（c=center、e=edge、m=middle、ie=inner edge、im=inner middle）。 |
-| `-e <Range>` | PV 範囲（x=maximum、m=minimum）。 |
-| `-u <Upperbound>` | ミラーで使う PV の最大数。 |
 | `-b <Bbrelocation>` | bad block relocation（y/n）。 |
+| `-c <Copies>` | ミラーコピー数（1〜3）。 |
+| `-C <Stripes>` | stripe 幅（PV 数）を指定。 |
+| `-d <Schedule>` | ミラーの書き込みスケジュール（p=parallel、s=sequential、ps=parallel sequential）。 |
+| `-e <Range>` | PV 範囲（x=maximum、m=minimum）。 |
+| `-i` | LV 名リストを標準入力から読む。 |
+| `-G <FailGroup>` | 障害グループを指定。 |
+| `-L <Label>` | LV ラベルを指定。 |
+| `-m <MapFile>` | PV 配置の map file を指定。 |
+| `-M <Mirror>` | ミラープール名を指定。 |
+| `-N <FirstNode>` | 最初のノード割当を指定。 |
+| `-o <off\|on>` | シリアライゼーション on/off。 |
+| `-p <Permission>` | アクセス権限（rw / r）。 |
+| `-r <Relocation>` | 再配置可否（y / n）。 |
+| `-R <PreferredCopy>` | 希望コピー番号を指定。 |
+| `-s <Strict>` | ミラー strict ポリシー（s=同 PV 不可、p=parallel、n=non-strict）。 |
+| `-S <Stripsize>` | stripe サイズを指定。 |
+| `-t <Type>` | LV タイプ（jfs2 / jfs / sysdump / paging / boot 等）。 |
+| `-T <Strict>` | Inter-physical volume policy。 |
+| `-u <Upperbound>` | ミラーで使う PV の最大数。 |
+| `-U <UserID>` | LV 所有ユーザ ID を指定。 |
+| `-v <Verify>` | verify writes（y/n）。 |
+| `-w <Mwc>` | Mirror Write Consistency 設定（active/passive/off）。 |
+| `-W <Wait>` | wait 設定。 |
+| `-x <MaxLPs>` | LV の最大 LP 数を指定。 |
+| `-y <LV>` | LV 名を指定（省略時は自動採番 lv00 等）。 |
+| `-Y <Prefix>` | LV 名のプレフィックス指定。 |
 
 **典型例**:
 
@@ -588,18 +718,26 @@ mklv -c 2 -s s rootvg 16 hdisk1 hdisk2  # ミラー LV
 df [-g] [-k] [-m] [-i] [<FS>]
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（16 件）:
 
 | オプション | 説明 |
 |---|---|
+| `-A` | 全ファイルシステムタイプを含めて表示。 |
+| `-c` | 出力区切りに `:` を使用（スクリプト用）。 |
+| `-F <vfstype>` | 指定 vfstype の FS のみ表示。 |
 | `-g` | GB 単位で表示（最も読みやすい）。 |
-| `-m` | MB 単位で表示。 |
-| `-k` | KB（1024 バイト）単位で表示。 |
-| `-I` | inode 使用率を含めて表示。 |
 | `-i` | inode 使用率のみ表示。 |
-| `-v` | 全 FS 情報（マウント済 + 未マウント）を表示。 |
+| `-I` | inode 使用率を含めて表示。 |
+| `-k` | KB（1024 バイト）単位で表示。 |
+| `-l` | ローカル FS のみ表示。 |
+| `-m` | MB 単位で表示。 |
+| `-n` | FS タイプも表示。 |
+| `-P` | POSIX 出力フォーマット。 |
+| `-s` | サマリ表示。 |
 | `-t` | FS タイプを表示。 |
-| `<FS>` | 個別 FS のみ表示。 |
+| `-T` | 詳細出力（タイプ列付き）。 |
+| `-v` | 全 FS 情報（マウント済 + 未マウント）を表示。 |
+| `<FS>` | 個別 FS（または対象パス）のみ表示。 |
 
 **典型例**:
 
@@ -630,18 +768,18 @@ chfs -a size=+<追加サイズ> <マウントポイント>
 chfs -a size=<絶対サイズ> <マウントポイント>
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（8 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-a size=+<追加サイズ>` | FS を相対値で拡張（512 ブロック / M / G の単位指定可）。 |
-| `-a size=<絶対サイズ>` | FS サイズを絶対値で設定。 |
-| `-a logname=INLINE` | JFS2 INLINE log に変更。 |
-| `-a quota=<setting>` | クォータ機能有効化（userquota / groupquota）。 |
-| `-a frag=<Size>` | JFS フラグメントサイズを変更（JFS のみ）。 |
+| `-a <Attr>=<Val>` | 属性=値（size/logname/quota/frag/nbpi/options 等）を変更。 |
 | `-A <yes\|no>` | boot 時自動マウントの有無を切り替え。 |
-| `-m <NewMount>` | マウントポイントを変更。 |
 | `-d <Attr>` | 指定属性を削除する。 |
+| `-m <NewMount>` | マウントポイントを変更。 |
+| `-n <NodeName>` | ノード名を変更（クラスタ FS）。 |
+| `-p <Permission>` | FS 権限を変更（ro/rw）。 |
+| `-t <yes\|no>` | 外付け FS 設定（yes=外部、no=内部）。 |
+| `-u <MountGroup>` | マウントグループを変更。 |
 
 **典型例**:
 
@@ -672,16 +810,19 @@ fsck [-y] [-p] [-V <vfstype>] <FS>
 fsck -y /dev/lv01  # LV 直指定
 ```
 
-**主要オプション**（7 件）:
+**全オプション一覧**（10 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-y` | 全ての修復確認に yes と回答（自動修復）。 |
-| `-n` | 全ての修復確認に no と回答（チェックのみ、変更しない）。 |
-| `-p` | 高速モード。修復不要なら何もしない。 |
+| `-c` | JFS の logredo を実行。 |
 | `-f` | 強制チェック（前回 unmount が clean でも実行）。 |
+| `-i <File>` | 代替 i-node テーブルファイルを使用。 |
+| `-n` | 全ての修復確認に no と回答（チェックのみ、変更しない）。 |
+| `-o <Options>` | FS 別オプションを渡す（例: full,nolog）。 |
+| `-p` | 高速モード。修復不要なら何もしない。 |
+| `-t <File>` | 代替テンプファイルを指定。 |
 | `-V <vfstype>` | FS タイプを指定（jfs2 / jfs 等）。 |
-| `-o <Options>` | FS 別オプションを渡す。 |
+| `-y` | 全ての修復確認に yes と回答（自動修復）。 |
 | `<FS>` | 対象 FS（マウントポイントまたは LV パス）。 |
 
 **典型例**:
@@ -713,12 +854,14 @@ fsck -p /home  # 高速チェック
 ifconfig [<Interface>] [up|down] [<IP> netmask <Mask>]
 ```
 
-**主要オプション**（9 件）:
+**全オプション一覧**（14 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-a` | 全インターフェースを表示する。 |
-| `<Interface>` | 個別インターフェース（en0 等）を表示。 |
+| `-a` | 全インターフェースを表示。 |
+| `-l` | 現在動作中のインターフェース名のリストを表示。 |
+| `-d` | down 状態のインターフェースのみ表示。 |
+| `-u` | up 状態のインターフェースのみ表示。 |
 | `up` | インターフェースを有効化する。 |
 | `down` | インターフェースを無効化する。 |
 | `<IP> netmask <Mask>` | IP とサブネットマスクを設定（一時的）。 |
@@ -726,6 +869,9 @@ ifconfig [<Interface>] [up|down] [<IP> netmask <Mask>]
 | `delete <IP>` | IP エイリアスを削除する。 |
 | `mtu <Size>` | MTU サイズを変更する。 |
 | `detach` | インターフェースを ODM から切り離す。 |
+| `arp` | ARP プロトコルを有効化（既定）。 |
+| `-arp` | ARP プロトコルを無効化。 |
+| `media <Type>` | メディアタイプを指定（auto/100_full 等）。 |
 
 **典型例**:
 
@@ -756,19 +902,39 @@ ifconfig en0 192.168.1.10 netmask 255.255.255.0 up
 netstat [-rn] [-an] [-i] [-s] [-v] [-D]
 ```
 
-**主要オプション**（9 件）:
+**全オプション一覧**（29 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-r` | ルーティングテーブルを表示。 |
-| `-n` | 数値形式（DNS 解決しない）で表示。 |
 | `-a` | 全 socket（LISTEN 含む）を表示。 |
-| `-i` | インターフェース統計（パケット数、エラー数）を表示。 |
-| `-s` | プロトコル別統計を表示。 |
-| `-v` | ドライバ詳細統計を表示。 |
+| `-A` | プロトコル制御ブロックアドレスを表示。 |
+| `-b` | システム socket バッファ統計を表示。 |
+| `-B` | buffer 詳細を表示。 |
+| `-c` | メモリプール統計を表示。 |
+| `-C` | ルーティングテーブルを cluster 形式で表示。 |
+| `-d` | ドロップパケット統計を表示。 |
 | `-D` | デバイス別 dropped パケット統計を表示。 |
+| `-e` | 拡張イーサネット統計を表示。 |
+| `-f <AddressFamily>` | 指定アドレスファミリ（inet/inet6/unix）に絞る。 |
+| `-g` | ip マルチキャストグループメンバシップを表示。 |
+| `-i` | インターフェース統計（パケット数、エラー数）を表示。 |
+| `-I <Interface>` | 指定インターフェースの統計を表示。 |
 | `-m` | mbuf（メモリバッファ）使用状況を表示。 |
-| `-p <Proto>` | 特定プロトコル（tcp/udp）に絞る。 |
+| `-M` | ルートマルチキャスト情報を表示。 |
+| `-n` | 数値形式（DNS 解決しない）で表示。 |
+| `-o <Interval>` | ip フラグメント情報を指定間隔で表示。 |
+| `-p <Proto>` | 特定プロトコル（tcp/udp/ip 等）に絞る。 |
+| `-P <PluginName>` | プラグイン情報を表示。 |
+| `-Q` | qos socket 情報を表示。 |
+| `-r` | ルーティングテーブルを表示。 |
+| `-R` | ルーティング更新情報を表示。 |
+| `-s` | プロトコル別統計を表示。 |
+| `-S` | ステートで詳細表示。 |
+| `-t` | TCP socket のみ表示。 |
+| `-T` | TCP 接続のタイマ情報を表示。 |
+| `-u` | UDP socket のみ表示。 |
+| `-v` | ドライバ詳細統計を表示。 |
+| `-V` | VIPA 情報を表示。 |
 
 **典型例**:
 
@@ -802,18 +968,21 @@ no -p -o <T>=<V>         # 永続変更
 no -d <T>                # 既定値復元
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（11 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-a` | 全 tunable と現在値を表示。 |
+| `-c` | 実機と nextboot の値を比較表示。 |
+| `-d <T>` | tunable を既定値に戻す。 |
+| `-D` | 全 tunable を既定値に戻す。 |
+| `-F -o <T>=<V>` | restricted tunable を変更する（強制）。 |
+| `-h <T>` | tunable のヘルプを表示。 |
 | `-L <Tunable>` | tunable の詳細（CUR/DEF/BOOT/MIN/MAX/UNIT/TYPE）を表示。 |
 | `-o <T>=<V>` | tunable を変更（実機のみ、再起動で消える）。 |
 | `-p -o <T>=<V>` | 実機 + nextboot ファイルに永続保存。 |
 | `-r -o <T>=<V>` | nextboot のみ変更（次回起動から有効）。 |
-| `-d <T>` | tunable を既定値に戻す。 |
-| `-D` | 全 tunable を既定値に戻す。 |
-| `-F -o <T>=<V>` | restricted tunable を変更する（強制）。 |
+| `-x` | stanza 形式で全 tunable を表示。 |
 
 **典型例**:
 
@@ -844,17 +1013,20 @@ nfso -L <T>              # 詳細
 nfso -p -o <T>=<V>       # 永続
 ```
 
-**主要オプション**（7 件）:
+**全オプション一覧**（10 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-a` | 全 NFS tunable と現在値を表示。 |
-| `-L <T>` | tunable の詳細を表示。 |
+| `-c` | 実機と nextboot の値を比較表示。 |
+| `-d <T>` | tunable を既定値に戻す。 |
+| `-D` | 全 NFS tunable を既定値に戻す。 |
+| `-h <T>` | tunable のヘルプを表示。 |
+| `-L <T>` | tunable の詳細（CUR/DEF/BOOT/MIN/MAX/UNIT/TYPE）を表示。 |
 | `-o <T>=<V>` | tunable を変更（実機のみ）。 |
 | `-p -o <T>=<V>` | 実機 + nextboot に永続保存。 |
 | `-r -o <T>=<V>` | nextboot のみ変更。 |
-| `-d <T>` | tunable を既定値に戻す。 |
-| `-D` | 全 NFS tunable を既定値に戻す。 |
+| `-x` | stanza 形式で全 tunable を表示。 |
 
 **典型例**:
 
@@ -883,18 +1055,32 @@ nfso -p -o nfs_rfc1323=1
 ping [-c <count>] [-s <size>] <Host>
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（22 件）:
 
 | オプション | 説明 |
 |---|---|
+| `-A` | Audible（応答音）モード。 |
 | `-c <Count>` | 送信回数を指定。 |
-| `-i <Interval>` | 送信間隔（秒）を指定。 |
-| `-s <Size>` | 送信パケットサイズ（バイト）を指定。 |
-| `-w <Timeout>` | 応答待機タイムアウト（秒）。 |
+| `-d` | ソケット debugging を有効化。 |
+| `-D` | DF（Don't Fragment）ビット設定。 |
 | `-f` | flood ping（高速連続送信）— root 権限必要。 |
-| `-q` | quiet モード（最終統計のみ表示）。 |
+| `-i <Interval>` | 送信間隔（秒）を指定。 |
+| `-I <Interface>` | 送信元インターフェースを指定。 |
+| `-l <Preload>` | preload 数（最初の連続送信回数）を指定。 |
+| `-L` | マルチキャスト loop back を抑止。 |
 | `-n` | 数値形式（DNS 解決しない）。 |
+| `-p <Pattern>` | 送信パターンを 16 進数で指定。 |
+| `-P` | Path MTU Discovery モード。 |
+| `-q` | quiet モード（最終統計のみ表示）。 |
+| `-r` | ローカルネットワークに直接送信（gateway 経由しない）。 |
+| `-R` | Record route を要求。 |
+| `-s <Size>` | 送信パケットサイズ（バイト）を指定。 |
 | `-S <Source>` | 送信元 IP を指定（複数 NIC 環境）。 |
+| `-t <TTL>` | TTL（time to live）を指定。 |
+| `-T <Timestamp>` | Timestamp option を要求。 |
+| `-v` | verbose 出力（ICMP packet 全表示）。 |
+| `-V` | version 情報を表示。 |
+| `-w <Timeout>` | 応答待機タイムアウト（秒）。 |
 
 **典型例**:
 
@@ -926,20 +1112,26 @@ vmstat [<interval> [<count>]]
 vmstat -v   # メモリ詳細
 ```
 
-**主要オプション**（10 件）:
+**全オプション一覧**（16 件）:
 
 | オプション | 説明 |
 |---|---|
-| `<Interval> <Count>` | 間隔（秒）と回数を指定して定期表示。 |
-| `-v` | メモリ詳細統計（pin、computational pages、free 等）を表示。 |
-| `-s` | 起動時からの累積統計サマリを表示。 |
-| `-i` | デバイス割り込み統計を表示。 |
+| `-c` | コンテンキストスイッチ統計を表示。 |
 | `-f` | fork/vfork 統計を表示。 |
-| `-w` | wide 出力モード（カラム幅を広げる）。 |
-| `-W` | より詳細な wide モード（worker thread 含む）。 |
+| `-h` | hypervisor 関連統計を表示。 |
+| `-i` | デバイス割り込み統計を表示。 |
+| `-I` | I/O 待ちプロセス数を含めて表示。 |
 | `-l` | large page 統計を含める。 |
 | `-p <PageSize>` | 特定ページサイズに絞る。 |
-| `-I` | I/O 待ちプロセス数を含めて表示。 |
+| `-P all` | 全ページサイズの統計を表示。 |
+| `-s` | 起動時からの累積統計サマリを表示。 |
+| `-S` | page size を別に集計。 |
+| `-t` | 各行にタイムスタンプを付与。 |
+| `-T` | 詳細タイムスタンプを表示。 |
+| `-v` | メモリ詳細統計（pin、computational pages、free 等）を表示。 |
+| `-w` | wide 出力モード（カラム幅を広げる）。 |
+| `-W` | より詳細な wide モード（worker thread 含む）。 |
+| `<Interval> <Count>` | 間隔（秒）と回数を指定して定期表示。 |
 
 **典型例**:
 
@@ -970,19 +1162,36 @@ iostat [-d] [<interval> [<count>]]
 iostat -DRTl  # 詳細出力（read/write 別、レイテンシ）
 ```
 
-**主要オプション**（9 件）:
+**全オプション一覧**（26 件）:
 
 | オプション | 説明 |
 |---|---|
-| `<Interval> <Count>` | 間隔（秒）と回数を指定。 |
-| `-d` | ディスク統計のみ表示（CPU 統計を省略）。 |
-| `-D` | 詳細ディスク統計（read/write 別、レイテンシ）を表示。 |
-| `-T` | 各行にタイムスタンプを付与。 |
-| `-R` | 間隔ごとに統計をリセット。 |
-| `-l` | long listing（フィールド多め）。 |
 | `-a` | アダプタ別統計を表示。 |
 | `-A` | AIO 統計を表示。 |
-| `-p` | PV 別の活動を表示。 |
+| `-b <Buffer>` | I/O blocks 表示。 |
+| `-d` | ディスク統計のみ表示（CPU 統計を省略）。 |
+| `-D` | 詳細ディスク統計（read/write 別、レイテンシ）を表示。 |
+| `-e` | エラー統計を含めて表示。 |
+| `-E <Stats>` | 拡張統計を表示。 |
+| `-f <FsName>` | 指定 FS の統計を表示。 |
+| `-F` | ファイルシステム統計を表示。 |
+| `-l` | long listing（フィールド多め）。 |
+| `-L` | ロック競合統計を表示。 |
+| `-m` | MPIO 統計を表示。 |
+| `-M` | Multi-path 詳細統計を表示。 |
+| `-N` | NFS 統計を表示。 |
+| `-p <Period>` | Period 別に集計。 |
+| `-P` | PV 別の活動を表示。 |
+| `-q` | quiet モード（ヘッダ抑止）。 |
+| `-Q` | QoS 統計を表示。 |
+| `-R` | 間隔ごとに統計をリセット。 |
+| `-s <Sys>` | システム別の統計。 |
+| `-t` | TTY 統計を表示。 |
+| `-T` | 各行にタイムスタンプを付与。 |
+| `-V` | vSCSI 統計を表示。 |
+| `-X` | 詳細サマリ統計。 |
+| `-z` | 起動時からの統計をリセット（root のみ）。 |
+| `<Interval> <Count>` | 間隔（秒）と回数を指定。 |
 
 **典型例**:
 
@@ -1011,18 +1220,33 @@ iostat -DRTl 5 12  # 詳細形式
 topas [-i <interval>] [-P|-D|-L]
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（23 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-i <Interval>` | 更新間隔（秒）を指定。 |
-| `-P` | プロセス詳細表示モード。 |
-| `-D` | ディスク詳細表示モード。 |
-| `-L` | LPAR 統計表示モード。 |
-| `-W` | WPAR 統計表示モード。 |
+| `-a` | AIO 表示モード。 |
+| `-c <Lines>` | プロセス表示行数を指定。 |
 | `-C` | クロスパーティション（HMC 経由）モニタ。 |
-| `-n <Lines>` | プロセス表示行数を指定。 |
+| `-d <Disks>` | ディスクモニタ表示。 |
+| `-D` | ディスク詳細表示モード。 |
+| `-f <Lines>` | ファイルシステム表示行数。 |
+| `-F <FilterValue>` | フィルタ値を指定。 |
+| `-h` | ヘルプ表示。 |
+| `-i <Interval>` | 更新間隔（秒）を指定。 |
+| `-I` | I/O 待ちのプロセスを表示。 |
+| `-L` | LPAR 統計表示モード。 |
+| `-m` | メモリページング情報を表示。 |
+| `-n <Networks>` | ネットワーク表示行数。 |
+| `-N` | NFS 統計表示。 |
+| `-p <Procs>` | プロセス表示数。 |
+| `-P` | プロセス詳細表示モード。 |
+| `-q` | qos 統計を含めて表示。 |
 | `-R <FileName>` | topasrec ファイルを再生する。 |
+| `-T <Lines>` | TTY 統計表示行数。 |
+| `-U` | ユーザ別 CPU 利用率表示。 |
+| `-V` | version 情報を表示。 |
+| `-w <WLM>` | WLM クラス統計表示。 |
+| `-W` | WPAR 統計表示モード。 |
 
 **典型例**:
 
@@ -1055,19 +1279,40 @@ ps aux       # BSD 形式
 ps -eo pid,pcpu,pmem,user,args  # カスタム
 ```
 
-**主要オプション**（9 件）:
+**全オプション一覧**（30 件）:
 
 | オプション | 説明 |
 |---|---|
+| `-a` | セッションリーダ以外の全プロセスを表示（terminal 付き）。 |
+| `-A` | 全プロセスを表示（-e と同じ）。 |
+| `-c <CmdName>` | 指定コマンド名のプロセスを表示。 |
+| `-d` | セッションリーダ以外の全プロセスを表示。 |
 | `-e` | 全プロセスを表示。 |
 | `-f` | 完全（full）形式で表示（UID, PPID, STIME 等）。 |
-| `-l` | long 形式で表示（NI, SZ 等）。 |
-| `-u <User>` | 特定ユーザのプロセスに絞る。 |
-| `-p <PID>` | 特定 PID のみ表示。 |
-| `-T <PID>` | プロセス内のスレッド一覧を表示。 |
-| `-mo THREAD` | 全プロセスのスレッド構造を表示。 |
-| `-eo <Format>` | カスタム列フォーマット（pid,pcpu,pmem,user,args 等）。 |
+| `-F <Format>` | カスタムフォーマットで表示。 |
+| `-g <PgrpList>` | 指定プロセスグループのプロセスを表示。 |
+| `-G <GroupList>` | 指定グループのプロセスを表示。 |
+| `-H` | Hyperthread CPU 情報を表示。 |
+| `-j` | JID/PID/PGID/PPID/Job ID を表示。 |
 | `-k` | カーネルプロセスを含めて表示。 |
+| `-l` | long 形式で表示（NI, SZ 等）。 |
+| `-L` | Light Weight Process（LWP）情報を表示。 |
+| `-m` | プロセス内のスレッドも表示。 |
+| `-mo THREAD` | 全プロセスのスレッド構造を表示。 |
+| `-M <Mode>` | 64bit プロセスのみまたは 32bit プロセスのみ。 |
+| `-n <NameList>` | 代替プロセスデータベースを使用。 |
+| `-o <Format>` | カスタム列フォーマット（pid,pcpu,pmem,user,args 等）。 |
+| `-p <PIDList>` | 指定 PID のみ表示。 |
+| `-P` | 親 PID を含めて表示。 |
+| `-r` | RBAC 関連情報を表示。 |
+| `-s <SidList>` | 指定セッション ID のプロセスを表示。 |
+| `-t <Term>` | 指定端末のプロセスを表示。 |
+| `-T <PID>` | プロセス内のスレッド一覧を表示。 |
+| `-u <UIDList>` | 指定ユーザのプロセスを表示（既定 = 自分）。 |
+| `-U <UIDList>` | 指定ユーザ ID のプロセスを表示。 |
+| `-w` | wide 出力（コマンドライン全体表示）。 |
+| `-X` | 拡張プロセス情報を表示。 |
+| `-Z` | WPAR 名を表示。 |
 
 **典型例**:
 
@@ -1096,16 +1341,22 @@ ps -eo pid,pcpu,pmem,args --sort=-pcpu | head
 kill [-<signal>] <pid>
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（14 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-l` | シグナル一覧を表示。 |
+| `-s <Signal>` | シグナル名指定（例: -s TERM）。 |
 | `<PID>` | デフォルト SIGTERM（15）を送信。 |
+| `-1 <PID>` | SIGHUP（設定再読み込み）を送信。 |
+| `-2 <PID>` | SIGINT（Ctrl+C 相当）を送信。 |
+| `-3 <PID>` | SIGQUIT（core dump 付き終了）を送信。 |
 | `-9 <PID>` | SIGKILL を送信（強制終了、復旧不可）。 |
 | `-15 <PID>` | SIGTERM 明示送信（クリーン終了要求）。 |
 | `-HUP <PID>` | SIGHUP（設定再読み込み）を送信。 |
+| `-INT <PID>` | SIGINT（割り込み）を送信。 |
 | `-USR1 <PID>` | SIGUSR1（アプリ独自処理）を送信。 |
+| `-USR2 <PID>` | SIGUSR2（アプリ独自処理）を送信。 |
 | `-STOP <PID>` | プロセスを一時停止（再開は -CONT）。 |
 | `-CONT <PID>` | 停止中プロセスを再開。 |
 
@@ -1141,19 +1392,21 @@ ioo -L <T>               # 詳細
 ioo -p -o <T>=<V>        # 永続
 ```
 
-**主要オプション**（9 件）:
+**全オプション一覧**（11 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-a` | 全 I/O tunable と現在値を表示。 |
-| `-L <T>` | tunable の詳細を表示。 |
-| `-o <T>=<V>` | tunable を変更（実機のみ）。 |
-| `-p -o <T>=<V>` | 実機 + nextboot に永続保存。 |
-| `-r -o <T>=<V>` | nextboot のみ変更。 |
+| `-c` | 実機と nextboot の値を比較表示。 |
 | `-d <T>` | tunable を既定値に戻す。 |
 | `-D` | 全 I/O tunable を既定値に戻す。 |
 | `-F -o <T>=<V>` | restricted tunable を強制変更。 |
 | `-h <T>` | ヘルプ（tunable 説明）を表示。 |
+| `-L <T>` | tunable の詳細を表示。 |
+| `-o <T>=<V>` | tunable を変更（実機のみ）。 |
+| `-p -o <T>=<V>` | 実機 + nextboot に永続保存。 |
+| `-r -o <T>=<V>` | nextboot のみ変更。 |
+| `-x` | stanza 形式で全 tunable を表示。 |
 
 **典型例**:
 
@@ -1184,18 +1437,21 @@ vmo -L <T>
 vmo -p -o <T>=<V>
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（11 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-a` | 全 VMM tunable と現在値を表示。 |
+| `-c` | 実機と nextboot の値を比較表示。 |
+| `-d <T>` | tunable を既定値に戻す。 |
+| `-D` | 全 VMM tunable を既定値に戻す。 |
+| `-F -o <T>=<V>` | restricted tunable を強制変更。 |
+| `-h <T>` | ヘルプを表示。 |
 | `-L <T>` | tunable の詳細を表示。 |
 | `-o <T>=<V>` | tunable を変更（実機のみ）。 |
 | `-p -o <T>=<V>` | 実機 + nextboot に永続保存。 |
 | `-r -o <T>=<V>` | nextboot のみ変更。 |
-| `-d <T>` | tunable を既定値に戻す。 |
-| `-D` | 全 VMM tunable を既定値に戻す。 |
-| `-F -o <T>=<V>` | restricted tunable を強制変更。 |
+| `-x` | stanza 形式で全 tunable を表示。 |
 
 **典型例**:
 
@@ -1226,18 +1482,21 @@ schedo -L <T>
 schedo -p -o <T>=<V>
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（11 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-a` | 全スケジューラ tunable と現在値を表示。 |
+| `-c` | 実機と nextboot の値を比較表示。 |
+| `-d <T>` | tunable を既定値に戻す。 |
+| `-D` | 全スケジューラ tunable を既定値に戻す。 |
+| `-F -o <T>=<V>` | restricted tunable を強制変更。 |
+| `-h <T>` | ヘルプを表示。 |
 | `-L <T>` | tunable の詳細を表示。 |
 | `-o <T>=<V>` | tunable を変更（実機のみ）。 |
 | `-p -o <T>=<V>` | 実機 + nextboot に永続保存。 |
 | `-r -o <T>=<V>` | nextboot のみ変更。 |
-| `-d <T>` | tunable を既定値に戻す。 |
-| `-D` | 全スケジューラ tunable を既定値に戻す。 |
-| `-F -o <T>=<V>` | restricted tunable を強制変更。 |
+| `-x` | stanza 形式で全 tunable を表示。 |
 
 **典型例**:
 
@@ -1271,18 +1530,32 @@ lslpp -h <fileset>       # 履歴
 lslpp -f <fileset>       # 構成ファイル一覧
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（22 件）:
 
 | オプション | 説明 |
 |---|---|
+| `-a` | 全エントリ（applied/committed 両方）を表示。 |
+| `-B <BlackList>` | ブラックリストファイルを指定。 |
+| `-c` | コロン区切り出力（スクリプト用）。 |
+| `-d <Fileset>` | fileset の依存関係（依存される側）を表示。 |
+| `-e <FilesetList>` | 指定 fileset 以外を表示（exclusion）。 |
+| `-f <Fileset>` | fileset に含まれるファイル一覧を表示。 |
+| `-h <Fileset>` | fileset の install/update 履歴を表示。 |
+| `-i <Fileset>` | fileset 情報（説明等）を表示。 |
+| `-I` | 詳細情報を表示。 |
+| `-J` | JSON 形式で出力。 |
 | `-L` | Software Vital Product Data 形式で表示（最も標準）。 |
 | `-l` | 簡易リスト形式で表示。 |
-| `-h <Fileset>` | fileset の install/update 履歴を表示。 |
-| `-f <Fileset>` | fileset に含まれるファイル一覧を表示。 |
-| `-w <File>` | 指定ファイルがどの fileset に属するかを表示。 |
+| `-m <Fileset>` | fileset の Distributor の情報を表示。 |
+| `-O <Source>` | 代替 install ソースを表示。 |
 | `-p <Fileset>` | fileset の前提（prerequisites）を表示。 |
-| `-d <Fileset>` | fileset の依存関係（依存される側）を表示。 |
-| `-J` | JSON 形式で出力。 |
+| `-q` | quiet モード（ヘッダ抑止）。 |
+| `-r` | RPM パッケージのみ表示。 |
+| `-s <Fileset>` | fileset のサイズを表示。 |
+| `-S <Type>` | Type 別の表示（C=committed, A=applied）。 |
+| `-u <Fileset>` | fileset の supersede 情報を表示。 |
+| `-w <File>` | 指定ファイルがどの fileset に属するかを表示。 |
+| `-X` | 拡張情報を含めて表示。 |
 
 **典型例**:
 
@@ -1314,19 +1587,45 @@ installp -p -aXd <Source> <Fileset>   # プレビュー
 installp -L                          # 適用済一覧
 ```
 
-**主要オプション**（10 件）:
+**全オプション一覧**（36 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-a` | 適用（apply）モード。 |
+| `-A` | fileset の前提も含めて apply。 |
+| `-b` | broker mode（NIM 用）。 |
+| `-B` | broker mode（NIM 用、別動作）。 |
 | `-c` | commit モード（applied → committed）。 |
-| `-r` | reject モード（applied 状態を取消）。 |
-| `-u` | uninstall（fileset 削除）。 |
-| `-X` | FS が小さければ自動拡張する。 |
+| `-C` | fileset の cleanup モード。 |
 | `-d <Source>` | ソース（DVD、ディレクトリ等）を指定。 |
+| `-D <Device>` | 代替デバイスを指定。 |
+| `-e <Log>` | ログファイル指定。 |
+| `-E` | ライセンス受諾を確認モードで表示。 |
+| `-f <File>` | fileset リストをファイルから取得。 |
+| `-F` | force install（既存より古いバージョンも上書き）。 |
+| `-g` | 事前要件 fileset を自動 install。 |
+| `-G` | GUI モードを起動。 |
+| `-i` | i 状態（installed）の fileset を出力。 |
+| `-j <Function>` | specific 関数のみ実行。 |
+| `-J` | ライセンス情報を表示。 |
+| `-l` | fileset リストをローカルから収集。 |
+| `-L` | 適用済 fileset 情報を出力。 |
+| `-M <Platform>` | プラットフォーム指定（POWER/RS6K 等）。 |
+| `-N` | fileset の整合性チェックを抑止。 |
+| `-O { r \| s \| u }` | Operation: r=reject, s=show status, u=undo。 |
 | `-p` | preview のみ実行（試験）。 |
-| `-Y` | ライセンス受諾を自動 yes。 |
+| `-q` | quiet モード。 |
+| `-Q` | Quiet を抑止して全メッセージ表示。 |
+| `-r` | reject モード（applied 状態を取消）。 |
+| `-R` | 代替 base directory を指定。 |
+| `-S` | save サイズを抑制。 |
+| `-t <SaveDir>` | 保存ディレクトリ指定（commit 前）。 |
+| `-u` | uninstall（fileset 削除）。 |
 | `-V <Verbosity>` | 詳細レベルを指定（0=最小、4=最大）。 |
+| `-w` | wait しない（バッチ用）。 |
+| `-X` | FS が小さければ自動拡張する。 |
+| `-Y` | ライセンス受諾を自動 yes。 |
+| `-z <Block>` | block サイズ指定。 |
 | `<Fileset>` | 対象 fileset 名（all で全 update）。 |
 
 **典型例**:
@@ -1358,17 +1657,26 @@ instfix -ik <APAR>               # APAR 単位
 instfix -ivk <APAR>              # 詳細
 ```
 
-**主要オプション**（7 件）:
+**全オプション一覧**（16 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-i` | 全フィックス情報を表示。 |
-| `-k <APAR>` | 特定 APAR が適用されているか確認。 |
-| `-v` | 詳細表示モード。 |
 | `-a` | ABSTRACT（説明文）を含めて表示。 |
-| `-T` | TL（Technology Level）情報を表示。 |
-| `-S` | SP（Service Pack）情報を表示。 |
+| `-c` | コロン区切り形式（スクリプト用）。 |
 | `-d <Source>` | 適用前にソース内の fix 情報を確認。 |
+| `-f <File>` | ファイルから fix リストを取得。 |
+| `-F` | 全 fix 情報を表示（強制）。 |
+| `-i` | 全フィックス情報を表示。 |
+| `-I` | fix の詳細情報を含む表示。 |
+| `-k <APAR>` | 特定 APAR が適用されているか確認。 |
+| `-K <APAR>` | APAR install を確認（exclusion 含む）。 |
+| `-p` | preview only（実 install しない）。 |
+| `-q` | quiet モード。 |
+| `-r` | リクエストされた fix を表示。 |
+| `-S` | SP 情報を表示。 |
+| `-T` | TL 情報を表示。 |
+| `-v` | 詳細表示モード。 |
+| `-y` | auto yes 確認スキップ。 |
 
 **典型例**:
 
@@ -1401,15 +1709,24 @@ oslevel -r                # TL
 oslevel -q                # 既知レベル一覧
 ```
 
-**主要オプション**（5 件）:
+**全オプション一覧**（14 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-s` | 完全レベル（TL/SP 含む）を表示（例: 7300-04-00-2546）。 |
-| `-r` | TL レベルのみ表示。 |
-| `-q` | 既知レベル一覧を表示。 |
-| `-l <Level>` | 指定レベルに不足している fileset を表示。 |
 | `-g` | 現行レベルの全 fileset を表示。 |
+| `-l <Level>` | 指定レベルに不足している fileset を表示。 |
+| `-p` | preview モード（test）。 |
+| `-q` | 既知レベル一覧を表示。 |
+| `-r` | TL レベルのみ表示（例: 7300-04）。 |
+| `-rf <File>` | ファイルからレベル情報を取得。 |
+| `-rg` | TL 全 fileset を表示。 |
+| `-rl <Level>` | TL レベルに不足する fileset を表示。 |
+| `-rq` | TL 既知レベル一覧。 |
+| `-s` | 完全レベル（TL/SP 含む）を表示（例: 7300-04-00-2546）。 |
+| `-sf <File>` | ファイルから SP レベルを取得。 |
+| `-sg` | SP の全 fileset を表示。 |
+| `-sl <Level>` | SP レベルに不足する fileset を表示。 |
+| `-sq` | SP 既知レベル一覧。 |
 
 **典型例**:
 
@@ -1441,17 +1758,32 @@ bootinfo -y   # 32bit/64bit ハードウェア
 bootinfo -p   # POWER モデル
 ```
 
-**主要オプション**（7 件）:
+**全オプション一覧**（22 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-K` | 稼働中カーネルのビット数（32/64）を表示。 |
-| `-y` | システムが 32bit/64bit ハードかを表示。 |
-| `-p` | POWER モデルタイプ（chrp 等）を表示。 |
-| `-T` | ハードウェアタイプを表示。 |
-| `-s <hdisk>` | 指定ディスクのサイズ（MB）を表示。 |
+| `-a` | ROM IPL アドレスを表示。 |
 | `-b` | 前回の boot ディスクを表示。 |
+| `-B <Disk>` | ディスクが boot 可能か確認（0=可、1=不可）。 |
+| `-c` | コア dump device 情報を表示。 |
+| `-e <Disk>` | ディスクのエンディアン情報を表示。 |
+| `-k` | 稼働中カーネルのビット数を返す（32/64）。 |
+| `-K` | 稼働中カーネルのビット数（32/64）を表示。 |
+| `-L` | ルーフサイズ（lapi）を表示。 |
+| `-m` | 稼働中マシンタイプを表示。 |
+| `-M` | MCA バス情報を表示。 |
+| `-o` | OEM model 情報。 |
+| `-p` | POWER モデルタイプ（chrp 等）を表示。 |
+| `-P` | プラットフォーム情報。 |
+| `-q <Disk>` | ディスクの容量（KB）を表示。 |
 | `-r <hdisk>` | ディスクの実 PP サイズを表示。 |
+| `-R` | 実装メモリ情報。 |
+| `-s <hdisk>` | 指定ディスクのサイズ（MB）を表示。 |
+| `-T` | ハードウェアタイプを表示。 |
+| `-u` | ユーザブル メモリ容量を表示。 |
+| `-v` | Vital Product Data を表示。 |
+| `-y` | システムが 32bit/64bit ハードかを表示。 |
+| `-z` | セキュア boot mode 情報。 |
 
 **典型例**:
 
@@ -1482,16 +1814,19 @@ bootlist -m normal hdisk0 hdisk1            # 設定
 bootlist -m service hdisk0                  # サービスモード
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（9 件）:
 
 | オプション | 説明 |
 |---|---|
+| `-i` | bootlist を invalidate（無効化）。 |
 | `-m <Mode>` | モードを指定（normal / service / both / prevboot）。 |
 | `-o` | 現在の bootlist を表示。 |
-| `<Devices>` | boot 順に並べたデバイスリスト。 |
+| `-O` | 詳細なフォーマットで表示。 |
 | `-r` | bootlist を初期化（クリア）。 |
-| `-i` | bootlist を invalidate（無効化）。 |
 | `-v` | 詳細表示モード。 |
+| `-w <Filename>` | boot 候補をファイルに書き出す。 |
+| `<Devices>` | boot 順に並べたデバイスリスト（最大 5 デバイス）。 |
+| `blv=<BLV>` | BLV（boot logical volume）を指定。 |
 
 **典型例**:
 
@@ -1521,16 +1856,23 @@ bosboot -ad /dev/<bootdisk>
 bosboot -ad /dev/ipldevice  # 現在の boot ディスク
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（13 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-a` | BLV を新規作成する（既存を上書き）。 |
-| `-d <Device>` | 対象 boot ディスク（例: /dev/hdisk0）を指定。 |
-| `-q` | BLV のサイズを照会するだけ（実作成しない）。 |
-| `-T <Type>` | ハードウェアタイプを指定（chrp 等）。 |
-| `-l <File>` | ログファイルを指定。 |
+| `-b <File>` | boot file を指定。 |
 | `-D` | デバッグ情報入りの BLV を作成。 |
+| `-d <Device>` | 対象 boot ディスク（例: /dev/hdisk0）を指定。 |
+| `-I` | ramdisk image を作成しない。 |
+| `-k <KernelName>` | 代替カーネル名を指定。 |
+| `-l <File>` | ログファイルを指定。 |
+| `-L` | Live update 用の BLV を作成。 |
+| `-M <Mode>` | モード指定（boot / disk）。 |
+| `-q` | BLV のサイズを照会するだけ（実作成しない）。 |
+| `-r <File>` | ramdisk file system を指定。 |
+| `-T <Type>` | ハードウェアタイプを指定（chrp 等）。 |
+| `-w` | 新しい BLV にスキップ。 |
 
 **典型例**:
 
@@ -1561,17 +1903,27 @@ bosboot -ad /dev/hdisk0
 mksysb [-i] [-p] [-X] <Device|File>
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（18 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-i` | image.data を自動生成・更新する。 |
-| `-X` | FS が不足したら自動拡張する。 |
-| `-p` | ファイル圧縮（pack）を行わない。 |
-| `-V` | tar ヘッダ詳細を表示。 |
+| `-A` | image.data を保存しない。 |
+| `-b <Blocks>` | ブロックファクタ指定（テープ用）。 |
+| `-B` | boot ブロックを除外（古いオプション、非推奨）。 |
+| `-C <Compression>` | 圧縮レベル指定。 |
 | `-e` | exclude.rootvg ファイルに従い特定ファイルを除外。 |
+| `-F` | tape device を強制使用。 |
+| `-G` | WPAR 含めずに backup。 |
+| `-i` | image.data を自動生成・更新する。 |
 | `-m` | image.data に map file を含める。 |
 | `-M` | rootvg 以外も含めて mksysb を作成（multi-VG）。 |
+| `-p` | ファイル圧縮（pack）を行わない。 |
+| `-P` | プレビューのみ。 |
+| `-T` | テストモード（詳細表示）。 |
+| `-v` | verbose 出力（tar ヘッダ詳細）。 |
+| `-V` | tar ヘッダ詳細表示。 |
+| `-X` | FS が不足したら自動拡張する。 |
+| `-Z` | ZX ファイルを除外。 |
 | `<Device\|File>` | 出力先（テープ /dev/rmt0、ファイル /backup/foo.mksysb）。 |
 
 **典型例**:
@@ -1602,16 +1954,26 @@ smit mksysb              # SMIT 経由
 savevg -i [-X] <Device|File> <VG>
 ```
 
-**主要オプション**（7 件）:
+**全オプション一覧**（17 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-i` | image.data を自動生成。 |
-| `-X` | FS が不足したら自動拡張。 |
-| `-p` | ファイル圧縮（pack）を行わない。 |
+| `-A` | image.data を保存しない。 |
+| `-b <Blocks>` | ブロックファクタ指定（テープ用）。 |
+| `-c` | 圧縮を無効化。 |
 | `-e` | 除外ファイルリスト（/etc/exclude.<vg>）を適用。 |
-| `-V` | tar ヘッダ詳細を表示。 |
 | `-f <Device>` | 出力先を指定。 |
+| `-i` | image.data を自動生成。 |
+| `-l` | ログ取得モード。 |
+| `-m` | map file を含めて保存。 |
+| `-p` | ファイル圧縮（pack）を行わない。 |
+| `-P` | preview モード。 |
+| `-r <FileList>` | raw 部分指定。 |
+| `-T` | テストモード。 |
+| `-v` | verbose 出力。 |
+| `-V` | tar ヘッダ詳細を表示。 |
+| `-X` | FS が不足したら自動拡張。 |
+| `-Z` | ZX ファイル除外。 |
 | `<VG>` | 対象 VG 名（例: datavg）。 |
 
 **典型例**:
@@ -1643,16 +2005,17 @@ lsuser [-a <attr>] ALL
 lsuser <user>
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（7 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-a <Attrs>` | 表示する属性を指定（id, home, shell, maxage 等）。 |
+| `-c` | コロン区切り形式（スクリプト用）。 |
+| `-C` | コロン区切り形式（拡張）。 |
+| `-f` | スタンザ形式で表示（chsec 編集用）。 |
+| `-R <Module>` | 認証モジュール（files / LDAP / DCE 等）を指定。 |
 | `ALL` | 全ユーザを表示。 |
 | `<User>` | 個別ユーザの全属性を表示。 |
-| `-c` | コロン区切り形式（スクリプト用）。 |
-| `-f` | スタンザ形式で表示（chsec 編集用）。 |
-| `-R <Module>` | 認証モジュール（files / LDAP）を指定。 |
 
 **典型例**:
 
@@ -1682,15 +2045,16 @@ passwd               # 自分のパスワード変更
 passwd <user>        # 他ユーザ（root のみ）
 ```
 
-**主要オプション**（5 件）:
+**全オプション一覧**（6 件）:
 
 | オプション | 説明 |
 |---|---|
+| `-a` | 全モジュール（compat, LDAP, NIS）でパスワード変更。 |
+| `-f` | GECOS（フルネーム等）情報を変更。 |
+| `-R <Module>` | 認証モジュール（files / LDAP）を指定。 |
+| `-s` | ログインシェルを変更。 |
 | `（引数なし）` | 自分のパスワードを変更。 |
 | `<User>` | 他ユーザのパスワードを変更（root のみ）。 |
-| `-f` | GECOS（フルネーム等）情報を変更。 |
-| `-s` | ログインシェルを変更。 |
-| `-R <Module>` | 認証モジュール（files / LDAP）を指定。 |
 
 **典型例**:
 
@@ -1722,13 +2086,13 @@ chsec -f /etc/security/lastlog -a unsuccessful_login_count=0 -s alice
 chsec -f <file> -a <attr>=<value> -s <stanza>
 ```
 
-**主要オプション**（4 件）:
+**全オプション一覧**（4 件）:
 
 | オプション | 説明 |
 |---|---|
+| `-a <Attr>=<Val>` | 属性と値を指定（複数指定可）。 |
 | `-f <File>` | 対象 stanza ファイル（/etc/security/* 配下）。 |
 | `-s <Stanza>` | 対象 stanza 名（ユーザ名や default 等）。 |
-| `-a <Attr>=<Val>` | 属性と値を指定（複数指定可）。 |
 | `（例）-f /etc/security/lastlog -a unsuccessful_login_count=0 -s alice` | alice のログイン失敗カウンタをリセット。 |
 
 **典型例**:
@@ -1762,16 +2126,23 @@ lssrc -s <Subsystem>      # 個別
 lssrc -g <Group>          # グループ
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（13 件）:
 
 | オプション | 説明 |
 |---|---|
 | `-a` | 全サブシステムの状態を表示。 |
-| `-s <Subsystem>` | 個別サブシステム（syslogd 等）の状態を表示。 |
+| `-c` | 通信タイプを含めて表示。 |
+| `-d` | デフォルト configuration 表示。 |
 | `-g <Group>` | サブシステムグループ（tcpip 等）の状態を表示。 |
-| `-l` | long 形式（詳細）で表示。 |
+| `-G <Group>` | グループ詳細表示。 |
 | `-h <Host>` | リモートホストの SRC 情報を表示。 |
+| `-l` | long 形式（詳細）で表示。 |
+| `-p <PID>` | 指定 PID のサブシステム情報を表示。 |
+| `-r` | raw 出力フォーマット。 |
+| `-s <Subsystem>` | 個別サブシステム（syslogd 等）の状態を表示。 |
 | `-S` | SRC 自身の管理情報を表示。 |
+| `-t <Type>` | サブサーバタイプを表示。 |
+| `-T` | 全サブサーバ表示。 |
 
 **典型例**:
 
@@ -1801,16 +2172,18 @@ startsrc -s <Subsystem>
 startsrc -g <Group>
 ```
 
-**主要オプション**（6 件）:
+**全オプション一覧**（8 件）:
 
 | オプション | 説明 |
 |---|---|
-| `-s <Subsystem>` | 個別サブシステムを起動。 |
-| `-g <Group>` | グループ単位で起動（例: nfs グループ）。 |
 | `-a <Args>` | 起動時引数を指定。 |
 | `-e <Env>` | 環境変数を指定。 |
-| `-t <Type>` | サブサーバ起動時のタイプを指定。 |
+| `-g <Group>` | グループ単位で起動（例: nfs グループ）。 |
 | `-h <Host>` | リモートホストで起動。 |
+| `-i <Subserver>` | サブサーバ起動。 |
+| `-p <PID>` | 指定 PID の SRC 設定で起動。 |
+| `-s <Subsystem>` | 個別サブシステムを起動。 |
+| `-t <Type>` | サブサーバ起動時のタイプを指定。 |
 
 **典型例**:
 
@@ -1840,18 +2213,30 @@ smitty                       # トップメニュー
 smitty <fastpath>            # 直接入る
 ```
 
-**主要オプション**（8 件）:
+**全オプション一覧**（20 件）:
 
 | オプション | 説明 |
 |---|---|
-| `（引数なし）` | メインメニューを表示。 |
-| `<fastpath>` | 特定機能に直接移動（users / mksysb / chfs 等）。 |
+| `-c <File>` | 代替 customization ファイルを指定。 |
 | `-C` | ColdStart モード（ODM 不在でも起動）。 |
 | `-D` | デバッグモード（コマンド実行を表示するだけ）。 |
+| `-d` | 代替 ODM directory を指定。 |
+| `-e <Env>` | 環境変数を指定。 |
 | `-f` | 保存済み既定値を読み込む。 |
+| `-h` | ヘルプ表示。 |
+| `-i <File>` | 指定ファイルを起動時に読み込み。 |
 | `-l <File>` | ログファイルを指定（既定 ~/smit.log）。 |
+| `-m` | メニューラベルからフラグ生成（dev 用）。 |
+| `-M` | メッセージ表示モード。 |
+| `-n <ID>` | メニュー ID を直接指定。 |
+| `-r <RoleList>` | ロールリストでフィルタ。 |
 | `-s <File>` | スクリプトファイルを指定（既定 ~/smit.script）。 |
+| `-t <Theme>` | X11 テーマ指定。 |
+| `-v` | verbose モード。 |
 | `-x` | ログ出力をしない。 |
+| `-X` | X11 セッション継続。 |
+| `<fastpath>` | 特定機能に直接移動（users / mksysb / chfs 等）。 |
+| `（引数なし）` | メインメニューを表示。 |
 
 **典型例**:
 

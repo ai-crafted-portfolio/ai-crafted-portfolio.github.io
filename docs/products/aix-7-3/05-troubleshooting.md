@@ -4,8 +4,6 @@
 
 AIX 管理者が日々遭遇する staple な症状を症状/原因/対処/errpt label の 4 列で整理。詳細手順は各行の「関連手順」リンク先（[09. 障害対応手順](09-incident-procedures.md)）。
 
-v3 で「7.3 移行プレチェック失敗事例集」になっていた問題を是正し、**本来の早見表**（FS full / NIC down / paging exhaust / hung process / NFS stale / login 不可 等）に書き換えた。
-
 | ID | 症状 | 原因 | 対処（要約） | errpt label / コード | 関連手順 |
 |---|---|---|---|---|---|
 | ts-01 | システムが起動しない（HMC で LED コード残る） | BLV 破損、ブートディスク認識不可、ハードウェア障害 | サービスモード boot → bosboot -ad → bootlist 再設定。詳細手順: inc-boot-fail-led | `—（HMC SRC: BA*、E1*）` | [inc-boot-fail-led](09-incident-procedures.md#inc-boot-fail-led) |

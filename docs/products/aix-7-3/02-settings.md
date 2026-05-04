@@ -2,7 +2,7 @@
 
 > 掲載：**40 件（tunable 20 + 設定ファイル 20）**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-vmo / no / nfso / ioo / schedo の tunable と /etc/ 配下の主要設定ファイル。Default / 取り得る値は日本語化、影響範囲（applyType）は個別記載（v3 のファミリ固定文を撤廃）。
+vmo / no / nfso / ioo / schedo の tunable と /etc/ 配下の主要設定ファイル。Default / 取り得る値は日本語化、影響範囲（applyType）は個別記載。
 
 ## チューナブルパラメータ（20 件）
 

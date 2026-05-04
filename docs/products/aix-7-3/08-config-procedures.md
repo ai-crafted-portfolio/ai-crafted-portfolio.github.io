@@ -1,10 +1,8 @@
 # 設定手順
 
-> 掲載：**18 件（重要度 S/A/B/C × 用途、**S 級 13 件は詳細版**）**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
+> 掲載：**18 件（S 級 13 + A 級 5 が詳細版、B/C 級は概要版）**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-AIX 管理者が日常的に必要な設定変更手順。
-
-**v8 から: 重要度 S 級（13 件）は詳細版（100-200 行/手順）として、A/B/C 級は概要版として記載。**
+**v9 から: 重要度 S 級 13 件 + A 級 5 件が詳細版（100-200 行）。B/C 級は概要版。**
 
 ## 重要度 × 用途 マトリクス
 
@@ -21,7 +19,7 @@ AIX 管理者が日常的に必要な設定変更手順。
 
 ### cfg-hostname-ip: ホスト名と IP アドレスの変更 { #cfg-hostname-ip }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ネットワーク
+**重要度**: `S 級詳細版` / **用途**: ネットワーク
 
 #### 目的
 
@@ -262,7 +260,7 @@ chdev -l inet0 -a hostname=old-server.example.com
 
 #### 関連エントリ
 
-- **用語**: TCP/IP, ODM
+- **用語**: [TCP/IP](#tcp-ip), [ODM](#odm)
 - **コマンド**: [`hostname`](01-commands.md#hostname), [`ifconfig`](01-commands.md#ifconfig), [`chdev`](01-commands.md#chdev), [`lsattr`](01-commands.md#lsattr)
 - **設定**: /etc/hosts, /etc/resolv.conf
 - **関連手順**: [cfg-dns](08-config-procedures.md#cfg-dns), [cfg-ntp](08-config-procedures.md#cfg-ntp), [inc-network-down](09-incident-procedures.md#inc-network-down)
@@ -295,7 +293,7 @@ chdev -l inet0 -a hostname=old-server.example.com
 
 ### cfg-dns: DNS リゾルバ設定（/etc/resolv.conf） { #cfg-dns }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ネットワーク
+**重要度**: `S 級詳細版` / **用途**: ネットワーク
 
 #### 目的
 
@@ -483,7 +481,7 @@ nslookup loopback   # /etc/hosts で解決される
 
 #### 関連エントリ
 
-- **用語**: BIND 9.18, TCP/IP
+- **用語**: [BIND 9.18](#bind-918), [TCP/IP](#tcp-ip)
 - **コマンド**: [`nslookup`](01-commands.md#nslookup), [`host`](01-commands.md#host), [`dig`](01-commands.md#dig)
 - **設定**: /etc/resolv.conf, /etc/netsvc.conf, /etc/hosts
 - **関連手順**: [cfg-hostname-ip](08-config-procedures.md#cfg-hostname-ip), [inc-network-down](09-incident-procedures.md#inc-network-down)
@@ -516,7 +514,7 @@ nslookup loopback   # /etc/hosts で解決される
 
 ### cfg-nfs-mount: NFS マウントの設定 { #cfg-nfs-mount }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ストレージFS
+**重要度**: `S 級詳細版` / **用途**: ストレージFS
 
 #### 目的
 
@@ -758,7 +756,7 @@ umount -F /mnt/nfsdata    # 完全 force
 
 #### 関連エントリ
 
-- **用語**: NFS
+- **用語**: [NFS](#nfs)
 - **コマンド**: [`mount`](01-commands.md#mount), [`umount`](01-commands.md#umount), [`showmount`](01-commands.md#showmount), [`lssrc`](01-commands.md#lssrc), [`startsrc`](01-commands.md#startsrc), [`fuser`](01-commands.md#fuser), [`nfso`](01-commands.md#nfso)
 - **設定**: /etc/filesystems, /etc/exports（サーバ側）
 - **関連手順**: [cfg-dns](08-config-procedures.md#cfg-dns), [inc-nfs-stale](09-incident-procedures.md#inc-nfs-stale)
@@ -796,7 +794,7 @@ umount -F /mnt/nfsdata    # 完全 force
 
 ### cfg-ntp: NTP 時刻同期（NTPv4） { #cfg-ntp }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ネットワーク
+**重要度**: `S 級詳細版` / **用途**: ネットワーク
 
 #### 目的
 
@@ -1026,7 +1024,7 @@ date
 
 #### 関連エントリ
 
-- **用語**: TCP/IP, SRC
+- **用語**: [TCP/IP](#tcp-ip), [SRC](#src)
 - **コマンド**: [`lssrc`](01-commands.md#lssrc), [`startsrc`](01-commands.md#startsrc), [`stopsrc`](01-commands.md#stopsrc), [`ntpq`](01-commands.md#ntpq)
 - **設定**: /etc/ntp.conf, /etc/rc.tcpip, /etc/ntp.drift
 - **関連手順**: [cfg-syslog](08-config-procedures.md#cfg-syslog), [inc-network-down](09-incident-procedures.md#inc-network-down)
@@ -1064,7 +1062,7 @@ date
 
 ### cfg-syslog: syslog 出力先の設定 { #cfg-syslog }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ログ監査
+**重要度**: `S 級詳細版` / **用途**: ログ監査
 
 #### 目的
 
@@ -1289,7 +1287,7 @@ logger "rollback test"  # 旧設定先（/var/adm/ras/syslog.out 等）に出る
 
 #### 関連エントリ
 
-- **用語**: syslogd, errlog, SRC
+- **用語**: [syslogd](#syslogd), [errlog](#errlog), [SRC](#src)
 - **コマンド**: [`lssrc`](01-commands.md#lssrc), [`refresh`](01-commands.md#refresh), [`logger`](01-commands.md#logger), [`errpt`](01-commands.md#errpt)
 - **設定**: /etc/syslog.conf, /etc/rc.tcpip
 - **関連手順**: [cfg-errnotify](08-config-procedures.md#cfg-errnotify), [inc-errpt-hardware-error](09-incident-procedures.md#inc-errpt-hardware-error)
@@ -1327,15 +1325,35 @@ logger "rollback test"  # 旧設定先（/var/adm/ras/syslog.out 等）に出る
 
 ### cfg-errnotify: errnotify によるエラー通知 { #cfg-errnotify }
 
-**重要度**: `A` / **用途**: ログ監査
+**重要度**: `A 級詳細版` / **用途**: ログ監査
 
-**目的**: errpt 重要エラー検出時にメール通知する。staple な監視自動化。
+#### 目的
 
-**前提**: sendmail/MTA が動作。root 権限。
+errpt の重要エラー検出時に外部コマンド（メール通知等）を起動する仕組みを構築する。
 
-**手順**:
+**業務上のシナリオ**:
+- ハードウェア障害（DISK_ERR1 等）の即時通知
+- セキュリティイベント（USER_LOCKED 等）のメール通知
+- 監視サーバ（Nagios/Zabbix）への連携
 
-1. notify stanza ファイル作成 /tmp/errnotify_hw.add（vi）:
+#### 前提条件
+
+- root 権限
+- 通知先メールサーバが疎通可能（sendmail 起動済）
+- ODM への書き込み権限
+
+#### 手順
+
+##### Step 1: 通知 stanza ファイルの作成
+
+**コマンド**:
+
+```
+vi /tmp/errnotify_hw.add
+```
+
+**期待される出力**:
+
 ```
 errnotify:
   en_name = "hw_alert"
@@ -1343,33 +1361,108 @@ errnotify:
   en_class = "H"
   en_method = "/usr/bin/echo 'AIX hw error: $9' | mail -s 'AIX errpt' admin@example.com"
 ```
-2. ODM に登録:
-   - `odmadd /tmp/errnotify_hw.add`
-3. 登録確認:
-   - `odmget -q "en_name=hw_alert" errnotify`
-4. テスト（疑似ログ生成）:
-   - `errlogger -m "test hw alert from $(hostname)"`
 
+**注意点**:
 
-**期待出力**:
+- en_persistenceflg = 1 で再起動後も保持。
+- en_class = H でハードウェアエラーのみ通知。
+- en_method の $9 は LABEL フィールドに展開される。
+
+##### Step 2: ODM への登録
+
+**コマンド**:
 
 ```
-# odmget -q "en_name=hw_alert" errnotify
+odmadd /tmp/errnotify_hw.add
+```
 
+**期待される出力**:
+
+```
+（出力なし、成功）
+```
+
+**注意点**:
+
+- odmadd は出力なし＝成功。エラーがあれば標準エラーに出力。
+
+##### Step 3: 登録確認
+
+**コマンド**:
+
+```
+odmget -q "en_name=hw_alert" errnotify
+```
+
+**期待される出力**:
+
+```
 errnotify:
         en_pid = 0
         en_name = "hw_alert"
         en_persistenceflg = 1
         en_class = "H"
-        ...
-
+        en_method = "/usr/bin/echo 'AIX hw error: $9' | mail -s 'AIX errpt' admin@example.com"
 ```
 
-**検証**: メール受信を確認。実際のハードエラー（疑似でなく）は HMC や `errpt -d H` でも見える。
+**注意点**:
 
-**ロールバック**: `odmdelete -q "en_name=hw_alert" -o errnotify`
+- en_pid = 0 が正常（プロセス bind なし）。
 
-**関連**: `errpt`, `ODM`, `errnotify`
+##### Step 4: テスト（疑似ログ生成）
+
+**コマンド**:
+
+```
+errlogger -m "test hw alert from $(hostname)"
+```
+
+**期待される出力**:
+
+```
+（出力なし、errpt にログ書き込み）
+```
+
+**注意点**:
+
+- errlogger で生成されるエラーは Class=O（オペレータ）。Class=H で通知設定の場合はテストにならない可能性あり。
+- 実ハードウェア障害テストは HMC 等で実施。
+
+#### 検証
+
+- odmget で登録確認
+- errpt -d H 実行時に該当 LABEL が表示されたら通知メールが届くか確認
+- メール受信側ログで配信成功確認
+
+#### ロールバック
+
+odmdelete -q "en_name=hw_alert" -o errnotify
+
+odmget で消えたことを確認。
+
+#### 関連エントリ
+
+- **用語**: [errlog](#errlog), [errnotify](#errnotify), [ODM](#odm)
+- **コマンド**: [`errpt`](01-commands.md#errpt), [`errlogger`](01-commands.md#errlogger), [`odmadd`](01-commands.md#odmadd), [`odmget`](01-commands.md#odmget), [`odmdelete`](01-commands.md#odmdelete)
+- **設定**: /etc/objrepos/errnotify
+- **関連手順**: [cfg-syslog](08-config-procedures.md#cfg-syslog), [inc-errpt-hardware-error](09-incident-procedures.md#inc-errpt-hardware-error)
+
+#### 典型的な障害パターン
+
+**症状**: メールが届かない
+
+- **原因**: sendmail 未起動、または DNS MX 解決失敗
+- **対処**: lssrc -s sendmail で起動確認、mailq でキュー確認
+
+**症状**: odmadd で `0518-307`
+
+- **原因**: stanza ファイルの構文エラー
+- **対処**: stanza 形式（en_name = "..."）の引用符・スペース確認
+
+**症状**: 通知が二重に来る
+
+- **原因**: 同一 en_name で複数登録
+- **対処**: odmget で重複確認、odmdelete で整理
 
 **出典**: S_AIX73_osmanagement
 
@@ -1377,45 +1470,146 @@ errnotify:
 
 ### cfg-dump-device: システムダンプデバイスの設定 { #cfg-dump-device }
 
-**重要度**: `A` / **用途**: ログ監査
+**重要度**: `A 級詳細版` / **用途**: ログ監査
 
-**目的**: クラッシュ時の kernel dump の出力先 LV を設定・確保する。
+#### 目的
 
-**前提**: root 権限。dump を格納できる十分なサイズの LV または PV。
+クラッシュ時のカーネルダンプ出力先 LV を設定し、十分な容量を確保する。
 
-**手順**:
+**業務上のシナリオ**:
+- カーネルパニック発生時の解析データ保存
+- IBM サポートへの提供データ要件
+- システム障害解析（dbx + crash 等）の前提整備
 
-1. 現状確認:
-   - `sysdumpdev -l`
-   - `sysdumpdev -e`（最小必要サイズ表示）
-2. 専用 LV 作成（推奨。/dev/sysdumpnull は実行録音されない）:
-   - `mklv -y dumplv -t sysdump rootvg <PP数>`
-3. 一次 dump device に指定:
-   - `sysdumpdev -P -p /dev/dumplv`
-4. 確認:
-   - `sysdumpdev -l`
-5. 必要に応じてダンプ圧縮を有効化（デフォルト ON）:
-   - `sysdumpdev -C`
+#### 前提条件
 
+- root 権限
+- ダンプを格納する十分なサイズの LV または PV
+- /dev/sysdumpnull が既定の場合、本物の dump LV へ切り替え必要
 
-**期待出力**:
+#### 手順
+
+##### Step 1: 現状確認
+
+**コマンド**:
+
+```
+sysdumpdev -l
+sysdumpdev -e
+```
+
+**期待される出力**:
 
 ```
 # sysdumpdev -l
-primary              /dev/dumplv
+primary              /dev/sysdumpnull
 secondary            /dev/sysdumpnull
 copy directory       /var/adm/ras
 forced copy flag     TRUE
 always allow dump    FALSE
 dump compression     ON
 
+# sysdumpdev -e
+0453-041 Estimated dump size in bytes: 1234567890
 ```
 
-**検証**: `sysdumpdev -e` の必要サイズが LV サイズより小さいこと。FW Dump イベントを HMC から発生させるテストはサポートと相談。
+**注意点**:
 
-**ロールバック**: `sysdumpdev -P -p /dev/sysdumpnull` で無効化、`rmlv dumplv` で LV 削除。
+- primary が /dev/sysdumpnull の場合、ダンプは破棄される（記録されない）。
+- -e で必要サイズを確認（実装メモリの一部）。
 
-**関連**: `snap`, `mklv`
+##### Step 2: 専用 LV 作成
+
+**コマンド**:
+
+```
+# 必要 PP 数 = 必要サイズ ÷ PP SIZE
+# 例: 8GB / 64MB = 128 PP
+mklv -y dumplv -t sysdump rootvg 128
+```
+
+**期待される出力**:
+
+```
+dumplv
+```
+
+**注意点**:
+
+- TYPE=sysdump で dump 専用 LV。
+- rootvg 内に作成（boot 時に varyon 済の VG 内推奨）。
+
+##### Step 3: primary dump device に指定
+
+**コマンド**:
+
+```
+sysdumpdev -P -p /dev/dumplv
+```
+
+**期待される出力**:
+
+```
+primary              /dev/dumplv
+secondary            /dev/sysdumpnull
+```
+
+**注意点**:
+
+- -P = 永続変更（次回 boot 後も維持）。
+
+##### Step 4: 確認
+
+**コマンド**:
+
+```
+sysdumpdev -l
+```
+
+**期待される出力**:
+
+```
+primary              /dev/dumplv
+secondary            /dev/sysdumpnull
+copy directory       /var/adm/ras
+forced copy flag     TRUE
+always allow dump    FALSE
+dump compression     ON
+```
+
+**注意点**:
+
+- dump compression = ON（既定）でダンプサイズ削減。
+
+#### 検証
+
+- sysdumpdev -l で primary が /dev/dumplv
+- sysdumpdev -e のサイズ ≤ LV サイズ
+- /var/adm/ras に十分な空き容量
+
+#### ロールバック
+
+sysdumpdev -P -p /dev/sysdumpnull
+rmlv dumplv  # 完全削除する場合
+
+#### 関連エントリ
+
+- **用語**: sysdump, [kdb](#kdb), snap
+- **コマンド**: [`sysdumpdev`](01-commands.md#sysdumpdev), [`mklv`](01-commands.md#mklv), [`rmlv`](01-commands.md#rmlv), [`snap`](01-commands.md#snap)
+- **設定**: /var/adm/ras
+- **関連手順**: [inc-snap-collect](09-incident-procedures.md#inc-snap-collect), [inc-core-dump](09-incident-procedures.md#inc-core-dump)
+
+#### 典型的な障害パターン
+
+**症状**: sysdumpdev -P で `0453-...`
+
+- **原因**: 指定 LV が存在しない、または TYPE が sysdump 以外
+- **対処**: lslv dumplv で TYPE 確認、必要なら mklv で再作成
+
+**症状**: ダンプ取得時にサイズ不足で truncate
+
+- **原因**: 実メモリ増設後に dump LV サイズ更新忘れ
+- **対処**: sysdumpdev -e で再確認、extendlv で LV 拡張
 
 **出典**: S_AIX73_osmanagement
 
@@ -1423,7 +1617,7 @@ dump compression     ON
 
 ### cfg-vg-lv: VG / LV の作成 { #cfg-vg-lv }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ストレージFS
+**重要度**: `S 級詳細版` / **用途**: ストレージFS
 
 #### 目的
 
@@ -1442,6 +1636,11 @@ dump compression     ON
 - PV が他 VG に未所属（PVID=none、または既存 VG メンバーでない）
 - ストレージ側で適切に provisioning 済（SAN/SCSI 両側で OK）
 - 計画した VG 名・LV 名・FS マウントポイントが既存と衝突しない
+
+
+![LVM 階層図](images/perf_p0057_img1.jpeg)
+
+*図: LVM の階層構造（File → FS → LV → PV → VG） （出典: AIX 7.3 Performance Management ガイド p.57）*
 
 #### 手順
 
@@ -1698,7 +1897,7 @@ lspv                # hdisk1 が None / none であること
 
 #### 関連エントリ
 
-- **用語**: LVM, VG, LV, PV, PVID, JFS2, scalable VG
+- **用語**: [LVM](#lvm), [VG](#vg), [LV](#lv), [PV](#pv), [PVID](#pvid), [JFS2](#jfs2), scalable VG
 - **コマンド**: [`lspv`](01-commands.md#lspv), [`lsvg`](01-commands.md#lsvg), [`lslv`](01-commands.md#lslv), [`mkvg`](01-commands.md#mkvg), [`mklv`](01-commands.md#mklv), [`crfs`](01-commands.md#crfs), [`chdev`](01-commands.md#chdev), [`mount`](01-commands.md#mount), [`df`](01-commands.md#df)
 - **設定**: /etc/filesystems
 - **関連手順**: [cfg-disk-add](08-config-procedures.md#cfg-disk-add), [cfg-rootvg-mirror](08-config-procedures.md#cfg-rootvg-mirror), [cfg-fs-extend](08-config-procedures.md#cfg-fs-extend)
@@ -1736,7 +1935,7 @@ lspv                # hdisk1 が None / none であること
 
 ### cfg-rootvg-mirror: rootvg のミラー化 { #cfg-rootvg-mirror }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ストレージFS
+**重要度**: `S 級詳細版` / **用途**: ストレージFS
 
 #### 目的
 
@@ -2006,7 +2205,7 @@ lsvg rootvg | grep PVs   # TOTAL PVs=1 に戻る
 
 #### 関連エントリ
 
-- **用語**: LVM, VG, PV, BLV, hd5
+- **用語**: [LVM](#lvm), [VG](#vg), [PV](#pv), [BLV](#blv), hd5
 - **コマンド**: [`lspv`](01-commands.md#lspv), [`lsvg`](01-commands.md#lsvg), [`extendvg`](01-commands.md#extendvg), [`mirrorvg`](01-commands.md#mirrorvg), [`unmirrorvg`](01-commands.md#unmirrorvg), [`syncvg`](01-commands.md#syncvg), [`bosboot`](01-commands.md#bosboot), [`bootlist`](01-commands.md#bootlist)
 - **関連手順**: [cfg-vg-lv](08-config-procedures.md#cfg-vg-lv), [inc-disk-replace](09-incident-procedures.md#inc-disk-replace), [inc-boot-fail-led](09-incident-procedures.md#inc-boot-fail-led)
 
@@ -2043,7 +2242,7 @@ lsvg rootvg | grep PVs   # TOTAL PVs=1 に戻る
 
 ### cfg-fs-extend: ファイルシステムの拡張 { #cfg-fs-extend }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ストレージFS
+**重要度**: `S 級詳細版` / **用途**: ストレージFS
 
 #### 目的
 
@@ -2202,7 +2401,7 @@ VG 全体を返したい場合（PV を取り戻したい）:
 
 #### 関連エントリ
 
-- **用語**: JFS2, LV, PP
+- **用語**: [JFS2](#jfs2), [LV](#lv), [PP](#pp)
 - **コマンド**: [`df`](01-commands.md#df), [`chfs`](01-commands.md#chfs), [`lsfs`](01-commands.md#lsfs), [`lsvg`](01-commands.md#lsvg), [`extendvg`](01-commands.md#extendvg)
 - **設定**: /etc/filesystems
 - **関連手順**: [cfg-vg-lv](08-config-procedures.md#cfg-vg-lv), [inc-fs-full](09-incident-procedures.md#inc-fs-full)
@@ -2240,7 +2439,7 @@ VG 全体を返したい場合（PV を取り戻したい）:
 
 ### cfg-user-add: ユーザ追加とパスワードポリシー { #cfg-user-add }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ユーザ認証
+**重要度**: `S 級詳細版` / **用途**: ユーザ認証
 
 #### 目的
 
@@ -2498,7 +2697,7 @@ rm /var/spool/mail/alice
 
 #### 関連エントリ
 
-- **用語**: RBAC, user
+- **用語**: [RBAC](#rbac), user
 - **コマンド**: [`mkuser`](01-commands.md#mkuser), [`rmuser`](01-commands.md#rmuser), [`chuser`](01-commands.md#chuser), [`lsuser`](01-commands.md#lsuser), [`passwd`](01-commands.md#passwd), [`pwdadm`](01-commands.md#pwdadm), [`chsec`](01-commands.md#chsec)
 - **設定**: /etc/security/user, /etc/security/passwd, /etc/passwd, /etc/group
 - **関連手順**: [cfg-passwd-policy](08-config-procedures.md#cfg-passwd-policy), [inc-login-locked](09-incident-procedures.md#inc-login-locked)
@@ -2536,7 +2735,7 @@ rm /var/spool/mail/alice
 
 ### cfg-package-install: fileset のインストール / 更新 { #cfg-package-install }
 
-**重要度**: `S`（S 級詳細版） / **用途**: パッケージ
+**重要度**: `S 級詳細版` / **用途**: パッケージ
 
 #### 目的
 
@@ -2780,7 +2979,7 @@ nim -o bos_inst -a mksysb=mksysb_pre_update <client>
 
 #### 関連エントリ
 
-- **用語**: fileset, LPP, VRMF, TL, SP
+- **用語**: [fileset](#fileset), [LPP](#lpp), [VRMF](#vrmf), [TL](#tl), [SP](#sp)
 - **コマンド**: [`installp`](01-commands.md#installp), [`lslpp`](01-commands.md#lslpp), [`instfix`](01-commands.md#instfix), [`oslevel`](01-commands.md#oslevel), [`lppchk`](01-commands.md#lppchk), [`bosboot`](01-commands.md#bosboot)
 - **設定**: /usr/lib/objrepos
 - **関連手順**: [cfg-mksysb-backup](08-config-procedures.md#cfg-mksysb-backup), [inc-package-install-fail](09-incident-procedures.md#inc-package-install-fail)
@@ -2818,7 +3017,7 @@ nim -o bos_inst -a mksysb=mksysb_pre_update <client>
 
 ### cfg-mksysb-backup: mksysb による rootvg バックアップ { #cfg-mksysb-backup }
 
-**重要度**: `S`（S 級詳細版） / **用途**: バックアップ
+**重要度**: `S 級詳細版` / **用途**: バックアップ
 
 #### 目的
 
@@ -3059,7 +3258,7 @@ nim -o remove myhost_mksysb_20260504
 
 #### 関連エントリ
 
-- **用語**: mksysb, image.data, NIM, VRMF
+- **用語**: mksysb, image.data, [NIM](#nim), [VRMF](#vrmf)
 - **コマンド**: [`mksysb`](01-commands.md#mksysb), [`savevg`](01-commands.md#savevg), [`restore`](01-commands.md#restore), [`lsvg`](01-commands.md#lsvg), [`lsmksysb`](01-commands.md#lsmksysb)
 - **設定**: /image.data, /etc/exclude.rootvg
 - **関連手順**: [cfg-package-install](08-config-procedures.md#cfg-package-install), [inc-disk-replace](09-incident-procedures.md#inc-disk-replace)
@@ -3097,7 +3296,7 @@ nim -o remove myhost_mksysb_20260504
 
 ### cfg-passwd-policy: パスワードロック解除（強制リセット） { #cfg-passwd-policy }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ユーザ認証
+**重要度**: `S 級詳細版` / **用途**: ユーザ認証
 
 #### 目的
 
@@ -3297,7 +3496,7 @@ lsuser -a account_locked unsuccessful_login_count alice
 
 #### 関連エントリ
 
-- **用語**: RBAC, user
+- **用語**: [RBAC](#rbac), user
 - **コマンド**: [`lsuser`](01-commands.md#lsuser), [`chsec`](01-commands.md#chsec), [`chuser`](01-commands.md#chuser), [`pwdadm`](01-commands.md#pwdadm), [`passwd`](01-commands.md#passwd)
 - **設定**: /etc/security/lastlog, /etc/security/user, /etc/security/login.cfg
 - **関連手順**: [cfg-user-add](08-config-procedures.md#cfg-user-add), [inc-login-locked](09-incident-procedures.md#inc-login-locked)
@@ -3330,7 +3529,7 @@ lsuser -a account_locked unsuccessful_login_count alice
 
 ### cfg-disk-add: 新規ディスクの認識（cfgmgr） { #cfg-disk-add }
 
-**重要度**: `S`（S 級詳細版） / **用途**: ストレージFS
+**重要度**: `S 級詳細版` / **用途**: ストレージFS
 
 #### 目的
 
@@ -3539,7 +3738,7 @@ lspv | grep hdisk2  # 表示されないこと
 
 #### 関連エントリ
 
-- **用語**: MPIO, PV, PVID
+- **用語**: [MPIO](#mpio), [PV](#pv), [PVID](#pvid)
 - **コマンド**: [`cfgmgr`](01-commands.md#cfgmgr), [`lspv`](01-commands.md#lspv), [`lsdev`](01-commands.md#lsdev), [`chdev`](01-commands.md#chdev), [`lsattr`](01-commands.md#lsattr), [`lspath`](01-commands.md#lspath), [`rmdev`](01-commands.md#rmdev)
 - **設定**: ODM
 - **関連手順**: [cfg-vg-lv](08-config-procedures.md#cfg-vg-lv), [cfg-mpio-tuning](08-config-procedures.md#cfg-mpio-tuning), [inc-disk-replace](09-incident-procedures.md#inc-disk-replace)
@@ -3577,41 +3776,152 @@ lspv | grep hdisk2  # 表示されないこと
 
 ### cfg-mpio-tuning: MPIO 属性のチューニング { #cfg-mpio-tuning }
 
-**重要度**: `A` / **用途**: 性能
+**重要度**: `A 級詳細版` / **用途**: 性能
 
-**目的**: AIX 7.3 で reserve_policy / algorithm / queue_depth の既定値が変更されたため、業務影響に応じて調整。
+#### 目的
 
-**前提**: 対象 hdisk が Available。
+AIX 7.3 で reserve_policy / algorithm / queue_depth の既定値が変更されたため、業務影響に応じて調整する。
 
-**手順**:
+**業務上のシナリオ**:
+- AIX 7.x からのマイグレ後の MPIO 既定値見直し
+- HA/LPM 環境で reserve_policy=no_reserve 必須化
+- I/O 性能改善のための queue_depth 増加
 
-1. 現状確認:
-   - `lsattr -El hdisk1 -a reserve_policy -a algorithm -a queue_depth`
-2. queue_depth を 64 に変更（DS8000 推奨）— 動的反映:
-   - `chdev -l hdisk1 -a queue_depth=64 -U`
-3. reserve_policy を no_reserve（HA/LPM 必須）— 動的反映:
-   - `chdev -l hdisk1 -a reserve_policy=no_reserve -U`
-4. algorithm = shortest_queue（既定）に戻す:
-   - `chdev -l hdisk1 -a algorithm=shortest_queue -U`
-5. 確認:
-   - `lsattr -El hdisk1 | egrep 'reserve_policy|algorithm|queue_depth'`
+#### 前提条件
 
+- root 権限
+- 対象 hdisk が Available 状態
+- ストレージ仕様（DS8000 / SVC / FlashSystem 等）の queue_depth 推奨値を IBM ドキュメントで確認
 
-**期待出力**:
+#### 手順
 
-```
-# lsattr -El hdisk1 -a reserve_policy -a algorithm -a queue_depth
-reserve_policy  no_reserve       Reserve Policy        True
-algorithm       shortest_queue   Algorithm             True
-queue_depth     64               Queue DEPTH           True
+##### Step 1: 現状確認
+
+**コマンド**:
 
 ```
+lsattr -El hdisk1 -a reserve_policy -a algorithm -a queue_depth
+```
 
-**検証**: iostat -DRTl で当該 hdisk のレイテンシが許容範囲内、エラー数が増えていないこと。
+**期待される出力**:
 
-**ロールバック**: chdev で前値に戻す。
+```
+reserve_policy   single_path     Reserve Policy        True
+algorithm        round_robin     Algorithm             True
+queue_depth      20              Queue DEPTH           True
+```
 
-**関連**: `lsattr`, `chdev`, `MPIO`
+**注意点**:
+
+- AIX 7.x マイグレ機では旧既定値（single_path / round_robin / 小 queue_depth）の場合あり。
+- AIX 7.3 新規ディスク既定: no_reserve / shortest_queue / 64 (DS8000) or 32 (SVC/Flash)。
+
+##### Step 2: queue_depth 変更（DS8000 例）
+
+**コマンド**:
+
+```
+chdev -l hdisk1 -a queue_depth=64 -U
+```
+
+**期待される出力**:
+
+```
+hdisk1 changed
+```
+
+**注意点**:
+
+- -U で動的反映（オープン中可）。
+- ストレージ仕様超過の値はストレージ側でエラー発生の原因。
+
+##### Step 3: reserve_policy = no_reserve（HA/LPM 必須）
+
+**コマンド**:
+
+```
+chdev -l hdisk1 -a reserve_policy=no_reserve -U
+```
+
+**期待される出力**:
+
+```
+hdisk1 changed
+```
+
+**注意点**:
+
+- PowerHA/LPM 環境では no_reserve 必須。
+- single_path のままだと別ノードからの varyonvg が SCSI reserve で失敗。
+
+##### Step 4: algorithm = shortest_queue（既定）に戻す
+
+**コマンド**:
+
+```
+chdev -l hdisk1 -a algorithm=shortest_queue -U
+```
+
+**期待される出力**:
+
+```
+hdisk1 changed
+```
+
+**注意点**:
+
+- shortest_queue は MPIO 全パス間で動的負荷分散。
+
+##### Step 5: 確認
+
+**コマンド**:
+
+```
+lsattr -El hdisk1 | egrep 'reserve_policy|algorithm|queue_depth'
+```
+
+**期待される出力**:
+
+```
+reserve_policy   no_reserve       Reserve Policy        True
+algorithm        shortest_queue   Algorithm             True
+queue_depth      64               Queue DEPTH           True
+```
+
+**注意点**:
+
+- 全 hdisk 一括変更は for ループで `for h in $(lsdev -Cc disk -F name); do chdev -l $h -a queue_depth=64 -U; done`。
+
+#### 検証
+
+- iostat -DRTl で該当 hdisk のレイテンシ確認
+- errpt でディスクエラーが新規発生していない
+- アプリ側で I/O 性能改善
+
+#### ロールバック
+
+chdev -l hdisk1 -a queue_depth=20 -U
+chdev -l hdisk1 -a reserve_policy=single_path -U
+chdev -l hdisk1 -a algorithm=round_robin -U
+
+#### 関連エントリ
+
+- **用語**: [MPIO](#mpio), [PV](#pv), queue_depth, reserve_policy
+- **コマンド**: [`lsattr`](01-commands.md#lsattr), [`chdev`](01-commands.md#chdev), [`lspath`](01-commands.md#lspath), [`iostat`](01-commands.md#iostat)
+- **設定**: queue_depth, reserve_policy, algorithm
+- **関連手順**: [cfg-disk-add](08-config-procedures.md#cfg-disk-add), [inc-disk-replace](09-incident-procedures.md#inc-disk-replace)
+
+#### 典型的な障害パターン
+
+**症状**: chdev で `0514-040 Error initializing a device`
+
+- **原因**: デバイスがオープン中で属性変更不可
+- **対処**: -U が効かない属性は -P で次回 boot 反映、または unmount 後に再 chdev
+
+**症状**: queue_depth を上げたら storage 側で I/O エラー
+
+- **原因**: ストレージ仕様の queue_depth 上限超過
+- **対処**: ストレージマニュアル確認、適正値に下げる
 
 **出典**: S_AIX73_devicemanagement
 
@@ -3619,39 +3929,151 @@ queue_depth     64               Queue DEPTH           True
 
 ### cfg-tcp-buffers: TCP 送受信バッファチューニング { #cfg-tcp-buffers }
 
-**重要度**: `A` / **用途**: 性能
+**重要度**: `A 級詳細版` / **用途**: 性能
 
-**目的**: 高遅延 WAN や 10GbE 環境で TCP throughput を上げる。
+#### 目的
 
-**前提**: root 権限。
+高遅延 WAN や 10GbE 環境で TCP throughput を上げる。
 
-**手順**:
+**業務上のシナリオ**:
+- 拠点間 NFS マウントの転送速度改善
+- DR サイトへのバックアップデータ転送の最適化
+- 10GbE 環境での既定値（256KB）から大バッファ化
 
-1. 現状確認:
-   - `no -L sb_max -L tcp_sendspace -L tcp_recvspace -L rfc1323`
-2. 値を変更（永続）:
-   - `no -p -o sb_max=4194304`
-   - `no -p -o tcp_sendspace=1048576`
-   - `no -p -o tcp_recvspace=1048576`
-   - `no -p -o rfc1323=1`
-3. 確認:
-   - `no -a | egrep 'sb_max|tcp_sendspace|tcp_recvspace|rfc1323'`
+#### 前提条件
 
+- root 権限
+- 業務で TCP throughput が要件になっていること
+- アプリ側が setsockopt で個別設定していないこと（している場合は OS 側設定が無視される）
 
-**期待出力**:
+#### 手順
+
+##### Step 1: 現状確認
+
+**コマンド**:
 
 ```
-# no -p -o tcp_sendspace=1048576
+no -L sb_max -L tcp_sendspace -L tcp_recvspace -L rfc1323
+```
+
+**期待される出力**:
+
+```
+NAME                      CUR    DEF    BOOT   MIN    MAX    UNIT   TYPE
+                          DEPENDENCIES
+--------------------------------------------------------------------------------
+sb_max                    1048576 1048576 1048576 4096   ALL    byte    D
+
+NAME                      CUR    DEF    BOOT   MIN    MAX    UNIT   TYPE
+                          DEPENDENCIES
+--------------------------------------------------------------------------------
+tcp_sendspace             262144  262144  262144  4096   ALL    byte    C
+                                                                       sb_max
+
+NAME                      CUR    DEF    BOOT   MIN    MAX    UNIT   TYPE
+                          DEPENDENCIES
+--------------------------------------------------------------------------------
+tcp_recvspace             262144  262144  262144  4096   ALL    byte    C
+                                                                       sb_max
+
+NAME                      CUR    DEF    BOOT   MIN    MAX    UNIT   TYPE
+                          DEPENDENCIES
+--------------------------------------------------------------------------------
+rfc1323                   1       0       1       0      1      boolean    C
+```
+
+**注意点**:
+
+- AIX 7.3 既定: sb_max=1MB, tcp_sendspace/recvspace=256KB, rfc1323=1（有効）。
+- TYPE=D は dynamic、C は connection（新規接続から有効）。
+
+##### Step 2: 値を変更（永続）
+
+**コマンド**:
+
+```
+no -p -o sb_max=4194304
+no -p -o tcp_sendspace=1048576
+no -p -o tcp_recvspace=1048576
+no -p -o rfc1323=1
+```
+
+**期待される出力**:
+
+```
+Setting sb_max to 4194304
+Setting sb_max to 4194304 in nextboot file
 Setting tcp_sendspace to 1048576
 Setting tcp_sendspace to 1048576 in nextboot file
-
+Setting tcp_recvspace to 1048576
+Setting tcp_recvspace to 1048576 in nextboot file
+Setting rfc1323 to 1
+Setting rfc1323 to 1 in nextboot file
 ```
 
-**検証**: 新規接続から有効。`netperf` 等で実 throughput 計測。既存接続は再接続が必要。
+**注意点**:
 
-**ロールバック**: `no -d <tunable>` で既定値復元。
+- sb_max は tcp_sendspace/recvspace の 2 倍以上必要。
+- rfc1323=1 で TCP window scaling 有効化（64KB 超バッファ必須）。
+- -p で実機 + nextboot 両方に永続保存。
 
-**関連**: `no`, `netstat`
+##### Step 3: 確認
+
+**コマンド**:
+
+```
+no -a | egrep 'sb_max|tcp_sendspace|tcp_recvspace|rfc1323'
+```
+
+**期待される出力**:
+
+```
+rfc1323 = 1
+sb_max = 4194304
+tcp_recvspace = 1048576
+tcp_sendspace = 1048576
+```
+
+**注意点**:
+
+- 既存接続には影響しない。アプリ再接続後から有効。
+
+#### 検証
+
+- netperf や iperf 等で実 throughput 測定
+- netstat -p tcp でウィンドウサイズ確認
+- アプリログで socket buffer エラーが出ないこと
+
+#### ロールバック
+
+no -d sb_max
+no -d tcp_sendspace
+no -d tcp_recvspace
+no -d rfc1323
+
+#### 関連エントリ
+
+- **用語**: [TCP/IP](#tcp-ip), tunable
+- **コマンド**: [`no`](01-commands.md#no), [`netstat`](01-commands.md#netstat)
+- **設定**: sb_max, tcp_sendspace, tcp_recvspace, rfc1323
+- **関連手順**: [inc-network-down](09-incident-procedures.md#inc-network-down), `cfg-network-services`
+
+#### 典型的な障害パターン
+
+**症状**: tcp_sendspace 増加後も throughput が上がらない
+
+- **原因**: アプリが setsockopt で SO_SNDBUF を明示設定している
+- **対処**: アプリのソケット設定確認、netstat -an で実 buffer サイズ確認
+
+**症状**: メモリ消費が急増
+
+- **原因**: 大バッファ × 大量接続
+- **対処**: sb_max を妥当な範囲に設定、接続数制限
+
+**症状**: no -p で `Restricted tunable` エラー
+
+- **原因**: AIX 7.3 で restricted 化された tunable
+- **対処**: -F オプション追加（リスク認識のうえ）
 
 **出典**: S_AIX73_performance
 
@@ -3659,40 +4081,149 @@ Setting tcp_sendspace to 1048576 in nextboot file
 
 ### cfg-ioo-tuning: j2_inodeCacheSize の調整 { #cfg-ioo-tuning }
 
-**重要度**: `A` / **用途**: 性能
+**重要度**: `A 級詳細版` / **用途**: 性能
 
-**目的**: AIX 7.3 で既定 200 になった j2_inodeCacheSize を、低メモリ機で多数 open file する場合に増やす。
+#### 目的
 
-**前提**: root 権限。低メモリ警告（vmstat -v に inode buf extends/lookup increases）が観測される。
+AIX 7.3 で既定 200 になった j2_inodeCacheSize を、低メモリ機で多数 open file する場合に増やす。
 
-**手順**:
+**業務上のシナリオ**:
+- 4GB 以下の小規模機での open file 失敗
+- メールサーバ等の小ファイル多数アクセス系
+- AIX 5L/6.1 からのマイグレ後の旧既定値（400）に戻す
 
-1. 現状確認:
-   - `ioo -L j2_inodeCacheSize -L j2_metadataCacheSize`
-2. inode 関連メトリクス確認:
-   - `vmstat -v | grep -i inode`
-3. 値を 400 に戻す（永続）:
-   - `ioo -p -o j2_inodeCacheSize=400 -o j2_metadataCacheSize=400`
-4. 確認:
-   - `ioo -L j2_inodeCacheSize | head -3`
+#### 前提条件
 
+- root 権限
+- 低メモリ警告（vmstat -v に inode buf extends/lookup increases）が観測される
+- 物理メモリの一定割合を inode キャッシュに割く余裕があること
 
-**期待出力**:
+#### 手順
+
+##### Step 1: 現状確認
+
+**コマンド**:
 
 ```
-# ioo -L j2_inodeCacheSize
+ioo -L j2_inodeCacheSize -L j2_metadataCacheSize
+vmstat -v | grep -i inode
+```
+
+**期待される出力**:
+
+```
+NAME                      CUR    DEF    BOOT   MIN    MAX    UNIT     TYPE
+                          DEPENDENCIES
+--------------------------------------------------------------------------------
+j2_inodeCacheSize         200    200    200    1      1000   numeric    D
+
+NAME                      CUR    DEF    BOOT   MIN    MAX    UNIT     TYPE
+                          DEPENDENCIES
+--------------------------------------------------------------------------------
+j2_metadataCacheSize      200    200    200    1      1000   numeric    D
+
+# vmstat -v | grep -i inode
+        12345 extends to inode buffers
+        67890 inode lookup increases
+```
+
+**注意点**:
+
+- extends/increases が増え続けるなら inode キャッシュ不足。
+- AIX 7.3 既定 200 は AIX 7.1 で 400→200 に変更されたもの。
+
+##### Step 2: 値を 400 に戻す（永続）
+
+**コマンド**:
+
+```
+ioo -p -o j2_inodeCacheSize=400 -o j2_metadataCacheSize=400
+```
+
+**期待される出力**:
+
+```
+Setting j2_inodeCacheSize to 400
+Setting j2_inodeCacheSize to 400 in nextboot file
+Setting j2_metadataCacheSize to 400
+Setting j2_metadataCacheSize to 400 in nextboot file
+```
+
+**注意点**:
+
+- 通常は inode と metadata を同値で運用。
+- TYPE=D は動的、再起動不要。
+
+##### Step 3: 確認
+
+**コマンド**:
+
+```
+ioo -L j2_inodeCacheSize | head -3
+```
+
+**期待される出力**:
+
+```
 NAME                      CUR    DEF    BOOT   MIN    MAX    UNIT     TYPE
                           DEPENDENCIES
 --------------------------------------------------------------------------------
 j2_inodeCacheSize         400    200    400    1      1000   numeric    D
-
 ```
 
-**検証**: vmstat -v の `extends to inode buffers` 等の増加が止まる。アプリ側の open file 失敗が解消。
+**注意点**:
 
-**ロールバック**: `ioo -d j2_inodeCacheSize -d j2_metadataCacheSize` で既定 200 に戻す。
+- CUR と BOOT が 400、DEF は変わらず 200。
 
-**関連**: `ioo`, `vmstat`, `JFS2`
+##### Step 4: 効果測定
+
+**コマンド**:
+
+```
+vmstat -v | grep -i inode
+```
+
+**期待される出力**:
+
+```
+        12350 extends to inode buffers
+        67900 inode lookup increases
+```
+
+**注意点**:
+
+- 数分後にカウンタの増加率が下がっていれば効果あり。
+- アプリ側で open file 失敗が解消することを確認。
+
+#### 検証
+
+- ioo -L で値が反映
+- vmstat -v の extends/increases 増加が止まる
+- アプリで open file エラーが解消
+
+#### ロールバック
+
+ioo -d j2_inodeCacheSize
+ioo -d j2_metadataCacheSize
+
+#### 関連エントリ
+
+- **用語**: [VMM](#vmm), [JFS2](#jfs2), ioo
+- **コマンド**: [`ioo`](01-commands.md#ioo), [`vmstat`](01-commands.md#vmstat), [`vmo`](01-commands.md#vmo)
+- **設定**: j2_inodeCacheSize, j2_metadataCacheSize
+- **関連手順**: `cfg-vmo-tuning`, [inc-perf-degradation](09-incident-procedures.md#inc-perf-degradation)
+
+#### 典型的な障害パターン
+
+**症状**: ioo -p で `Restricted tunable`
+
+- **原因**: tunable が restricted 化されている
+- **対処**: -F オプション追加（リスク認識のうえ）
+
+**症状**: 値を上げてもメモリ消費が上がらない
+
+- **原因**: JFS2 アクセスが少ないアプリ
+- **対処**: 対象アプリが JFS2 を多用しているか確認、別 tunable（minperm% 等）を見直し
 
 **出典**: S_AIX73_performance
 

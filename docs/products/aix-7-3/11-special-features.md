@@ -1,11 +1,10 @@
 # 特集記事
 
-> ストーリー仕立ての横断的実用記事。リファレンス章（コマンド/設定値/用語）を横断して、特定のユースケースを最初から最後まで解説します。
+> ストーリー仕立ての横断的実用記事。リファレンス章を横断して、特定のユースケースを最初から最後まで解説します。
 
 **他章との関係**:
-- [08-config-procedures](08-config-procedures.md) / [09-incident-procedures](09-incident-procedures.md) は手順カタログ（短い、参照用）
+- [08-config-procedures](08-config-procedures.md) / [09-incident-procedures](09-incident-procedures.md) は手順カタログ
 - 本章 (11-special-features) は**ストーリー記事**（長い、横断的、シナリオ仕立て）
-- 各記事の Step で他章のコマンド・用語・手順への双方向リンクあり
 
 **v8 投入記事一覧**:
 
@@ -18,7 +17,7 @@
 | [feature-05-tcpip-change](#feature-05-tcpip-change) | TCP/IP 設定変更から検証・運用反映まで | `S` | ネットワーク | ネットワークセグメント変更（VLAN 移動・IP 帯変更）の本番系作業。事前準備から ifconfig 変更、ルーティング、DNS 更新、関連サーバ通知、業務確認まで。 |
 
 !!! info "本章の品質方針"
-    全特集記事は **IBM AIX 7.3 公式マニュアル記載の事実・手順のみ** で構成しています。AI が苦手な定性的判断（ベストプラクティス、経験則、運用ノウハウ等）は範囲外として、各記事末尾に「本記事の範囲」として明示しています。
+    全特集記事は **IBM AIX 7.3 公式マニュアル記載の事実・手順のみ** で構成しています。AI が苦手な定性的判断は範囲外として、各記事末尾に「本記事の範囲」として明示しています。
 
 ---
 
@@ -39,6 +38,11 @@
 途中で「既存 VG に空きあり / なし」「新規 VG が必要 / 不要」の分岐があるので、判断ポイントも明示します。
 
 ---
+
+
+![AIX LVM 階層図（File → FS → LV → PV → VG）](images/perf_p0057_img1.jpeg)
+
+*図: AIX LVM の階層構造。VG（Volume Group）に複数 PV、PV 上に PP、LV は LP の集合、FS が LV 上に配置される。 （出典: AIX 7.3 Performance Management ガイド p.57）*
 
 ## Step 1: 現在の容量確認
 
@@ -360,6 +364,11 @@ mklv -y datalv -t jfs2 -C 2 -S 64K datavg 320
 - `-S 64K` = 64KB ストライプサイズ
 
 ---
+
+
+![AIX root file system のディレクトリ構成](images/devmgmt_p0085_img1.jpeg)
+
+*図: AIX の標準ルートファイルシステム構成（/etc, /bin, /usr 等）。 （出典: AIX 7.3 Device Management ガイド p.85）*
 
 ## Step 5: FS 作成・マウント
 
@@ -692,6 +701,11 @@ chpath -l hdisk2 -p fscsi0 -s enable
 
 ---
 
+
+![AIX 性能ボトルネックの調査フロー](images/perf_p0052_img1.jpeg)
+
+*図: AIX 性能調査の典型フロー。CPU/メモリ/I/O/ネットワークの順に切り分けする。 （出典: AIX 7.3 Performance Management ガイド p.52）*
+
 ## Step 1: 現象の明確化
 
 ### 1-1. 業務側ヒアリング
@@ -844,6 +858,11 @@ PID    Command   Inuse      Pin     Pgsp  Virtual    64-bit Mthrd 16MB
 
 ---
 
+
+![AIX VMM ページング動作](images/perf_p0199_img1.jpeg)
+
+*図: AIX VMM のページング動作。物理メモリ不足時にディスク I/O が発生。 （出典: AIX 7.3 Performance Management ガイド p.199）*
+
 ## Step 3: 真因特定
 
 ### 3-1. 仮説の整理
@@ -952,6 +971,11 @@ DB 管理者と協議の上、SGA を 4GB → 8GB に拡大（メモリ増えた
 ```
 nmon -f -s 30 -c 80 -m /tmp -F after_$(hostname)_$(date +%Y%m%d_%H%M).nmon
 ```
+
+
+![AIX I/O サブシステム概要](images/perf_p0225_img1.jpeg)
+
+*図: AIX I/O サブシステムの構造。 （出典: AIX 7.3 Performance Management ガイド p.225）*
 
 ### 5-2. 比較表（before/after）
 
@@ -1281,6 +1305,11 @@ cp -p /var/adm/ras/installp.summary.log /tmp/pre_sp2_installp.summary.log
 ```
 
 ---
+
+
+![SMIT installp 設定画面](images/install_p0377_img2.jpeg)
+
+*図: SMIT 経由の installp 操作画面例。 （出典: AIX 7.3 Installing ガイド p.377）*
 
 ## Step 2: パッチ適用
 
@@ -1926,6 +1955,11 @@ done
 ```
 
 ---
+
+
+![IKE Tunnel Setup Process (参考)](images/sec_p0246_img1.png)
+
+*図: IKE トンネルセットアップの 2 段階プロセス（参考: セキュリティ機能の例）。 （出典: AIX 7.3 Security ガイド p.246）*
 
 ## Step 5: 監査ログ（audit subsystem）有効化
 

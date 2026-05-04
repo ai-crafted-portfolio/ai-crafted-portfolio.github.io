@@ -2,7 +2,7 @@
 
 > 掲載：**40 件**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-| 出典 ID | 正式名称 | 形式 | 言語 | URL |
+| ID | 正式名称 | 形式 | 言語 | URL |
 |---|---|---|---|---|
 | `S_AIX73_release_notes` | AIX 7.3 Release Notes | Web | en | <https://www.ibm.com/docs/en/aix/7.3.0?topic=notes-aix-73-release> |
 | `S_AIX73_release_notes_733` | AIX 7.3.3 Release Notes | Web | en | <https://www.ibm.com/docs/en/aix/7.3.0?topic=notes-aix-733-release> |

@@ -1,8 +1,8 @@
 # マニュアル参照マップ
 
-> 掲載：**22 テーマ（**全 URL 必須**）**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
+> 掲載：**22 テーマ**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-| テーマ | 公式マニュアル | 参照章・観点 | 出典 |
+| テーマ | 公式マニュアル | 参照章 | 出典 |
 |---|---|---|---|
 | 概要・新機能 | [AIX 7.3.4 Release Notes](https://www.ibm.com/docs/en/aix/7.3.0?topic=notes-aix-734-release) | What's new in AIX 7.3.4 / TL4 | S_AIX73_release_notes_734 |
 | インストール（新規） | [Installing AIX](https://www.ibm.com/docs/en/aix/7.3?topic=installing) | Installation overview / Quick installation | S_AIX73_install |

@@ -2,7 +2,7 @@
 
 > 掲載：**20 件**（定番のみ）。除外項目は [10. 対象外項目](10-out-of-scope.md) を参照。
 
-| ID | 症状 | 原因 | 対処（要約） | errpt label / コード | 関連手順 |
+| ID | 症状 | 原因 | 対処 | errpt label | 関連手順 |
 |---|---|---|---|---|---|
 | ts-01 | システムが起動しない（HMC で LED コード残る） | BLV 破損、ブートディスク認識不可、ハードウェア障害 | サービスモード boot → bosboot -ad → bootlist 再設定。詳細手順: inc-boot-fail-led | `—（HMC SRC: BA*、E1*）` | [inc-boot-fail-led](09-incident-procedures.md#inc-boot-fail-led) |
 | ts-02 | ログインができない（user is locked） | loginretries 超で account_locked=true、または unsuccessful_login_count 超 | chsec -f /etc/security/lastlog -a unsuccessful_login_count=0 -s <user> | `3004-303` | [inc-login-locked](09-incident-procedures.md#inc-login-locked) |

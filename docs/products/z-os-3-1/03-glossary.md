@@ -1,6 +1,6 @@
 # 用語集
 
-> 掲載：**70 件（関連用語クロスリンク + 仮想記憶カテゴリ追加）**（定番のみ）。除外項目は [11. 対象外項目](10-out-of-scope.md) を参照。
+> 掲載：**78 件（関連用語クロスリンク + 仮想記憶カテゴリ追加）**（定番のみ）。除外項目は [11. 対象外項目](10-out-of-scope.md) を参照。
 
 ## コア OS（10 件）
 
@@ -51,7 +51,7 @@
 | <span id="bpxprmxx">**BPXPRMxx**</span> | USS（OMVS）の構成メンバ。MAXASSIZE, MAXFILEPROC, ROOT FILESYSTEM 等を定義。 | [USS](#uss), [OMVS](#omvs), [HFS](#hfs), [zFS](#zfs) | [cfg-uss-fs](08-config-procedures.md#cfg-uss-fs) |
 | <span id="smfprmxx">**SMFPRMxx**</span> | SMF 設定メンバ。記録対象 type、出力先データセット、バッファ等を定義。 | [SMF](#smf), [PARMLIB](#parmlib) | [cfg-smf-collect](08-config-procedures.md#cfg-smf-collect) |
 | <span id="consolxx">**CONSOLxx**</span> | コンソール定義メンバ。MCS / EMCS コンソール、HARDCOPY、AUTH 等を定義。 | [Console](#console), MCS | [cfg-console-add](08-config-procedures.md#cfg-console-add) |
-| <span id="clpa">**CLPA**</span> | Create Link Pack Area。LPALIB から LPA を再作成する IPL オプション。常駐モジュール変更時に必要。 | LPA, LLA, IEASYS | [cfg-clpa-ipl](08-config-procedures.md#cfg-clpa-ipl) |
+| <span id="clpa">**CLPA**</span> | Create Link Pack Area。LPALIB から LPA を再作成する IPL オプション。常駐モジュール変更時に必要。 | [LPA](#lpa), LLA, IEASYS | [cfg-clpa-ipl](08-config-procedures.md#cfg-clpa-ipl) |
 
 ## Storage / DFSMS（8 件）
 
@@ -181,6 +181,66 @@
 |---|---|---|---|
 | <span id="wtor">**WTOR**</span> | Write to Operator with Reply。応答待ちオペレータメッセージ。R <id>,<reply> で応答するまで処理が進まない。 | [Console](#console), MCS | [inc-wtor-response](09-incident-procedures.md#inc-wtor-response) |
 | <span id="console">**Console**</span> | z/OS のシステムコンソール。MCS（Multiple Console Support）/ EMCS / SMCS の 3 種。 | MCS, EMCS, [CONSOLxx](#consolxx) | [cfg-console-add](08-config-procedures.md#cfg-console-add) |
+
+## 仮想記憶（8 件）
+
+
+![z/OS 仮想記憶レイアウト](images/v01_intro_p0029_img1.jpeg)
+
+*図: z/OS 64-bit Address Space の仮想記憶レイアウト（Common / Private） （出典: ABCs of z/OS Vol.01 (SG24-7976) p.29）*
+
+| 用語 | 定義 | 関連用語 | 関連手順 |
+|---|---|---|---|
+| <span id="psa">**PSA**</span> | Prefixed Save Area。各 CPU 専用の最下位 8KB 仮想記憶領域（CPU ごとにプレフィックスレジスタで区別）。割込処理用 PSW・レジスタ保管域、CVT へのポインタ等を含む。 | [CVT](#cvt), [SQA](#sqa), [ASID](#asid) |  |
+| <span id="csa">**CSA**</span> | Common Service Area。全 Address Space で共有される 16MB 境界より下の仮想記憶。サブシステム間共有データに使用。IEASYSxx の CSA= で 1 番目に指定。 | [ECSA](#ecsa), [SQA](#sqa), [IEASYSxx](#ieasysxx) | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) |
+| <span id="ecsa">**ECSA**</span> | Extended Common Service Area。16MB 境界より上の CSA。Db2/CICS/MQ 等のサブシステムが多く消費。IEASYSxx の CSA= で 2 番目に指定。 | [CSA](#csa), [ESQA](#esqa), [IEASYSxx](#ieasysxx) | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) |
+| <span id="sqa">**SQA**</span> | System Queue Area。z/OS カーネルが使う共有制御ブロック領域（16MB 境界より下）。枯渇すると IPL 失敗・システム停止リスク。IEASYSxx の SQA= で指定。 | [ESQA](#esqa), [CSA](#csa), [IEASYSxx](#ieasysxx) | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) |
+| <span id="esqa">**ESQA**</span> | Extended SQA。16MB 境界より上の SQA。Address Space 数増加・Sysplex/Db2 規模拡大とともに増量必要。 | [SQA](#sqa), [ECSA](#ecsa), [IEASYSxx](#ieasysxx) | [cfg-parmlib-update](08-config-procedures.md#cfg-parmlib-update) |
+| <span id="lpa">**LPA**</span> | Link Pack Area。z/OS 共通の常駐モジュール領域。PLPA/MLPA/FLPA の 3 種に分類。CLPA で再構築。LPALSTxx でデータセット連結を定義。 | [CLPA](#clpa), LPALSTxx | [cfg-clpa-ipl](08-config-procedures.md#cfg-clpa-ipl) |
+| <span id="svc">**SVC**</span> | Supervisor Call。問題プログラムから z/OS カーネルサービスを呼び出す機械命令（SVC 番号で識別）。SVC dump, SVC table 等の用語にも登場。SVC dump = SVC 命令で取得するメモリダンプ。 | MAXSPACE, SVC dump | `inc-svc-dump` |
+| <span id="cvt">**CVT**</span> | Communication Vector Table。z/OS の中核制御ブロック。各種制御ブロック・テーブルへのポインタを集約。PSA 内のオフセットからアクセス可能。 | [PSA](#psa), JESCT, SSCVT |  |
+
+
+
+### 仮想記憶用語の独立 anchor（v4 追加）
+
+用語集テーブル参照に加え、本サイト内 / 外部からの直接リンク用に独立 anchor を提供。
+
+#### SVC { #svc }
+
+Supervisor Call。問題プログラムからカーネルへのシステムコール命令。SVC dump 等の派生語あり。
+
+用語集の詳細セクションも参照（仮想記憶カテゴリ）。
+
+#### PSA { #psa }
+
+Prefixed Save Area。各 CPU 専用最下位 8KB 領域。割込処理 PSW・CVT ポインタを含む。
+
+用語集の詳細セクションも参照（仮想記憶カテゴリ）。
+
+#### CSA { #csa }
+
+Common Service Area。16MB 境界より下の全 Address Space 共有領域。
+
+用語集の詳細セクションも参照（仮想記憶カテゴリ）。
+
+#### ECSA { #ecsa }
+
+Extended CSA。16MB 境界より上。Db2/CICS/MQ 等が消費。
+
+用語集の詳細セクションも参照（仮想記憶カテゴリ）。
+
+#### ESQA { #esqa }
+
+Extended SQA。16MB 境界より上のシステムキュー領域。
+
+用語集の詳細セクションも参照（仮想記憶カテゴリ）。
+
+#### CVT { #cvt }
+
+Communication Vector Table。z/OS 中核制御ブロック。各種テーブルへのポインタ集約。
+
+用語集の詳細セクションも参照（仮想記憶カテゴリ）。
 
 
 ---

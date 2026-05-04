@@ -4,12 +4,16 @@
 
 ## 重要度 × 用途 マトリクス
 
+<div class="md-typeset__scrollwrap" markdown="1">
+
 | 重要度＼用途 | DFSMS | JES2 | PARMLIB | RACF | SMF | Sysplex | TCPIP | TSO/E | USS | WLM |
 |---|---|---|---|---|---|---|---|---|---|---|
 | **S** | — | [cfg-jes2-init](#cfg-jes2-init) | [cfg-parmlib-update](#cfg-parmlib-update)<br>[cfg-stc-startup](#cfg-stc-startup) | [cfg-racf-permit](#cfg-racf-permit) | [cfg-smf-collect](#cfg-smf-collect) | [cfg-sysplex-define](#cfg-sysplex-define) | [cfg-tcpip-profile](#cfg-tcpip-profile) | — | [cfg-uss-fs](#cfg-uss-fs) | [cfg-wlm-policy](#cfg-wlm-policy) |
 | **A** | — | — | [cfg-console-add](#cfg-console-add)<br>[cfg-clpa-ipl](#cfg-clpa-ipl)<br>[cfg-apf-add](#cfg-apf-add) | — | — | [cfg-grs-setup](#cfg-grs-setup) | — | — | — | — |
 | **B** | [cfg-dataset-mgmt](#cfg-dataset-mgmt)<br>[cfg-sms-class](#cfg-sms-class) | [cfg-jes2-nje](#cfg-jes2-nje) | — | — | — | — | — | [cfg-tso-logon](#cfg-tso-logon) | — | — |
 | **C** | — | — | — | — | — | — | — | [cfg-rexx-script](#cfg-rexx-script) | — | — |
+
+</div>
 
 ---
 

@@ -4,12 +4,16 @@
 
 ## 重要度 × 用途 マトリクス
 
+<div class="md-typeset__scrollwrap" markdown="1">
+
 | 重要度＼用途 | DFSMS | JES2 | Sysplex | USS | コンソール | ジョブ | セキュリティ | ソフトウェア管理 | ネットワーク | ログ監査 | 性能 | 起動停止 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **S** | — | [inc-jes2-spool-full](#inc-jes2-spool-full) | [inc-sysplex-split](#inc-sysplex-split) | [inc-uss-fs-full](#inc-uss-fs-full) | — | [inc-job-abend](#inc-job-abend) | [inc-racf-access-denied](#inc-racf-access-denied) | — | [inc-tcpip-down](#inc-tcpip-down) | — | [inc-paging-shortage](#inc-paging-shortage) | [inc-ipl-fail](#inc-ipl-fail)<br>[inc-system-hung](#inc-system-hung)<br>[inc-wtor-response](#inc-wtor-response)<br>[inc-stc-hung](#inc-stc-hung) |
 | **A** | [inc-vsam-open-fail](#inc-vsam-open-fail) | — | — | — | [inc-console-hung](#inc-console-hung) | [inc-job-fail](#inc-job-fail) | — | [inc-smpe-apply-fail](#inc-smpe-apply-fail) | — | [inc-smf-collect-fail](#inc-smf-collect-fail)<br>[inc-syslog-investigation](#inc-syslog-investigation) | — | — |
 | **B** | — | — | — | [inc-uss-batch](#inc-uss-batch) | — | — | — | — | — | — | — | — |
 | **C** | — | — | — | — | — | — | — | — | — | — | — | — |
+
+</div>
 
 ---
 

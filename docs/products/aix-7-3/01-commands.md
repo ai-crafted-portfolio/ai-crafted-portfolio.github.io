@@ -2258,3 +2258,323 @@ smitty chfs           # FS 拡張
 
 
 *出典 ID は [07. 出典一覧](07-sources.md) を参照。*
+
+
+---
+
+## 関連コマンド（参照 stub - v11 追加）
+
+本ページ上部 45 件の主要コマンドの他に、08 章 / 09 章 / 11 章から参照される関連コマンド 38 件の anchor を補完。各 stub は IBM 公式コマンドリファレンスへのリンクのみ（要約は当該マニュアルの 1 行抜粋系）。詳細は IBM Docs 参照。
+
+### `hostname` { #hostname }
+
+**用途**: システムホスト名の表示・設定
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=h-hostname-command>
+
+---
+
+### `nslookup` { #nslookup }
+
+**用途**: DNS 名前解決問い合わせ（対話・非対話）
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=n-nslookup-command>
+
+---
+
+### `host` { #host }
+
+**用途**: DNS ホスト情報照会
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=h-host-command>
+
+---
+
+### `dig` { #dig }
+
+**用途**: DNS 詳細問い合わせ
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=d-dig-command>
+
+---
+
+### `mount` { #mount }
+
+**用途**: ファイルシステムマウント（NFS/JFS2 等）
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=m-mount-command>
+
+---
+
+### `umount` { #umount }
+
+**用途**: ファイルシステムアンマウント
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=u-umount-command>
+
+---
+
+### `showmount` { #showmount }
+
+**用途**: NFS エクスポート/マウント状況表示
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=s-showmount-command>
+
+---
+
+### `fuser` { #fuser }
+
+**用途**: ファイル・FS を使用中のプロセス特定
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=f-fuser-command>
+
+---
+
+### `ntpq` { #ntpq }
+
+**用途**: NTP サーバ状態問い合わせ
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=n-ntpq-command>
+
+---
+
+### `stopsrc` { #stopsrc }
+
+**用途**: SRC 経由でサブシステム停止
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=s-stopsrc-command>
+
+---
+
+### `refresh` { #refresh }
+
+**用途**: SRC 経由でサブシステム設定再読み込み
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=r-refresh-command>
+
+---
+
+### `logger` { #logger }
+
+**用途**: syslogd へメッセージ送出
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=l-logger-command>
+
+---
+
+### `errlogger` { #errlogger }
+
+**用途**: errpt へ独自メッセージ書き込み
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=e-errlogger-command>
+
+---
+
+### `odmadd` { #odmadd }
+
+**用途**: ODM クラスへ stanza 追加
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=o-odmadd-command>
+
+---
+
+### `odmget` { #odmget }
+
+**用途**: ODM クラスから stanza 取得
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=o-odmget-command>
+
+---
+
+### `odmdelete` { #odmdelete }
+
+**用途**: ODM クラスから stanza 削除
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=o-odmdelete-command>
+
+---
+
+### `sysdumpdev` { #sysdumpdev }
+
+**用途**: システムダンプデバイス管理
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=s-sysdumpdev-command>
+
+---
+
+### `rmlv` { #rmlv }
+
+**用途**: Logical Volume 削除
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=r-rmlv-command>
+
+---
+
+### `crfs` { #crfs }
+
+**用途**: ファイルシステム作成
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=c-crfs-command>
+
+---
+
+### `extendvg` { #extendvg }
+
+**用途**: Volume Group に PV 追加
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=e-extendvg-command>
+
+---
+
+### `mirrorvg` { #mirrorvg }
+
+**用途**: VG の LV をミラー化
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=m-mirrorvg-command>
+
+---
+
+### `unmirrorvg` { #unmirrorvg }
+
+**用途**: VG ミラーを解除
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=u-unmirrorvg-command>
+
+---
+
+### `syncvg` { #syncvg }
+
+**用途**: VG ミラーの同期
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=s-syncvg-command>
+
+---
+
+### `lsfs` { #lsfs }
+
+**用途**: ファイルシステム一覧・属性表示
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=l-lsfs-command>
+
+---
+
+### `mkuser` { #mkuser }
+
+**用途**: ユーザ追加
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=m-mkuser-command>
+
+---
+
+### `rmuser` { #rmuser }
+
+**用途**: ユーザ削除
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=r-rmuser-command>
+
+---
+
+### `chuser` { #chuser }
+
+**用途**: ユーザ属性変更
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=c-chuser-command>
+
+---
+
+### `pwdadm` { #pwdadm }
+
+**用途**: パスワード管理（管理者モード）
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=p-pwdadm-command>
+
+---
+
+### `lppchk` { #lppchk }
+
+**用途**: fileset 整合性チェック
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=l-lppchk-command>
+
+---
+
+### `restore` { #restore }
+
+**用途**: backup コマンドで取得したアーカイブから復元
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=r-restore-command>
+
+---
+
+### `lsmksysb` { #lsmksysb }
+
+**用途**: mksysb イメージ内容一覧
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=l-lsmksysb-command>
+
+---
+
+### `lspath` { #lspath }
+
+**用途**: MPIO パス状態一覧
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=l-lspath-command>
+
+---
+
+### `rmdev` { #rmdev }
+
+**用途**: デバイスを ODM から削除（または unconfigure）
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=r-rmdev-command>
+
+---
+
+### `mailq` { #mailq }
+
+**用途**: sendmail メールキュー表示
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=m-mailq-command>
+
+---
+
+### `crontab` { #crontab }
+
+**用途**: cron ジョブ表編集
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=c-crontab-command>
+
+---
+
+### `at` { #at }
+
+**用途**: 1 回限りジョブ予約
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=a-at-command>
+
+---
+
+### `dbx` { #dbx }
+
+**用途**: ソースレベルデバッガ
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=d-dbx-command>
+
+---
+
+### `truss` { #truss }
+
+**用途**: システムコール / シグナルトレース
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=t-truss-command>
+
+---
+
+### `coreadm` { #coreadm }
+
+**用途**: コアダンプ生成パターン管理
+
+**公式リファレンス**: <https://www.ibm.com/docs/en/aix/7.3?topic=c-coreadm-command>
+
+---
+

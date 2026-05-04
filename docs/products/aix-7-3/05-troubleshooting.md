@@ -24,3 +24,69 @@
 | ts-18 | rootvg ミラー片方故障 | ハードウェア劣化、ケーブル断 | lspv -p で missing PV 確認 → unmirrorvg → reducevg → rmdev → 物理交換 → cfgmgr → extendvg → mirrorvg → bosboot → bootlist | `DISK_ERR1` | [inc-disk-replace](09-incident-procedures.md#inc-disk-replace) |
 | ts-19 | OS 時刻が大きくずれている（NTP 同期失敗） | NTPv4 デーモン停止、上位 NTP サーバ疎通不能、firewall ブロック | lssrc -s xntpd → ntpq -p → ping NTP server → /etc/ntp.conf 確認 | `—` | [cfg-ntp](08-config-procedures.md#cfg-ntp) |
 | ts-20 | errpt が空（記録されない） | errdemon が停止している、または errlog 自体が破損 | ps -ef \| grep errdemon → 停止していれば /usr/lib/errdemon -l で状態確認、起動 | `—` | [inc-errpt-hardware-error](09-incident-procedures.md#inc-errpt-hardware-error) |
+
+
+---
+
+## v10 補足: errpt label 早見表
+
+v9 までは表の `ラベル` 列に label 名だけ載せていましたが、label の意味と初動アクションを v10 で別表として整理します。全 30 種、PERM = 永続障害 / TEMP = 一時 / INFO = 情報、重大度 H = ハードウェア / S = ソフト / U = ユーザ / I = 情報。
+
+| Label | Type | Sev | 意味 | 初動 |
+|---|---|---|---|---|
+| `DISK_ERR1` | PERM | H | ディスク永続障害（媒体エラー） | errpt -aj <ID> で詳細 → ハードウェア交換検討 |
+| `DISK_ERR2` | TEMP | H | ディスク一時エラー | 監視継続。頻発する場合は交換検討 |
+| `DISK_ERR3` | PERM | H | ディスク I/O タイムアウト | MPIO パス確認 (lspath, lsmpio) |
+| `DISK_ERR4` | PERM | H | SCSI コマンド失敗 | ファイバ/SAS ケーブル確認、HMC SRC 確認 |
+| `FCS_ERR1` | PERM | H | FC アダプタリンクダウン | lsattr -El fcs0 / SAN スイッチ確認 |
+| `FCS_ERR2` | TEMP | H | FC link bouncing | SFP / ケーブル / SAN switch ポート確認 |
+| `FCS_ERR4` | PERM | H | FC RSCN 多発 | SAN ファブリック構成変更未完了の可能性 |
+| `EPOW_RES_CHRP` | PERM | H | 電源復旧 (Reservation Lost) | HMC で電源履歴確認 |
+| `EPOW_SUS_CHRP` | PERM | H | 電源喪失警告 | UPS / PSU 確認、HMC SRC 確認 |
+| `MEMORY_DEALLOC` | INFO | I | 予防的メモリ無効化（Persistent Memory Deallocation） | DIMM 交換タイミング検討 |
+| `CHECKSTOP` | PERM | H | ハードウェア重大障害 | 即 IBM ハードウェアサポート連絡、HMC SRC 必須 |
+| `CORE_DUMP` | PERM | S | プロセスコアダンプ生成 | /var/adm/ras/core 等を dbx で解析 |
+| `REBOOT_ID` | INFO | I | システム再起動記録 | shutdown -Fr / 異常リセットの区別を別 ID で確認 |
+| `ERRLOG_ON` | INFO | I | errdemon 起動 | 起動シーケンスの基準点 |
+| `MOUNTED` | INFO | I | ファイルシステムマウント記録 | df -k と整合確認 |
+| `SRC` | INFO | I | SRC（System Resource Controller）動作 | lssrc -a / startsrc / stopsrc 履歴 |
+| `LVM_SA_WRTERR` | PERM | H | VGSA 書き込み失敗 | varyoffvg → varyonvg で復旧、PV 障害確認 |
+| `LVM_BBDIRBAD` | TEMP | H | Bad Block Directory 損傷 | PV 交換 / ALTERNATE_PHYSICAL_VOLUME |
+| `LVM_HWREL` | INFO | I | ハードウェア リロケート | PV 上の bad block 自動回避済 |
+| `ENT_ERR1` | PERM | H | Ethernet アダプタ障害 | entstat -d ent0 / SEA 確認 |
+| `GOENT_ERR_RCV` | TEMP | U | Ethernet 受信エラー | ケーブル / VIOS SEA 確認 |
+| `TCPIP_ERR` | PERM | S | TCP/IP スタック異常 | no -L で TCP パラメータ確認 |
+| `SRC_RESTART` | INFO | I | サブシステム自動再起動 | lssrc -a で当該サブシステム確認 |
+| `SYSPROC` | PERM | S | プロセス異常終了 | ps コマンド残骸確認、syslog と突合 |
+| `DUMP_STATS` | INFO | I | ダンプ統計 | sysdumpdev -L で前回ダンプ情報確認 |
+| `AUDIT_RESET` | INFO | I | 監査サブシステムリセット | audit start / shutdown の影響 |
+| `FAIL_LOGIN` | INFO | I | ログイン失敗 | /etc/security/failedlogin 参照 |
+| `J2_LOGREDO_ERR` | PERM | H | JFS2 ログ再実行失敗 | fsck -y で復旧、損傷軽微なら mount 可能 |
+| `FS_FULL` | INFO | I | ファイルシステム満杯通知 | df -g / inc-fs-full 参照 |
+| `DUMPCHK` | INFO | I | システムダンプデバイス確認 | sysdumpdev -e で容量足りるか確認 |
+
+出典: AIX 7.3 Operating system management — Error logging
+
+
+## v10 補足: HMC SRC コード初動表
+
+Power Systems の HMC コンソールに表示される **SRC（System Reference Code）** の代表パターンと初動アクション。CEC（Central Electronics Complex）電源投入から AIX 起動までの典型的 SRC を記載。
+
+| SRC パターン | 意味 | 初動 | 重大度 |
+|---|---|---|---|
+| `BA*` | Boot 進行中（Firmware 段階） | 正常な起動進捗。3 分以上同じ SRC が続く場合のみ HMC で確認 | INFO |
+| `CA*` | AIX kernel 起動 | 正常な OS 起動。10 分以上停止する場合 HMC で boot list 確認 | INFO |
+| `E1*` | Firmware 初期化（Power-on） | 正常。長時間止まる場合は CEC/PSU 確認 | INFO |
+| `E2*` | OS Loader（Open Firmware） | 正常。AIX boot 直前。残る場合 boot disk / NIM 確認 | INFO |
+| `8*` | AIX 起動完了状態 | 正常稼働中。LED 残留時は ras_state 等確認 | INFO |
+| `LED 200` | LED ロックされている（IPL 失敗） | HMC で SRC 履歴確認 → 該当 FRU 交換 | ERROR |
+| `LED 281` | Boot disk 見つからず | bootlist -m normal -o で boot list 確認、ハード接続確認 | ERROR |
+| `LED 552` | LVM rootvg corrupt | Maintenance mode で起動、fsck → savevg restore | ERROR |
+| `LED 553` | rootvg / 不整合 | Maintenance mode 起動、bosboot -ad /dev/hdiskN で再構築 | ERROR |
+| `LED 888` | AIX kernel panic | HMC で system dump 取得、IBM サポート連絡 | FATAL |
+| `B181 *` | FW configuration 問題 | HMC SRC 詳細確認、System Plan 再適用 | ERROR |
+| `B153 *` | Service Processor 問題 | HMC で Service Processor 再起動 (Reset SP) 試行 | ERROR |
+| `BA170010` | Boot disk on multipath で active path なし | lspath で全 path 確認、SAN/Fabric 異常確認 | ERROR |
+
+出典: IBM Power Systems Hardware Management Console Operations Guide
+<https://www.ibm.com/docs/en/power10/9080-HEX?topic=hmc-operations>

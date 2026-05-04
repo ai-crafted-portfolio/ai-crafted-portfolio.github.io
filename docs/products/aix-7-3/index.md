@@ -58,3 +58,17 @@
 
 !!! warning "AI 生成と人手の併用"
     本ページは公式マニュアル等の公開情報のみを根拠に整理した二次資料です。AI 生成と人手の併用で作成しているため、情報の正確性は保証しません。実装・適用前には公式情報での再確認を推奨します。
+
+
+!!! note "v10 改善ポイント（v9 → v10 差分）"
+    1. **02-settings.md** — 環境依存 tunable に個別注記（maxfree / vpm_throughput_mode 他 6 件）
+    2. **05-troubleshooting.md** — errpt label 30 種補足表 + HMC SRC コード初動表
+    3. **11-special-features.md** — OpenSSH/OpenSSL バージョン整合表（AIX 7.3 TL/SP 別）+ Trusted Execution 公式リンク補強
+
+
+!!! note "v11 改善ポイント（v10 → v11 差分）"
+    mkdocs --strict で残っていた anchor 不在 76 件 INFO 警告を解消：
+    1. **01-commands.md** — 関連コマンド stub 38 件の anchor を `{ #cmd }` 形式で補完
+    2. **08-config-procedures.md** — 概念 anchor 26 件 + cfg-vmo-tuning 補完
+    3. **09-incident-procedures.md** — 概念 anchor 6 件補完
+    各 stub は IBM 公式コマンド/マニュアル URL のみで構成（推測内容ゼロ）。

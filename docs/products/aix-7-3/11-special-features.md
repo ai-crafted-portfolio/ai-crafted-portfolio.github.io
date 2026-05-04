@@ -2586,3 +2586,38 @@ ssh root@192.168.10.10  # 別端末から
 
 ---
 
+
+
+---
+
+## v10 補足: OpenSSH / OpenSSL バージョン整合表（AIX 7.3 TL/SP 別）
+
+AIX 7.3 では OpenSSL 1.0 系列から 3.0 系列への移行があり、TL/SP に応じてバンドルされる OpenSSH/OpenSSL のバージョンが異なります。**実機の TL/SP は `oslevel -s` で確認** し、本表で対応バージョンを照合してください。
+
+| AIX TL/SP | OpenSSL | OpenSSH | 注記 |
+|---|---|---|---|
+| AIX 7.3 TL3 SP1 (2024-12) | 3.0.15.1001 | 10.0.0.x ベース | OpenSSL 3.0.x 系列。FIPS モード対応 |
+| AIX 7.3 TL3 SP0 (2024-08) | 3.0.14.x | 9.x | TL3 一般リリース |
+| AIX 7.3 TL2 SP1 (2024-05) | 3.0.13.x | 9.x | OpenSSL 3.0 標準化 |
+| AIX 7.3 TL1 SP1 (2023) | 1.0.2.x（互換） | 8.x | OpenSSL 1.0 系列の最終版（移行推奨） |
+
+**注意**: AIX 7.3 では OpenSSL 1.0 → 3.0 への移行があるため、TL/SP に応じて `openssl version` と `ssh -V` を必ず確認。古い `.cnf`（openssl.cnf）を退避してから アップグレード。アプリ側で `EVP_*` API を使っているとリビルドが必要なケースあり。詳細は IBM AIX Web Download Pack ページを参照（リンクは上記 URL）。
+
+出典: IBM AIX Web Download Pack — Downloading and installing or upgrading OpenSSL and OpenSSH
+<https://www.ibm.com/support/pages/downloading-and-installing-or-upgrading-openssl-and-openssh>
+
+
+## v10 補足: Trusted Execution 公式マニュアルリンク補強
+
+Trusted Execution（TE）は AIX 7.3 の Security 章で扱われる定番機能ですが、v9 では本文中の言及のみで、各 policy の公式リンクが不足していました。v10 で公式マニュアルの該当ページへの直接リンクを補強します。
+
+| 項目 | 公式マニュアル | 備考 |
+|---|---|---|
+| Trusted Execution overview | <https://www.ibm.com/docs/en/aix/7.3?topic=trusted-execution-overview> | AIX 7.3 公式 Security ガイド内 Trusted Execution 概要 |
+| trustchk command reference | <https://www.ibm.com/docs/en/aix/7.3?topic=t-trustchk-command> | TSD（Trusted Signature Database）操作コマンド |
+| CHKEXEC / CHKSHLIB / CHKSCRIPT / CHKKERNEXT | <https://www.ibm.com/docs/en/aix/7.3?topic=execution-trusted-policies> | Trusted Execution の各 policy（実行ファイル / 共有ライブラリ / スクリプト / カーネル拡張） |
+| STOP_ON_CHKFAIL / STOP_UNTRUSTED policy | <https://www.ibm.com/docs/en/aix/7.3?topic=execution-trusted-policies> | policy 違反時の挙動制御（block / log only） |
+| AIX Trusted Execution と AIX Pert（Security Expert）の関係 | <https://www.ibm.com/docs/en/aix/7.3?topic=command-aixpert> | AIXPert で Trusted Execution policy をテンプレート適用可能 |
+
+!!! warning "運用上の注意"
+    Trusted Execution の policy で `STOP_ON_CHKFAIL=ON` を有効化すると、    TSD（Trusted Signature Database）に登録されていない実行ファイルが**即座に block** されます。    本番環境で有効化する前に、`trustchk -y CHKEXEC=ON` の **log only** モードで影響範囲を必ず確認してください。

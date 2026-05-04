@@ -1546,3 +1546,71 @@ lsvg -l rootvg で全 LV が PPs=LPs*2、open/syncd。bootlist -m normal -o で 
 
 ---
 
+
+
+---
+
+## 概念リファレンス（参照 stub - v11 追加）
+
+本章本文中で参照される incident 概念 6 件の anchor を補完。各 stub は AIX 7.3 公式マニュアルの該当章リンクのみ（詳しい説明は本サイト用語集 03-glossary.md と公式マニュアルを参照）。
+
+### TCP/IP { #tcp-ip }
+
+AIX のネットワークスタック基盤
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=communicationsmanagement>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### SRC (System Resource Controller) { #src }
+
+サブシステム制御機構
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=system-resource-controller>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### fileset { #fileset }
+
+SMP/E でいう PTF 相当の最小インストール単位
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=filesets-installed-software>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### LPP (Licensed Program Product) { #lpp }
+
+fileset 群の上位束
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=licensed-program-products>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### VRMF { #vrmf }
+
+AIX fileset バージョン表記
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=filesets-installed-software>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### kdb { #kdb }
+
+カーネルデバッガ
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=k-kdb-command>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+

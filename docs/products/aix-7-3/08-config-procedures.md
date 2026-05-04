@@ -4229,3 +4229,278 @@ ioo -d j2_metadataCacheSize
 
 ---
 
+
+
+---
+
+## 概念リファレンス（参照 stub - v11 追加）
+
+本章本文中で参照される config 概念 26 件の anchor を補完。各 stub は AIX 7.3 公式マニュアルの該当章リンクのみ（詳しい説明は本サイト用語集 03-glossary.md と公式マニュアルを参照）。
+
+### TCP/IP { #tcp-ip }
+
+Transmission Control Protocol / Internet Protocol。AIX のネットワークスタック基盤。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=communicationsmanagement>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### ODM (Object Data Manager) { #odm }
+
+AIX のシステム構成情報を保持するオブジェクト DB（/etc/objrepos 等）。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=object-data-manager>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### SRC (System Resource Controller) { #src }
+
+サブシステム起動・停止・監視を統括する仕組み。lssrc/startsrc/stopsrc で操作。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=system-resource-controller>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### syslogd { #syslogd }
+
+AIX 標準のシステムロギングデーモン。/etc/syslog.conf で出力先制御。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=syslogd-daemon>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### errlog (Error Log) { #errlog }
+
+AIX カーネル / ハードウェア / ソフト障害を記録するバイナリログ（errpt で表示）。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=errlog-error-logging>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### errnotify { #errnotify }
+
+errlog エントリ発生時に自動アクション（メール送信・スクリプト実行等）を起動する ODM 機構。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=errnotify-object-class>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### BIND 9.18 { #bind-918 }
+
+AIX 7.3 TL3 で標準の DNS サーバ実装バージョン。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=configuring-bind>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### NFS (Network File System) { #nfs }
+
+ネットワークファイルシステム。AIX は NFSv3 / v4 をサポート。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=nfs-network-file-system>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### LVM (Logical Volume Manager) { #lvm }
+
+AIX のストレージ抽象化層。VG → LV → FS の階層管理。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=logical-volume-manager>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### VG (Volume Group) { #vg }
+
+PV を束ねる論理単位。rootvg / datavg 等。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=volume-groups>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### LV (Logical Volume) { #lv }
+
+VG 内に切り出される論理ボリューム。FS や raw データ用に使用。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=logical-volumes>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### PV (Physical Volume) { #pv }
+
+LVM 配下の物理ディスク。hdisk0 等。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=physical-volumes>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### PVID (PV Identifier) { #pvid }
+
+PV を一意識別する 16 桁 ID。lspv で確認可能。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=physical-volumes>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### JFS2 { #jfs2 }
+
+AIX 標準のジャーナリング FS（Enhanced Journaled File System）。LVM 上に作成。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=journaled-file-system-jfs2>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### BLV (Boot Logical Volume) { #blv }
+
+起動用 LV（hd5 等）。bosboot で再構築。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=boot-logical-volume>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### PP (Physical Partition) { #pp }
+
+PV を分割した最小割当単位。VG 作成時の PP サイズで決定。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=physical-partitions>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### MPIO (Multi-Path I/O) { #mpio }
+
+AIX 標準のマルチパス I/O 機構。複数 FC/SAS 経路の冗長化。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=multi-path-i-o-mpio>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### RBAC (Role-Based Access Control) { #rbac }
+
+AIX 6.1 以降の役割ベース権限管理。Domain RBAC を含む。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=role-based-access-control-rbac>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### fileset { #fileset }
+
+SMP/E でいう PTF 単位相当。bff パッケージの最小インストール単位（例: bos.rte.libc）。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=filesets-installed-software>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### LPP (Licensed Program Product) { #lpp }
+
+fileset 群の上位束。例: openssh.base.server。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=licensed-program-products>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### VRMF (Version.Release.Modification.Fix) { #vrmf }
+
+AIX fileset のバージョン表記（例: 7.3.3.0）。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=filesets-installed-software>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### TL (Technology Level) { #tl }
+
+AIX のメジャー機能パッケージ。例: AIX 7.3 TL3。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=service-strategy>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### SP (Service Pack) { #sp }
+
+TL に対する保守パッケージ。例: AIX 7.3 TL3 SP1。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=service-strategy>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### NIM (Network Installation Management) { #nim }
+
+AIX のネットワーク経由集中インストール / 保守機構。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=network-installation-management-nim>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### VMM (Virtual Memory Manager) { #vmm }
+
+AIX 仮想記憶管理サブシステム。vmo で tunable 制御。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=virtual-memory-manager>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+### kdb { #kdb }
+
+カーネルデバッガ。crash dump / 稼働中カーネルを解析する対話ツール。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=k-kdb-command>
+
+**用語集も参照**: [03-glossary.md](03-glossary.md)
+
+---
+
+
+
+## VMM tuning 参照（v11 追加 stub） { #cfg-vmo-tuning }
+
+VMM の tunable（minperm / maxperm / minfree / maxfree / lru_file_repage 等）の調整手順は本サイトでは [02. 設定値一覧](02-settings.md) の v10 補足セクション「環境依存 tunable」で扱います。具体的な vmo / ioo コマンドは [01-commands.md#vmo](01-commands.md#vmo) と [01-commands.md#ioo](01-commands.md#ioo) を参照。
+
+**公式マニュアル**: <https://www.ibm.com/docs/en/aix/7.3?topic=v-vmo-command>

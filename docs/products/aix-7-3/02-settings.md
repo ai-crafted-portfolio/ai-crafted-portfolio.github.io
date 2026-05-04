@@ -55,3 +55,41 @@
 ---
 
 *出典 ID は [07. 出典一覧](07-sources.md) を参照。*
+
+
+---
+
+## v10 補足: 環境依存 tunable の注記
+
+v9 までは `default` 列に固定値を載せていましたが、以下の tunable は**実機の RAM / CPU / SMT / ワークロード特性**で適切値が変わるため、v10 で個別の注記を追加します。
+
+### `maxfree`
+
+**環境依存**: 既定 1024 は 8GB RAM 機の値。実機では `vmstat -v` の `free pages` と `minfree` の比から `vmo -L maxfree` で現在値を必ず確認。RAM 増設・WPAR 数増加・DB Buffer Pool 拡張時には再計算必要。
+
+### `vpm_throughput_mode`
+
+**環境依存**: 0 (Raw mode) / 1-4 (Throughput mode 1-4) / 8 (Single Thread)。POWER10/POWER9 + SMT8 の DB ワークロードでは 4 が推奨される傾向だが、Java/Web では 1 のほうが latency 良好なケースあり。実測必須。
+
+### `minperm%`
+
+**環境依存**: 既定 3。FS Cache vs Computational ページの境界。DB 中心の機械では 3 で問題ないが、ファイル I/O 中心 (Web/NFS) の機械では 10〜20 に上げて FS cache を保護するパターンあり。`vmstat -v` で `numperm` を観察し決定。
+
+### `maxperm%`
+
+**環境依存**: 既定 90。`strict_maxperm=1` と組み合わせて FS cache を厳密に上限制限する場合に使う（DB / アプリ用 RAM を保護）。
+
+### `lgpg_regions`
+
+**環境依存**: 16MB 大ページ数。Oracle DB / Db2 / WebSphere で SGA / heap が大きい場合のみ意味あり。AIX 7.3 では 64K medium page が標準で十分なケースが多い（vmstat -P で確認）。
+
+### `j2_dynamicBufferPreallocation`
+
+**環境依存**: JFS2 buffer の動的事前確保。大規模 I/O 機 (16+ vCPU, 50GB+ RAM) で 256 / 1024 等に上げる。小規模機では既定 16 のままでよい。ioo -L で現在値確認。
+
+
+!!! tip "確認コマンド"
+    - `vmstat -v` — 各種カウンタと現在の tunable 影響
+    - `vmo -L <name>` — 当該 tunable の現在値・既定値・bosboot 必要性
+    - `ioo -L <name>` — I/O 系 tunable の現在値
+    - `schedo -L <name>` — スケジューラ系 tunable の現在値

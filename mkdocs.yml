@@ -1,5 +1,5 @@
-﻿site_name: ai-crafted-portfolio
-site_description: Claude繧呈ｴｻ逕ｨ縺励※菴懊ｋ謚陦薙・繝ｼ繝医ヵ繧ｩ繝ｪ繧ｪ
+site_name: ai-crafted-portfolio
+site_description: Claudeを活用して作る技術ポートフォリオ
 site_url: https://ai-crafted-portfolio.github.io/
 site_author: ai-crafted-portfolio
 
@@ -25,14 +25,14 @@ theme:
       accent: indigo
       toggle:
         icon: material/brightness-7
-        name: 繝繝ｼ繧ｯ繝｢繝ｼ繝峨↓蛻・崛
+        name: ダークモードに切替
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-4
-        name: 繝ｩ繧､繝医Δ繝ｼ繝峨↓蛻・崛
+        name: ライトモードに切替
   font:
     text: Noto Sans JP
     code: JetBrains Mono
@@ -66,128 +66,128 @@ extra_css:
   - stylesheets/extra.css
 
 nav:
-  - 繝帙・繝: index.md
-  - 陬ｽ蜩∵橿陦捺ュ蝣ｱ:
-    - 荳隕ｧ: products/index.md
-    - Power 邉ｻ:
+  - ホーム: index.md
+  - 製品技術情報:
+    - 一覧: products/index.md
+    - Power 系:
       - AIX 7.3:
-        - 讎りｦ・ products/aix-7-3/index.md
-        - 01. 繧ｳ繝槭Φ繝我ｸ隕ｧ: products/aix-7-3/01-commands.md
-        - 02. 險ｭ螳壼､荳隕ｧ: products/aix-7-3/02-settings.md
-        - 03. 逕ｨ隱樣寔: products/aix-7-3/03-glossary.md
-        - 04. 繝励Ξ繧､繝悶ャ繧ｯ: products/aix-7-3/04-playbook.md
-        - 05. 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・ products/aix-7-3/05-troubleshooting.md
-        - 06. 繝槭ル繝･繧｢繝ｫ蜿ら・繝槭ャ繝・ products/aix-7-3/06-manual-map.md
-        - 07. 蜃ｺ蜈ｸ荳隕ｧ: products/aix-7-3/07-sources.md
-        - 08. 險ｭ螳壽焔鬆・ products/aix-7-3/08-config-procedures.md
-        - 09. 髫懷ｮｳ蟇ｾ蠢懈焔鬆・ products/aix-7-3/09-incident-procedures.md
-        - 10. 蟇ｾ雎｡螟夜・岼: products/aix-7-3/10-out-of-scope.md
+        - 概要: products/aix-7-3/index.md
+        - 01. コマンド一覧: products/aix-7-3/01-commands.md
+        - 02. 設定値一覧: products/aix-7-3/02-settings.md
+        - 03. 用語集: products/aix-7-3/03-glossary.md
+        - 04. プレイブック: products/aix-7-3/04-playbook.md
+        - 05. トラブルシュート: products/aix-7-3/05-troubleshooting.md
+        - 06. マニュアル参照マップ: products/aix-7-3/06-manual-map.md
+        - 07. 出典一覧: products/aix-7-3/07-sources.md
+        - 08. 設定手順: products/aix-7-3/08-config-procedures.md
+        - 09. 障害対応手順: products/aix-7-3/09-incident-procedures.md
+        - 10. 対象外項目: products/aix-7-3/10-out-of-scope.md
       - VIOS:
-        - 讎りｦ・ products/vios/index.md
-        - 00. 讎りｦ・ products/vios/00-overview.md
-        - 01. 讒区・隕∫ｴ: products/vios/01-components.md
-        - 02. 荳ｻ隕∬ｨｭ螳夐・岼: products/vios/02-settings.md
-        - 03. 蜈ｸ蝙九Θ繝ｼ繧ｹ繧ｱ繝ｼ繧ｹ: products/vios/03-use-cases.md
-        - 04. 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・ products/vios/04-troubleshooting.md
-        - 05. 髢｢騾｣陬ｽ蜩・｣謳ｺ: products/vios/05-related.md
-        - 06. 蜃ｺ蜈ｸ荳隕ｧ: products/vios/06-sources.md
-    - Windows 邉ｻ:
+        - 概要: products/vios/index.md
+        - 00. 概要: products/vios/00-overview.md
+        - 01. 構成要素: products/vios/01-components.md
+        - 02. 主要設定項目: products/vios/02-settings.md
+        - 03. 典型ユースケース: products/vios/03-use-cases.md
+        - 04. トラブルシュート: products/vios/04-troubleshooting.md
+        - 05. 関連製品連携: products/vios/05-related.md
+        - 06. 出典一覧: products/vios/06-sources.md
+    - Windows 系:
       - Windows Server 2022:
-        - 讎りｦ・ products/windows-server-2022/index.md
-        - 00. 讎りｦ・ products/windows-server-2022/00-overview.md
-        - 01. 讒区・隕∫ｴ: products/windows-server-2022/01-components.md
-        - 02. 荳ｻ隕∬ｨｭ螳夐・岼: products/windows-server-2022/02-settings.md
-        - 03. 蜈ｸ蝙九Θ繝ｼ繧ｹ繧ｱ繝ｼ繧ｹ: products/windows-server-2022/03-use-cases.md
-        - 04. 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・ products/windows-server-2022/04-troubleshooting.md
-        - 05. 髢｢騾｣陬ｽ蜩・｣謳ｺ: products/windows-server-2022/05-related.md
-        - 06. 蜃ｺ蜈ｸ荳隕ｧ: products/windows-server-2022/06-sources.md
-    - z/OS 邉ｻ:
-      - z/OS 繧ｷ繧ｹ繝・Β繝励Ο繧ｰ繝ｩ繝溘Φ繧ｰ (ABCs):
-        - 讎りｦ・ products/zos-system-programming/index.md
-        - 00. 讎りｦ・ products/zos-system-programming/00-overview.md
-        - 01. 讒区・隕∫ｴ: products/zos-system-programming/01-components.md
-        - 02. 荳ｻ隕∬ｨｭ螳夐・岼: products/zos-system-programming/02-settings.md
-        - 03. 蜈ｸ蝙九Θ繝ｼ繧ｹ繧ｱ繝ｼ繧ｹ: products/zos-system-programming/03-use-cases.md
-        - 04. 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・ products/zos-system-programming/04-troubleshooting.md
-        - 05. 髢｢騾｣陬ｽ蜩・｣謳ｺ: products/zos-system-programming/05-related.md
-        - 06. 蜃ｺ蜈ｸ荳隕ｧ: products/zos-system-programming/06-sources.md
-    - 逶｣隕悶・繧ｸ繝ｧ繝夜°逕ｨ 邉ｻ:
+        - 概要: products/windows-server-2022/index.md
+        - 00. 概要: products/windows-server-2022/00-overview.md
+        - 01. 構成要素: products/windows-server-2022/01-components.md
+        - 02. 主要設定項目: products/windows-server-2022/02-settings.md
+        - 03. 典型ユースケース: products/windows-server-2022/03-use-cases.md
+        - 04. トラブルシュート: products/windows-server-2022/04-troubleshooting.md
+        - 05. 関連製品連携: products/windows-server-2022/05-related.md
+        - 06. 出典一覧: products/windows-server-2022/06-sources.md
+    - z/OS 系:
+      - z/OS システムプログラミング (ABCs):
+        - 概要: products/zos-system-programming/index.md
+        - 00. 概要: products/zos-system-programming/00-overview.md
+        - 01. 構成要素: products/zos-system-programming/01-components.md
+        - 02. 主要設定項目: products/zos-system-programming/02-settings.md
+        - 03. 典型ユースケース: products/zos-system-programming/03-use-cases.md
+        - 04. トラブルシュート: products/zos-system-programming/04-troubleshooting.md
+        - 05. 関連製品連携: products/zos-system-programming/05-related.md
+        - 06. 出典一覧: products/zos-system-programming/06-sources.md
+    - 監視・ジョブ運用 系:
       - Netcool OMNIbus V8.1:
-        - 讎りｦ・ products/netcool-omnibus/index.md
-        - 00. 讎りｦ・ products/netcool-omnibus/00-overview.md
-        - 01. 讒区・隕∫ｴ: products/netcool-omnibus/01-components.md
-        - 02. 荳ｻ隕∬ｨｭ螳夐・岼: products/netcool-omnibus/02-settings.md
-        - 03. 蜈ｸ蝙九Θ繝ｼ繧ｹ繧ｱ繝ｼ繧ｹ: products/netcool-omnibus/03-use-cases.md
-        - 04. 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・ products/netcool-omnibus/04-troubleshooting.md
-        - 05. 髢｢騾｣陬ｽ蜩・｣謳ｺ: products/netcool-omnibus/05-related.md
-        - 06. 蜃ｺ蜈ｸ荳隕ｧ: products/netcool-omnibus/06-sources.md
+        - 概要: products/netcool-omnibus/index.md
+        - 00. 概要: products/netcool-omnibus/00-overview.md
+        - 01. 構成要素: products/netcool-omnibus/01-components.md
+        - 02. 主要設定項目: products/netcool-omnibus/02-settings.md
+        - 03. 典型ユースケース: products/netcool-omnibus/03-use-cases.md
+        - 04. トラブルシュート: products/netcool-omnibus/04-troubleshooting.md
+        - 05. 関連製品連携: products/netcool-omnibus/05-related.md
+        - 06. 出典一覧: products/netcool-omnibus/06-sources.md
       - IBM Workload Automation:
-        - 讎りｦ・ products/ibm-workload-automation/index.md
-        - 00. 讎りｦ・ products/ibm-workload-automation/00-overview.md
-        - 01. 讒区・隕∫ｴ: products/ibm-workload-automation/01-components.md
-        - 02. 荳ｻ隕∬ｨｭ螳夐・岼: products/ibm-workload-automation/02-settings.md
-        - 03. 蜈ｸ蝙九Θ繝ｼ繧ｹ繧ｱ繝ｼ繧ｹ: products/ibm-workload-automation/03-use-cases.md
-        - 04. 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・ products/ibm-workload-automation/04-troubleshooting.md
-        - 05. 髢｢騾｣陬ｽ蜩・｣謳ｺ: products/ibm-workload-automation/05-related.md
-        - 06. 蜃ｺ蜈ｸ荳隕ｧ: products/ibm-workload-automation/06-sources.md
-    - 繝・・繧ｿ菫晁ｭｷ繝ｻ繧ｻ繧ｭ繝･繝ｪ繝・ぅ 邉ｻ:
+        - 概要: products/ibm-workload-automation/index.md
+        - 00. 概要: products/ibm-workload-automation/00-overview.md
+        - 01. 構成要素: products/ibm-workload-automation/01-components.md
+        - 02. 主要設定項目: products/ibm-workload-automation/02-settings.md
+        - 03. 典型ユースケース: products/ibm-workload-automation/03-use-cases.md
+        - 04. トラブルシュート: products/ibm-workload-automation/04-troubleshooting.md
+        - 05. 関連製品連携: products/ibm-workload-automation/05-related.md
+        - 06. 出典一覧: products/ibm-workload-automation/06-sources.md
+    - データ保護・セキュリティ 系:
       - IBM Spectrum Protect 8.1:
-        - 讎りｦ・ products/ibm-spectrum-protect/index.md
-        - 00. 讎りｦ・ products/ibm-spectrum-protect/00-overview.md
-        - 01. 讒区・隕∫ｴ: products/ibm-spectrum-protect/01-components.md
-        - 02. 荳ｻ隕∬ｨｭ螳夐・岼: products/ibm-spectrum-protect/02-settings.md
-        - 03. 蜈ｸ蝙九Θ繝ｼ繧ｹ繧ｱ繝ｼ繧ｹ: products/ibm-spectrum-protect/03-use-cases.md
-        - 04. 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・ products/ibm-spectrum-protect/04-troubleshooting.md
-        - 05. 髢｢騾｣陬ｽ蜩・｣謳ｺ: products/ibm-spectrum-protect/05-related.md
-        - 06. 蜃ｺ蜈ｸ荳隕ｧ: products/ibm-spectrum-protect/06-sources.md
+        - 概要: products/ibm-spectrum-protect/index.md
+        - 00. 概要: products/ibm-spectrum-protect/00-overview.md
+        - 01. 構成要素: products/ibm-spectrum-protect/01-components.md
+        - 02. 主要設定項目: products/ibm-spectrum-protect/02-settings.md
+        - 03. 典型ユースケース: products/ibm-spectrum-protect/03-use-cases.md
+        - 04. トラブルシュート: products/ibm-spectrum-protect/04-troubleshooting.md
+        - 05. 関連製品連携: products/ibm-spectrum-protect/05-related.md
+        - 06. 出典一覧: products/ibm-spectrum-protect/06-sources.md
       - IBM Guardium Data Protection 12.x:
-        - 讎りｦ・ products/ibm-guardium-data-protection/index.md
-        - 00. 讎りｦ・ products/ibm-guardium-data-protection/00-overview.md
-        - 01. 讒区・隕∫ｴ: products/ibm-guardium-data-protection/01-components.md
-        - 02. 荳ｻ隕∬ｨｭ螳夐・岼: products/ibm-guardium-data-protection/02-settings.md
-        - 03. 蜈ｸ蝙九Θ繝ｼ繧ｹ繧ｱ繝ｼ繧ｹ: products/ibm-guardium-data-protection/03-use-cases.md
-        - 04. 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・ products/ibm-guardium-data-protection/04-troubleshooting.md
-        - 05. 髢｢騾｣陬ｽ蜩・｣謳ｺ: products/ibm-guardium-data-protection/05-related.md
-        - 06. 蜃ｺ蜈ｸ荳隕ｧ: products/ibm-guardium-data-protection/06-sources.md
-    - 遶ｯ譛ｫ繧ｨ繝溘Η繝ｬ繝ｼ繧ｿ 邉ｻ:
+        - 概要: products/ibm-guardium-data-protection/index.md
+        - 00. 概要: products/ibm-guardium-data-protection/00-overview.md
+        - 01. 構成要素: products/ibm-guardium-data-protection/01-components.md
+        - 02. 主要設定項目: products/ibm-guardium-data-protection/02-settings.md
+        - 03. 典型ユースケース: products/ibm-guardium-data-protection/03-use-cases.md
+        - 04. トラブルシュート: products/ibm-guardium-data-protection/04-troubleshooting.md
+        - 05. 関連製品連携: products/ibm-guardium-data-protection/05-related.md
+        - 06. 出典一覧: products/ibm-guardium-data-protection/06-sources.md
+    - 端末エミュレータ 系:
       - IBM Personal Communications 15.0:
-        - 讎りｦ・ products/ibm-personal-communications/index.md
-        - 00. 讎りｦ・ products/ibm-personal-communications/00-overview.md
-        - 01. 讒区・隕∫ｴ: products/ibm-personal-communications/01-components.md
-        - 02. 荳ｻ隕∬ｨｭ螳夐・岼: products/ibm-personal-communications/02-settings.md
-        - 03. 蜈ｸ蝙九Θ繝ｼ繧ｹ繧ｱ繝ｼ繧ｹ: products/ibm-personal-communications/03-use-cases.md
-        - 04. 繝医Λ繝悶Ν繧ｷ繝･繝ｼ繝・ products/ibm-personal-communications/04-troubleshooting.md
-        - 05. 髢｢騾｣陬ｽ蜩・｣謳ｺ: products/ibm-personal-communications/05-related.md
-        - 06. 蜃ｺ蜈ｸ荳隕ｧ: products/ibm-personal-communications/06-sources.md
-  - 讀懆ｨ手ｳ・侭逕滓・:
-    - 荳隕ｧ: discussions/index.md
-    - z/OS 驕狗畑雉・攝縺ｮ霆ｽ驥上Λ繧､繝悶Λ繝ｪ邂｡逅・ヤ繝ｼ繝ｫ:
-      - 讎りｦ・ discussions/zos-library-management/index.md
-      - 蜈ｨ菴楢ｦｳ:
-        - 譛ｬ雉・侭縺ｮ蜑肴署 (SSOT): discussions/zos-library-management/overview/01-ssot.md
-        - 6 鬆伜沺蛻・｡・ discussions/zos-library-management/overview/02-domains.md
-        - 譌｢蟄倡ｭ悶→髯千阜: discussions/zos-library-management/overview/03-existing-tools.md
-        - 譛ｬ繝・・繝ｫ縺ｮ菴咲ｽｮ縺･縺・ discussions/zos-library-management/overview/04-positioning.md
-        - 讖溯・蟇ｾ蠢懆｡ｨ縺ｮ菫ｯ迸ｰ: discussions/zos-library-management/overview/05-function-mapping.md
-      - 隧ｳ邏ｰ:
-        - ﾂｧA. 6 鬆伜沺縺ｮ蛻､螳夊ｩｳ邏ｰ: discussions/zos-library-management/details/section-a-domains.md
-        - ﾂｧB. 譌｢蟄俶橿陦薙・髯千阜: discussions/zos-library-management/details/section-b-existing-tech.md
-        - ﾂｧC-T9 蟇ｾ雎｡謖・ｮ・/ 菫晁ｭｷ邂｡逅・ discussions/zos-library-management/details/section-c-t9.md
-        - ﾂｧC-T10 繝舌ャ繧ｯ繧｢繝・・ / 荳紋ｻ｣邂｡逅・ discussions/zos-library-management/details/section-c-t10.md
-        - ﾂｧC-T11 豈碑ｼ・/ 蟾ｮ蛻・､懷・: discussions/zos-library-management/details/section-c-t11.md
-        - ﾂｧC-T12 繝ｭ繝・け / Check-in/out: discussions/zos-library-management/details/section-c-t12.md
-        - ﾂｧC-T13 繝ｪ繧ｫ繝舌Μ: discussions/zos-library-management/details/section-c-t13.md
-        - ﾂｧC-T14 騾夂衍 / 繝峨く繝･繝｡繝ｳ繝亥ｼｷ蛻ｶ: discussions/zos-library-management/details/section-c-t14.md
-        - ﾂｧC-T15 繝ｬ繝昴・繝・/ 逶｣譟ｻ: discussions/zos-library-management/details/section-c-t15.md
-        - ﾂｧC-T16 驕狗畑 / 邂｡逅・ discussions/zos-library-management/details/section-c-t16.md
-        - ﾂｧD. 謚陦灘ｮ溽樟諤ｧ: discussions/zos-library-management/details/section-d-tech.md
-        - ﾂｧE. 邨占ｫ・ discussions/zos-library-management/details/section-e-conclusion.md
-        - ﾂｧF. 谿九＆繧後◆蛻､譁ｭ: discussions/zos-library-management/details/section-f-residual.md
-        - ﾂｧG. 蜷ｫ繧√↑縺・ discussions/zos-library-management/details/section-g-excluded.md
-        - ﾂｧH. 蜿崎ｫ悶∈縺ｮ蜈亥屓繧・ discussions/zos-library-management/details/section-h-rebuttals.md
-        - ﾂｧI. 逕ｨ隱樣寔: discussions/zos-library-management/details/section-i-glossary.md
-        - ﾂｧK-1 PARMLIB IPL/襍ｷ蜍募宛蠕｡:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k1-parmlib-ipl.md
+        - 概要: products/ibm-personal-communications/index.md
+        - 00. 概要: products/ibm-personal-communications/00-overview.md
+        - 01. 構成要素: products/ibm-personal-communications/01-components.md
+        - 02. 主要設定項目: products/ibm-personal-communications/02-settings.md
+        - 03. 典型ユースケース: products/ibm-personal-communications/03-use-cases.md
+        - 04. トラブルシュート: products/ibm-personal-communications/04-troubleshooting.md
+        - 05. 関連製品連携: products/ibm-personal-communications/05-related.md
+        - 06. 出典一覧: products/ibm-personal-communications/06-sources.md
+  - 検討資料生成:
+    - 一覧: discussions/index.md
+    - z/OS 運用資材の軽量ライブラリ管理ツール:
+      - 概要: discussions/zos-library-management/index.md
+      - 全体観:
+        - 本資料の前提 (SSOT): discussions/zos-library-management/overview/01-ssot.md
+        - 6 領域分類: discussions/zos-library-management/overview/02-domains.md
+        - 既存策と限界: discussions/zos-library-management/overview/03-existing-tools.md
+        - 本ツールの位置づけ: discussions/zos-library-management/overview/04-positioning.md
+        - 機能対応表の俯瞰: discussions/zos-library-management/overview/05-function-mapping.md
+      - 詳細:
+        - §A. 6 領域の判定詳細: discussions/zos-library-management/details/section-a-domains.md
+        - §B. 既存技術の限界: discussions/zos-library-management/details/section-b-existing-tech.md
+        - §C-T9 対象指定 / 保護管理: discussions/zos-library-management/details/section-c-t9.md
+        - §C-T10 バックアップ / 世代管理: discussions/zos-library-management/details/section-c-t10.md
+        - §C-T11 比較 / 差分検出: discussions/zos-library-management/details/section-c-t11.md
+        - §C-T12 ロック / Check-in/out: discussions/zos-library-management/details/section-c-t12.md
+        - §C-T13 リカバリ: discussions/zos-library-management/details/section-c-t13.md
+        - §C-T14 通知 / ドキュメント強制: discussions/zos-library-management/details/section-c-t14.md
+        - §C-T15 レポート / 監査: discussions/zos-library-management/details/section-c-t15.md
+        - §C-T16 運用 / 管理: discussions/zos-library-management/details/section-c-t16.md
+        - §D. 技術実現性: discussions/zos-library-management/details/section-d-tech.md
+        - §E. 結論: discussions/zos-library-management/details/section-e-conclusion.md
+        - §F. 残された判断: discussions/zos-library-management/details/section-f-residual.md
+        - §G. 含めない: discussions/zos-library-management/details/section-g-excluded.md
+        - §H. 反論への先回り: discussions/zos-library-management/details/section-h-rebuttals.md
+        - §I. 用語集: discussions/zos-library-management/details/section-i-glossary.md
+        - §K-1 PARMLIB IPL/起動制御:
+          - 概要: discussions/zos-library-management/details/section-k1-parmlib-ipl.md
           - LOADxx: discussions/zos-library-management/details/k1-parmlib-ipl/loadxx.md
           - IEASYSxx: discussions/zos-library-management/details/k1-parmlib-ipl/ieasysxx.md
           - IEASYMxx: discussions/zos-library-management/details/k1-parmlib-ipl/ieasymxx.md
@@ -200,8 +200,8 @@ nav:
           - IEAAPFxx: discussions/zos-library-management/details/k1-parmlib-ipl/ieaapfxx.md
           - PROGxx: discussions/zos-library-management/details/k1-parmlib-ipl/progxx.md
           - IEABLDxx: discussions/zos-library-management/details/k1-parmlib-ipl/ieabldxx.md
-        - ﾂｧK-2 PARMLIB 繧ｳ繝ｳ繧ｽ繝ｼ繝ｫ/驕狗畑:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k2-parmlib-console.md
+        - §K-2 PARMLIB コンソール/運用:
+          - 概要: discussions/zos-library-management/details/section-k2-parmlib-console.md
           - CONSOLxx: discussions/zos-library-management/details/k2-parmlib-console/consolxx.md
           - COMMNDxx: discussions/zos-library-management/details/k2-parmlib-console/commndxx.md
           - MPFLSTxx: discussions/zos-library-management/details/k2-parmlib-console/mpflstxx.md
@@ -211,8 +211,8 @@ nav:
           - MMSLSTxx: discussions/zos-library-management/details/k2-parmlib-console/mmslstxx.md
           - PFKTABxx: discussions/zos-library-management/details/k2-parmlib-console/pfktabxx.md
           - IEFOPZxx: discussions/zos-library-management/details/k2-parmlib-console/iefopzxx.md
-        - ﾂｧK-3 PARMLIB 繧ｵ繝悶す繧ｹ繝・Β隱榊庄:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k3-parmlib-subsystem.md
+        - §K-3 PARMLIB サブシステム認可:
+          - 概要: discussions/zos-library-management/details/section-k3-parmlib-subsystem.md
           - IEFSSNxx: discussions/zos-library-management/details/k3-parmlib-subsystem/iefssnxx.md
           - IFAPRDxx: discussions/zos-library-management/details/k3-parmlib-subsystem/ifaprdxx.md
           - LICEFLxx: discussions/zos-library-management/details/k3-parmlib-subsystem/liceflxx.md
@@ -220,8 +220,8 @@ nav:
           - IEAICSxx: discussions/zos-library-management/details/k3-parmlib-subsystem/ieaicsxx.md
           - IEAIPSxx: discussions/zos-library-management/details/k3-parmlib-subsystem/ieaipsxx.md
           - BLSCUSER: discussions/zos-library-management/details/k3-parmlib-subsystem/blscuser.md
-        - ﾂｧK-4 PARMLIB 繝ｪ繧ｽ繝ｼ繧ｹ邂｡逅・蜑榊濠:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k4-parmlib-resource1.md
+        - §K-4 PARMLIB リソース管理 前半:
+          - 概要: discussions/zos-library-management/details/section-k4-parmlib-resource1.md
           - IEAOPTxx: discussions/zos-library-management/details/k4-parmlib-resource1/ieaoptxx.md
           - ALLOCxx: discussions/zos-library-management/details/k4-parmlib-resource1/allocxx.md
           - GRSCNFxx: discussions/zos-library-management/details/k4-parmlib-resource1/grscnfxx.md
@@ -232,8 +232,8 @@ nav:
           - IOSDLBxx: discussions/zos-library-management/details/k4-parmlib-resource1/iosdlbxx.md
           - COUPLExx: discussions/zos-library-management/details/k4-parmlib-resource1/couplexx.md
           - IXGCNFxx: discussions/zos-library-management/details/k4-parmlib-resource1/ixgcnfxx.md
-        - ﾂｧK-5 PARMLIB 繝ｪ繧ｽ繝ｼ繧ｹ邂｡逅・蠕悟濠:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k5-parmlib-resource2.md
+        - §K-5 PARMLIB リソース管理 後半:
+          - 概要: discussions/zos-library-management/details/section-k5-parmlib-resource2.md
           - IXBRPRxx: discussions/zos-library-management/details/k5-parmlib-resource2/ixbrprxx.md
           - IEADMCxx: discussions/zos-library-management/details/k5-parmlib-resource2/ieadmcxx.md
           - IEADMPxx: discussions/zos-library-management/details/k5-parmlib-resource2/ieadmpxx.md
@@ -243,8 +243,8 @@ nav:
           - COFVLFxx: discussions/zos-library-management/details/k5-parmlib-resource2/cofvlfxx.md
           - COFDLFxx: discussions/zos-library-management/details/k5-parmlib-resource2/cofdlfxx.md
           - SVCPARMxx: discussions/zos-library-management/details/k5-parmlib-resource2/svcparmxx.md
-        - ﾂｧK-6 PARMLIB 迺ｰ蠅・ｨｭ螳・蜑榊濠:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k6-parmlib-env1.md
+        - §K-6 PARMLIB 環境設定 前半:
+          - 概要: discussions/zos-library-management/details/section-k6-parmlib-env1.md
           - IGDSMSxx: discussions/zos-library-management/details/k6-parmlib-env1/igdsmsxx.md
           - IKJTSOxx: discussions/zos-library-management/details/k6-parmlib-env1/ikjtsoxx.md
           - IKJPRMxx: discussions/zos-library-management/details/k6-parmlib-env1/ikjprmxx.md
@@ -258,8 +258,8 @@ nav:
           - FXEPRMxx: discussions/zos-library-management/details/k6-parmlib-env1/fxeprmxx.md
           - BPXPRMxx: discussions/zos-library-management/details/k6-parmlib-env1/bpxprmxx.md
           - OAMSPxx: discussions/zos-library-management/details/k6-parmlib-env1/oamspxx.md
-        - ﾂｧK-7 PARMLIB 迺ｰ蠅・ｨｭ螳・蠕悟濠 + 繧ｵ繧､繝亥崋譛・
-          - 讎りｦ・ discussions/zos-library-management/details/section-k7-parmlib-env2.md
+        - §K-7 PARMLIB 環境設定 後半 + サイト固有:
+          - 概要: discussions/zos-library-management/details/section-k7-parmlib-env2.md
           - IOEPRMxx: discussions/zos-library-management/details/k7-parmlib-env2/ioeprmxx.md
           - ASCHPMxx: discussions/zos-library-management/details/k7-parmlib-env2/aschpmxx.md
           - CTncccxx: discussions/zos-library-management/details/k7-parmlib-env2/ctncccxx.md
@@ -273,9 +273,9 @@ nav:
           - IEASVCxx: discussions/zos-library-management/details/k7-parmlib-env2/ieasvcxx.md
           - TIMEZONE: discussions/zos-library-management/details/k7-parmlib-env2/timezone.md
           - UNICODE.IMAGE: discussions/zos-library-management/details/k7-parmlib-env2/unicode-image.md
-          - 繧ｵ繧､繝育峡閾ｪ繧ｫ繧ｹ繧ｿ繝繝｡繝ｳ繝・ discussions/zos-library-management/details/k7-parmlib-env2/繧ｵ繧､繝育峡閾ｪ繧ｫ繧ｹ繧ｿ繝繝｡繝ｳ繝・md
-        - ﾂｧK-8 PROCLIB IPL/JES 襍ｷ蜍・+ 荳ｭ譬ｸ:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k8-proclib-ipl.md
+          - サイト独自カスタムメンバ: discussions/zos-library-management/details/k7-parmlib-env2/サイト独自カスタムメンバ.md
+        - §K-8 PROCLIB IPL/JES 起動 + 中核:
+          - 概要: discussions/zos-library-management/details/section-k8-proclib-ipl.md
           - JES2: discussions/zos-library-management/details/k8-proclib-ipl/jes2.md
           - JES3: discussions/zos-library-management/details/k8-proclib-ipl/jes3.md
           - VTAM: discussions/zos-library-management/details/k8-proclib-ipl/vtam.md
@@ -293,8 +293,8 @@ nav:
           - BPXBATCH: discussions/zos-library-management/details/k8-proclib-ipl/bpxbatch.md
           - IZUSVR1: discussions/zos-library-management/details/k8-proclib-ipl/izusvr1.md
           - IZUANG1: discussions/zos-library-management/details/k8-proclib-ipl/izuang1.md
-        - ﾂｧK-9 PROCLIB 繝阪ャ繝医Ρ繝ｼ繧ｯ + TSO 邉ｻ:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k9-proclib-network.md
+        - §K-9 PROCLIB ネットワーク + TSO 系:
+          - 概要: discussions/zos-library-management/details/section-k9-proclib-network.md
           - FTPD: discussions/zos-library-management/details/k9-proclib-network/ftpd.md
           - INETD: discussions/zos-library-management/details/k9-proclib-network/inetd.md
           - TN3270: discussions/zos-library-management/details/k9-proclib-network/tn3270.md
@@ -307,8 +307,8 @@ nav:
           - TSOLOGON: discussions/zos-library-management/details/k9-proclib-network/tsologon.md
           - IKJ*: discussions/zos-library-management/details/k9-proclib-network/ikj.md
           - ISPF*: discussions/zos-library-management/details/k9-proclib-network/ispf.md
-        - ﾂｧK-10 PROCLIB 繧ｵ繝悶す繧ｹ繝・Β襍ｷ蜍・
-          - 讎りｦ・ discussions/zos-library-management/details/section-k10-proclib-subsystem.md
+        - §K-10 PROCLIB サブシステム起動:
+          - 概要: discussions/zos-library-management/details/section-k10-proclib-subsystem.md
           - CICS / CICS*: discussions/zos-library-management/details/k10-proclib-subsystem/cics-cics.md
           - DB2MSTR: discussions/zos-library-management/details/k10-proclib-subsystem/db2mstr.md
           - DB2DBM1: discussions/zos-library-management/details/k10-proclib-subsystem/db2dbm1.md
@@ -323,8 +323,8 @@ nav:
           - LDAP: discussions/zos-library-management/details/k10-proclib-subsystem/ldap.md
           - HZSPROC: discussions/zos-library-management/details/k10-proclib-subsystem/hzsproc.md
           - OAM: discussions/zos-library-management/details/k10-proclib-subsystem/oam.md
-        - ﾂｧK-11 PROCLIB 驕狗畑 + 逶｣隕悶・騾夂衍:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k11-proclib-ops.md
+        - §K-11 PROCLIB 運用 + 監視・通知:
+          - 概要: discussions/zos-library-management/details/section-k11-proclib-ops.md
           - BKUP*: discussions/zos-library-management/details/k11-proclib-ops/bkup.md
           - RCVR*: discussions/zos-library-management/details/k11-proclib-ops/rcvr.md
           - NIGHT*: discussions/zos-library-management/details/k11-proclib-ops/night.md
@@ -338,17 +338,17 @@ nav:
           - ALERT*: discussions/zos-library-management/details/k11-proclib-ops/alert.md
           - NOTIF*: discussions/zos-library-management/details/k11-proclib-ops/notif.md
           - HEALTH*: discussions/zos-library-management/details/k11-proclib-ops/health.md
-          - 縺昴・莉悶し繧､繝育峡閾ｪ: discussions/zos-library-management/details/k11-proclib-ops/other-site-specific.md
-        - ﾂｧK-12 驕狗畑雉・攝 讓呎ｺ夜｡槫挨 + 蜻ｽ蜷阪ユ繝ｳ繝励Ξ:
-          - 讎りｦ・ discussions/zos-library-management/details/section-k12-operational-materials.md
-          - 讌ｭ蜍・JCL (T31.1): discussions/zos-library-management/details/k12-operational-materials/讌ｭ蜍・jcl-t31-1.md
-          - 驕狗畑 JCL 繝舌ャ繧ｯ繧｢繝・・繝ｻ繝ｪ繧ｫ繝舌Μ (T31.2): discussions/zos-library-management/details/k12-operational-materials/驕狗畑-jcl-繝舌ャ繧ｯ繧｢繝・・-繝ｪ繧ｫ繝舌Μ-t31-2.md
-          - REXX exec / ISPF 繝槭け繝ｭ (T31.3): discussions/zos-library-management/details/k12-operational-materials/rexx-exec-ispf-繝槭け繝ｭ-t31-3.md
-          - ISPF 繝代ロ繝ｫ / 繝繧､繧｢繝ｭ繧ｰ (T31.4): discussions/zos-library-management/details/k12-operational-materials/ispf-繝代ロ繝ｫ-繝繧､繧｢繝ｭ繧ｰ-t31-4.md
-          - 驕狗畑繝代Λ繝｡繝ｼ繧ｿ繝輔ぃ繧､繝ｫ (T31.5): discussions/zos-library-management/details/k12-operational-materials/驕狗畑繝代Λ繝｡繝ｼ繧ｿ繝輔ぃ繧､繝ｫ-t31-5.md
-          - SORT 繧ｫ繝ｼ繝・/ IDCAMS 繧ｳ繝槭Φ繝・(T31.6): discussions/zos-library-management/details/k12-operational-materials/sort-繧ｫ繝ｼ繝・idcams-繧ｳ繝槭Φ繝・t31-6.md
-          - 繧｢繝励Μ逕ｨ繝ｩ繧､繝悶Λ繝ｪ 窶・繝・く繧ｹ繝・(T31.7): discussions/zos-library-management/details/k12-operational-materials/繧｢繝励Μ逕ｨ繝ｩ繧､繝悶Λ繝ｪ-繝・く繧ｹ繝・t31-7.md
-          - 驕狗畑謇矩・嶌 窶・繝・く繧ｹ繝亥ｽ｢蠑・(T31.8): discussions/zos-library-management/details/k12-operational-materials/驕狗畑謇矩・嶌-繝・く繧ｹ繝亥ｽ｢蠑・t31-8.md
-          - 逶｣隕悶・騾夂衍螳夂ｾｩ (T31.9): discussions/zos-library-management/details/k12-operational-materials/逶｣隕・騾夂衍螳夂ｾｩ-t31-9.md
-        - 蜃ｺ蜈ｸ: discussions/zos-library-management/details/sources.md
-  - 繝ｪ繝ｳ繧ｯ髮・ references.md
+          - その他サイト独自: discussions/zos-library-management/details/k11-proclib-ops/other-site-specific.md
+        - §K-12 運用資材 標準類別 + 命名テンプレ:
+          - 概要: discussions/zos-library-management/details/section-k12-operational-materials.md
+          - 業務 JCL (T31.1): discussions/zos-library-management/details/k12-operational-materials/業務-jcl-t31-1.md
+          - 運用 JCL バックアップ・リカバリ (T31.2): discussions/zos-library-management/details/k12-operational-materials/運用-jcl-バックアップ-リカバリ-t31-2.md
+          - REXX exec / ISPF マクロ (T31.3): discussions/zos-library-management/details/k12-operational-materials/rexx-exec-ispf-マクロ-t31-3.md
+          - ISPF パネル / ダイアログ (T31.4): discussions/zos-library-management/details/k12-operational-materials/ispf-パネル-ダイアログ-t31-4.md
+          - 運用パラメータファイル (T31.5): discussions/zos-library-management/details/k12-operational-materials/運用パラメータファイル-t31-5.md
+          - SORT カード / IDCAMS コマンド (T31.6): discussions/zos-library-management/details/k12-operational-materials/sort-カード-idcams-コマンド-t31-6.md
+          - アプリ用ライブラリ — テキスト (T31.7): discussions/zos-library-management/details/k12-operational-materials/アプリ用ライブラリ-テキスト-t31-7.md
+          - 運用手順書 — テキスト形式 (T31.8): discussions/zos-library-management/details/k12-operational-materials/運用手順書-テキスト形式-t31-8.md
+          - 監視・通知定義 (T31.9): discussions/zos-library-management/details/k12-operational-materials/監視-通知定義-t31-9.md
+        - 出典: discussions/zos-library-management/details/sources.md
+  - リンク集: references.md

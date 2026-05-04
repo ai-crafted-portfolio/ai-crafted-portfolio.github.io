@@ -120,6 +120,20 @@ nav:
         - 10. 対象外項目: products/z-os-3-1/10-out-of-scope.md
         - 11. シナリオ別ガイド: products/z-os-3-1/11-scenarios.md
         - 12. ユースケース集: products/z-os-3-1/12-use-cases.md
+      - Db2 13 for z/OS:
+        - 概要: products/db2-for-zos-13/index.md
+        - 01. コマンド一覧: products/db2-for-zos-13/01-commands.md
+        - 02. 設定値一覧: products/db2-for-zos-13/02-settings.md
+        - 03. 用語集: products/db2-for-zos-13/03-glossary.md
+        - 04. プレイブック: products/db2-for-zos-13/04-playbook.md
+        - 05. トラブル早見表: products/db2-for-zos-13/05-troubleshooting.md
+        - 06. マニュアル参照マップ: products/db2-for-zos-13/06-manual-map.md
+        - 07. 出典一覧: products/db2-for-zos-13/07-sources.md
+        - 08. 設定手順: products/db2-for-zos-13/08-config-procedures.md
+        - 09. 障害対応手順: products/db2-for-zos-13/09-incident-procedures.md
+        - 10. 対象外項目: products/db2-for-zos-13/10-out-of-scope.md
+        - 11. シナリオ別ガイド: products/db2-for-zos-13/11-scenarios.md
+        - 12. ユースケース集: products/db2-for-zos-13/12-use-cases.md
       - z/OS システムプログラミング (ABCs):
         - 概要: products/zos-system-programming/index.md
         - 00. 概要: products/zos-system-programming/00-overview.md

@@ -157,6 +157,20 @@ nav:
         - 10. 対象外項目: products/netcool-omnibus-8-1/10-out-of-scope.md
         - 11. シナリオ別ガイド: products/netcool-omnibus-8-1/11-scenarios.md
         - 12. ユースケース集: products/netcool-omnibus-8-1/12-use-cases.md
+      - Tivoli Log File Agent 6.3:
+        - 概要: products/tivoli-lfa-6-3/index.md
+        - 01. コマンド一覧: products/tivoli-lfa-6-3/01-commands.md
+        - 02. 設定値一覧: products/tivoli-lfa-6-3/02-settings.md
+        - 03. 用語集: products/tivoli-lfa-6-3/03-glossary.md
+        - 04. プレイブック: products/tivoli-lfa-6-3/04-playbook.md
+        - 05. トラブル早見表: products/tivoli-lfa-6-3/05-troubleshooting.md
+        - 06. マニュアル参照マップ: products/tivoli-lfa-6-3/06-manual-map.md
+        - 07. 出典一覧: products/tivoli-lfa-6-3/07-sources.md
+        - 08. 設定手順: products/tivoli-lfa-6-3/08-config-procedures.md
+        - 09. 障害対応手順: products/tivoli-lfa-6-3/09-incident-procedures.md
+        - 10. 対象外項目: products/tivoli-lfa-6-3/10-out-of-scope.md
+        - 11. シナリオ別ガイド: products/tivoli-lfa-6-3/11-scenarios.md
+        - 12. ユースケース集: products/tivoli-lfa-6-3/12-use-cases.md
       - Netcool OMNIbus V8.1（旧 7 シート）:
         - 概要: products/netcool-omnibus/index.md
         - 00. 概要: products/netcool-omnibus/00-overview.md

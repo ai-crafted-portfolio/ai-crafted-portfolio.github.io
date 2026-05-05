@@ -185,7 +185,21 @@ nav:
         - 04. トラブルシュート: products/ibm-spectrum-protect/04-troubleshooting.md
         - 05. 関連製品連携: products/ibm-spectrum-protect/05-related.md
         - 06. 出典一覧: products/ibm-spectrum-protect/06-sources.md
-      - IBM Guardium Data Protection 12.x:
+      - Guardium Data Protection 12.x:
+        - 概要: products/guardium-dp-12/index.md
+        - 01. コマンド一覧: products/guardium-dp-12/01-commands.md
+        - 02. 設定値一覧: products/guardium-dp-12/02-settings.md
+        - 03. 用語集: products/guardium-dp-12/03-glossary.md
+        - 04. プレイブック: products/guardium-dp-12/04-playbook.md
+        - 05. トラブル早見表: products/guardium-dp-12/05-troubleshooting.md
+        - 06. マニュアル参照マップ: products/guardium-dp-12/06-manual-map.md
+        - 07. 出典一覧: products/guardium-dp-12/07-sources.md
+        - 08. 設定手順: products/guardium-dp-12/08-config-procedures.md
+        - 09. 障害対応手順: products/guardium-dp-12/09-incident-procedures.md
+        - 10. 対象外項目: products/guardium-dp-12/10-out-of-scope.md
+        - 11. シナリオ別ガイド: products/guardium-dp-12/11-scenarios.md
+        - 12. ユースケース集: products/guardium-dp-12/12-use-cases.md
+      - IBM Guardium Data Protection 12.x（旧 7 シート）:
         - 概要: products/ibm-guardium-data-protection/index.md
         - 00. 概要: products/ibm-guardium-data-protection/00-overview.md
         - 01. 構成要素: products/ibm-guardium-data-protection/01-components.md

@@ -35,7 +35,8 @@
 | Netcool OMNIbus V8.1（旧 7 シート） | 監視・運用 | 旧版（概要俯瞰用、新版 [Netcool/OMNIbus 8.1](netcool-omnibus-8-1/index.md) を推奨） | [詳細](netcool-omnibus/index.md) | — |
 | Tivoli Log File Agent 6.3 | 監視・運用 | ログファイル監視エージェント | （準備中） | [📥](files/Tivoli_Log_File_Agent_6.3.xlsx) |
 | IBM Spectrum Protect 8.1 | バックアップ | エンタープライズ・バックアップ（旧 TSM） | [詳細](ibm-spectrum-protect/index.md) | [📥](files/IBM_Spectrum_Protect_8.1.xlsx) |
-| IBM Guardium Data Protection 12.x | セキュリティ・監査 | DB アクセス監査プラットフォーム。S-TAP / コレクタ / アグリゲータ | [詳細](ibm-guardium-data-protection/index.md) | [📥](files/IBM_Guardium_Data_Protection_12.x.xlsx) |
+| Guardium Data Protection 12.x | セキュリティ・監査 | DB アクセス監査プラットフォーム。S-TAP / Collector / Aggregator / Central Manager の 4 階層 + GuardAPI / Audit Process / VA / ATA。**13 章 + S 級 A/B/C 仮説分岐 + 期待出力** | [詳細](guardium-dp-12/index.md) | [📥](files/IBM_Guardium_Data_Protection_12.x.xlsx) |
+| IBM Guardium Data Protection 12.x（旧 7 シート） | セキュリティ・監査 | 旧版（概要俯瞰用、新版 [Guardium Data Protection 12.x](guardium-dp-12/index.md) を推奨） | [詳細](ibm-guardium-data-protection/index.md) | — |
 | IBM Personal Communications 15.0 | 端末エミュレータ | Windows 用 3270 / 5250 ターミナルエミュレータ | [詳細](ibm-personal-communications/index.md) | [📥](files/IBM_Personal_Communications_15.0.xlsx) |
 | PSF for z/OS 4.7 | 印刷 | z/OS 印刷サブシステム（Print Services Facility） | （準備中） | [📥](files/PSF_z_OS_4.7.xlsx) |
 | Anthropic Claude Docs | AI / LLM | Claude API 全体ドキュメント（モデル・API・Tool use 等） | （準備中） | [📥](files/Anthropic_Claude_Docs.xlsx) |

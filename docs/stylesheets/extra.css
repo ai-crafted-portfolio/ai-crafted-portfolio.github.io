@@ -122,12 +122,16 @@
 
 /* ===== v12: PC ビュー切替ボタンの遮蔽問題対策 =====
    v13: overflow:hidden + white-space:nowrap でテキストの 32px 円外リークを抑止
-   （内部 textContent "💻 PC 表示" が scrollHeight=96 で下方 64px 漏れていた）*/
+   （内部 textContent "💻 PC 表示" が scrollHeight=96 で下方 64px 漏れていた）
+   netcool v1.2 hotfix: font-size:0 をグローバルに昇格。v1.1 では @media(<=768px) 内の
+   font-size:0 がここのグローバル font-size:14px に cascade 順負け（後者が later）→
+   モバイルで text が再露出する事象が再発。グローバルで 0 にして desktop @media (>=769px)
+   の font-size:inherit で復活させる方式に変更（1 line hotfix）。*/
 #pc-view-btn {
   bottom: calc(env(safe-area-inset-bottom, 0) + 80px) !important;
   width: 32px !important;
   height: 32px !important;
-  font-size: 14px !important;
+  font-size: 0 !important;
   padding: 0 !important;
   line-height: 32px !important;
   text-align: center;
